@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+*{margin:0;padding:0;}
+
+body{
+    background:#000;
+    font-family:'Open Sans',sans-serif;
+}
+
+/*Styles for the circle button*/
+
+/*.button{*/
+    /*width:100px;*/
+    /*height: 100px;*/
+    /*background:#0082ba;*/
+    /*display:block;*/
+    /*border-radius: 50%;*/
+    /*margin:0 auto;*/
+    /*margin-top:1%;*/
+    /*padding:10px;*/
+    /*text-align:center;*/
+    /*vertical-align: middle;*/
+    /*line-height: 92px;*/
+    /*text-decoration:none;*/
+    /*color:#fff;*/
+    /*cursor:pointer;*/
+    /*transition:background .3s;*/
+    /*-webkit-transition:background .3s;*/
+/*}*/
+
+/*.button:hover{*/
+    /*background:#3399cc;*/
+/*}*/
+/*Styles for the circle button*/
+
+#login, #signUp, #changePass{
+    width:400px;
+    margin:0 auto;
+    margin-top:0;
+    margin-bottom:2%;
+    transition:opacity 1s;
+    -webkit-transition:opacity 1s;
+}
+
+#triangle{
+    width:0;
+    border-top:0px solid transparent;
+    border-right:12px solid transparent;
+    border-bottom:12px solid #0082ba;
+    border-left:12px solid transparent;
+    margin:0 auto;
+}
+
+#login h1, #signUp h1, #changePass h1{
+    background:#0082ba;
+    padding:20px 0;
+    font-size:140%;
+    font-weight:300;
+    text-align:center;
+    color:#fff;
+}
+
+.form{
+    background:#f0f0f0;
+    padding:6% 4%;
+}
+
+#signUpForm{
+    padding-top: 0;
+}
+
+input[type="text"],input[type="password"]{
+    width:100%;
+    background:#fff;
+    margin-bottom:5%;
+    border:1px solid #ccc;
+    padding:4%;
+    font-family:'Open Sans',sans-serif;
+    font-size:95%;
+    color:#555;
+    box-sizing: border-box;
+}
+
+.email{
+    width: 67% !important;
+}
+
+input[type="submit"]{
+    width:100%;
+    background:#0082ba;
+    border:0;
+    padding:4%;
+    font-family:'Open Sans',sans-serif;
+    font-size:100%;
+    color:#fff;
+    cursor:pointer;
+    transition:background .3s;
+    -webkit-transition:background .3s;
+}
+
+input[type="submit"]:hover{
+    background:#3399cc;
+}

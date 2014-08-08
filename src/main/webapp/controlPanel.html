@@ -1,0 +1,87 @@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#PersonTableContainer').jtable({
+                title: 'Control Panel',
+                paging: true,
+                pageSize: 10,
+                sorting: true,
+                defaultSorting: 'access_level ASC',
+                actions: {
+                    listAction: 'EmployeeTableController?action=list',
+                    createAction: 'EmployeeTableController?action=create',
+                    updateAction: 'EmployeeTableController?action=update',
+                    deleteAction: 'EmployeeTableController?action=delete'
+                },
+                fields: {
+                    employee_id:{
+                        title: 'ID',
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: true
+                    },
+                    fName: {
+                        title: "First name",
+                        list: false,
+                        sorting: false
+                    },
+                    surname: {
+                        title: "Surname",
+                        list: false,
+                        sorting: false
+                    },
+                    lName: {
+                        title: "Last name",
+                        list: false,
+                        sorting: false
+                    },
+                    employeeName: {
+                        title: 'Employee',
+                        width: '20%',
+                        create: false,
+                        edit: false
+                    },
+                    email: {
+                        title: 'Email',
+                        width: '20%'
+                    },
+//                    password: {
+//                        title: 'Password',
+//                        width: '20%',
+//                        type: 'password',
+//                        list: false,
+//                        create: false,
+//                        edit: false
+//                    },
+                    access_level: {
+                        title: 'Access level',
+                        width: '20%',
+                        type: 'radiobutton',
+                        options: {'0': 'Waiting for conformation', '1': 'Admin', '2': 'Normal user'}
+                    }
+                }
+            });
+            $('#PersonTableContainer').jtable('load');
+        });
+    </script>
+
+<div id="header">
+    <span class="text">Welcome to the Control Panel</span>
+
+<span ng-controller="menuController">
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="logout()">Log out</button>
+    </span>
+
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
+    </span>
+
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="requestTable()">Requests' table</button>
+    </span>
+</span>
+
+</div>
+
+<div id="PersonTableContainer"></div>

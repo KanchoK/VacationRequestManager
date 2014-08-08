@@ -1,0 +1,83 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#PersonTableContainer').jtable({
+            title: 'Employees Vacation requests',
+            paging: true,
+            pageSize: 10,
+            sorting: true,
+            defaultSorting: 'holidayStatus ASC',
+            actions: {
+                listAction: 'VacationTableController?action=list',
+                createAction: 'VacationTableController?action=create',
+                updateAction: 'VacationTableController?action=update',
+                deleteAction: 'VacationTableController?action=delete'
+            },
+            fields: {
+                holidayID:{
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+//                    maybe employeeID is not needed in the table ???
+//                    employeeID:{
+//                        create: false,
+//                        edit: false,
+//                        list: false
+//                    },
+                employeeName: {
+                    title: 'Employee',
+                    create: false,
+                    edit: false,
+                    width: '40%',
+                    sorting: false
+                },
+                beginDate: {
+                    title: 'Vacation begin date',
+                    edit: false,
+                    width: '20%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd'
+                },
+                endDate: {
+                    title: 'Vacation end date',
+                    edit: false,
+                    width: '20%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd'
+                },
+                holidayStatus: {
+                    title: 'Vacation status',
+                    create: false,
+                    width: '20%',
+                    type: 'radiobutton',
+                    options: { '1': 'Waiting for approval', '2': 'Approved', '3': 'Unapproved' }
+                }
+            }
+        });
+        $('#PersonTableContainer').jtable('load');
+    });
+</script>
+
+<div id="header">
+    <span class="text">Welcome to Employees' vacation requests</span>
+
+
+<span ng-controller="menuController">
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="logout()">Log out</button>
+    </span>
+
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
+    </span>
+
+    <span class="menuSpan">
+        <button type="button" class="menuButton" ng-click="controlPanel()">Control panel</button>
+    </span>
+</span>
+
+</div>
+
+<div id="PersonTableContainer"></div>

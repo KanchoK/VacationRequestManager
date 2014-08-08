@@ -1,0 +1,14 @@
+<div id="signUp">
+    <div id="triangle"></div>
+    <h1>Sign up</h1>
+    <form class="form" ng-controller="SignUpController" ng-submit="signUp(fName, surname, lName, email, password, confirmPassword)" novalidate>
+        <input type="text" ng-model="fName" placeholder="First name" />
+        <input type="text" ng-model="surname" placeholder="Surname" />
+        <input type="text" ng-model="lName" placeholder="Last name" />
+        <input class="email" type="text" ng-model="email" placeholder="Email" />
+        <span>@novarto.com</span>
+        <input type="password" ng-model="password" placeholder="Password" />
+        <input type="password" ng-model="confirmPassword" placeholder="Confirm password" />
+        <input type="submit" value="Sign up" />
+    </form>
+</div>

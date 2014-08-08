@@ -1,0 +1,24 @@
+<script>
+    $(document).ready(function(){
+        $('#toggle-login').click(function(){
+            $('#login').toggle();
+        });
+    });
+</script>
+
+<!--<span href="#" class="button" id="toggle-login">Log in</span>-->
+
+<div id="login">
+    <div id="triangle"></div>
+    <h1>Log in</h1>
+    <form class="form" method="post" ng-controller="loginController" ng-submit="login(email, password)" novalidate>
+        <input class="email" type="text" ng-model="email" placeholder="Email" />
+        <span>@novarto.com</span>
+        <input type="password" ng-model="password" placeholder="Password" />
+        <input type="submit" value="Log in" />
+    </form>
+    <form class="form" id="signUpForm" ng-controller="SignUpController" novalidate ng-submit="toSignUp()">
+        <input type="submit" value="Sign up">
+    </form>
+
+</div>
