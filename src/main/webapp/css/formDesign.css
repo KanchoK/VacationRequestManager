@@ -44,7 +44,7 @@ body{
 
 #triangle{
     width:0;
-    border-top:0px solid transparent;
+    border-top:8px solid transparent;
     border-right:12px solid transparent;
     border-bottom:12px solid #0082ba;
     border-left:12px solid transparent;
@@ -62,7 +62,10 @@ body{
 
 .form{
     background:#f0f0f0;
-    padding:6% 4%;
+    padding-top:6%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
 }
 
 #signUpForm{
@@ -100,4 +103,14 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
     background:#3399cc;
+}
+
+#forgottenPassword{
+    width: 400px;
+    background:#f0f0f0;
+    padding-bottom: 4%;
+    text-align: center;
+    color: #0082ba;
+    cursor:pointer;
+    box-sizing: border-box;
 }

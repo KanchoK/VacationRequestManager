@@ -11,8 +11,11 @@ public class Employee {
     private String employeeName;
     private String email;
     private String password;
-    private int access_level;
+    private int accessLevel;
     private int accountStatus;
+    private int myManager;
+    private int vacationDaysLeft;
+    private String forgottenPasswordCode;
 
     public int getEmployee_id(){
         return employee_id;
@@ -70,12 +73,12 @@ public class Employee {
         this.password = password;
     }
 
-    public int getAccess_level() {
-        return access_level;
+    public int getAccessLevel() {
+        return accessLevel;
     }
 
-    public void setAccess_level(int access_level) {
-        this.access_level = access_level;
+    public void setAccessLevel(int accessLevel) {
+        this.accessLevel = accessLevel;
     }
 
     public int getAccountStatus() {
@@ -84,5 +87,29 @@ public class Employee {
 
     public void setAccountStatus(int accountStatus) {
         this.accountStatus = accountStatus;
+    }
+
+    public int getMyManager() {
+        return myManager;
+    }
+
+    public void setMyManager(int myManager) {
+        this.myManager = myManager;
+    }
+
+    public int getVacationDaysLeft() {
+        return vacationDaysLeft;
+    }
+
+    public void setVacationDaysLeft(int vacationDaysLeft) {
+        this.vacationDaysLeft = vacationDaysLeft;
+    }
+
+    public String getForgottenPasswordCode() {
+        return forgottenPasswordCode;
+    }
+
+    public void setForgottenPasswordCode(String forgottenPasswordCode) {
+        this.forgottenPasswordCode = forgottenPasswordCode;
     }
 }

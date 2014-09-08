@@ -1,29 +1,67 @@
-    <style>
-        .initialPass{
-            background: #3399cc;
-            margin:0 auto;
-            margin-top:1%;
-            padding:10px;
-            text-align:center;
-            text-decoration:none;
-            color:#fff;
-        }
-    </style>
-
     <script>
         $(document).ready(function(){
             var isInitial = <%=session.getAttribute("accountStatus")%>
-            if (isInitial == 0){
-                $('p').show();
-            } else {
-                $('p').hide();
+            if (isInitial == 0) {
+                alertify.alert("It is good to change your password because it is initial right now and your account is insecure.")
             }
         });
     </script>
 
-<p class="initialPass">
-    It is good to change your password because it is initial right now and your account is insecure.
-</p>
+    <script>
+        $(document).ready(function(){
+            var accessLevel = <%=session.getAttribute("access")%>
+            if (accessLevel == 1){
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').show();
+                $('#controlPanelButton').show();
+            } else if (accessLevel == 2){
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').show();
+                $('#controlPanelButton').hide();
+            } else {
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').hide();
+                $('#controlPanelButton').hide();
+            }
+        });
+    </script>
+
+    <%@ page contentType="text/html; charset=UTF-8" %>
+
+<span id="header" ng-controller="menuController">
+    <span class="menuSpan" id="logoutButton">
+        <button type="button" class="menuButton" ng-click="logout()">Log out</button>
+    </span>
+
+    <span class="menuSpan" id="changePassButton">
+        <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
+    </span>
+
+    <span class="menuSpan" id="myRequestsButton">
+        <button type="button" class="menuButton" ng-click="myRequests()">My requests</button>
+    </span>
+
+    <span class="menuSpan" id="vacationCalendarButton">
+        <button type="button" class="menuButton" ng-click="vacationCalendar()">Vacation calendar</button>
+    </span>
+
+    <span class="menuSpan" id="requestManagerButton">
+        <button type="button" class="menuButton" ng-click="requestManager()">Request Manager</button>
+    </span>
+
+    <span class="menuSpan" id="controlPanelButton">
+        <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
+    </span>
+</span>
 
 <div id="changePass">
     <div id="triangle"></div>

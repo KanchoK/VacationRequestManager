@@ -1,5 +1,5 @@
 .logo{
-    text-align: left;
+    margin-top: 10px;
 }
 
 #header{
@@ -16,9 +16,10 @@
 }
 
 .menuSpan{
-    width:135px;
+    width:130px;
     height: 50px;
     margin-right: 5px;
+    margin-top: 21px;
     text-align: center;
     vertical-align: middle;
     line-height: 47px;
@@ -27,7 +28,7 @@
 }
 
 .menuButton {
-    width:135px;
+    width:130px;
     height: 50px;
     text-decoration:none;
     font-size: 15px;
@@ -40,4 +41,8 @@
 
 .menuButton:hover{
     background:#3399cc;
+}
+
+#PersonTableContainer{
+    margin-top: 10px;
 }

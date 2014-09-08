@@ -52,7 +52,7 @@ THE SOFTWARE.
             actions: {},
             fields: {},
             animationsEnabled: true,
-            defaultDateFormat: 'yy-mm-dd',
+            defaultDateFormat: 'dd.mm.yy',
             dialogShowEffect: 'fade',
             dialogHideEffect: 'fade',
             showCloseButton: false,

@@ -24,16 +24,16 @@ public class LoginServlet extends HttpServlet{
         if (LoginCheck.validate(email, convertedPass)){
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
-            int access = EmployeeAttributes.getEmployeeAccessLevel(email, convertedPass);
+            int access = EmployeeAttributes.getEmployeeAccessLevel(email);
             session.setAttribute("access", access);
-            int employeeID = EmployeeAttributes.getEmployeeID(email, convertedPass);
+            int employeeID = EmployeeAttributes.getEmployeeID(email);
             session.setAttribute("employeeID", employeeID);
-            int accountStatus = EmployeeAttributes.getAccountStatus(email, convertedPass);
+            int accountStatus = EmployeeAttributes.getAccountStatus(email);
             session.setAttribute("accountStatus", accountStatus);
 
             JSONObject obj = new JSONObject();
-            obj.put("access", access);
             obj.put("accountStatus", accountStatus);
+            obj.put("access", access);
 
             try {
                 PrintWriter out = response.getWriter();

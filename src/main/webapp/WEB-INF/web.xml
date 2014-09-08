@@ -52,12 +52,39 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>VacationTableController</servlet-name>
-        <servlet-class>com.web.VacationTableController</servlet-class>
+        <servlet-name>MyRequestsController</servlet-name>
+        <servlet-class>com.web.MyRequestsController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>VacationTableController</servlet-name>
-        <url-pattern>/VacationTableController</url-pattern>
+        <servlet-name>MyRequestsController</servlet-name>
+        <url-pattern>/MyRequestsController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManagerListServlet</servlet-name>
+        <servlet-class>com.web.ManagerListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerListServlet</servlet-name>
+        <url-pattern>/ManagerListServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EmployeeListServlet</servlet-name>
+        <servlet-class>com.web.EmployeeListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmployeeListServlet</servlet-name>
+        <url-pattern>/EmployeeListServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestManagerController</servlet-name>
+        <servlet-class>com.web.RequestManagerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestManagerController</servlet-name>
+        <url-pattern>/RequestManagerController</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -69,6 +96,42 @@
         <url-pattern>/EmployeeTableController</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>VacationCalendarController</servlet-name>
+        <servlet-class>com.web.VacationCalendarController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VacationCalendarController</servlet-name>
+        <url-pattern>/VacationCalendarController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgottenPassword</servlet-name>
+        <servlet-class>com.web.ForgottenPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgottenPassword</servlet-name>
+        <url-pattern>/ForgottenPassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResetForgottenPassword</servlet-name>
+        <servlet-class>com.web.ResetForgottenPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResetForgottenPassword</servlet-name>
+        <url-pattern>/ResetForgottenPassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestNotificationController</servlet-name>
+        <servlet-class>com.web.RequestNotificationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestNotificationController</servlet-name>
+        <url-pattern>/RequestNotificationController</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>com.web.filter.AuthenticationFilter</filter-class>
@@ -77,5 +140,9 @@
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
 
 </web-app>

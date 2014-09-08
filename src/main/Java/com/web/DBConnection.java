@@ -17,7 +17,7 @@ public class DBConnection {
         else {
             try {
                 Class.forName("org.hsqldb.jdbcDriver");
-                connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9001/HolidaysDB", "SA", "");
+                connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB", "SA", "");
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {

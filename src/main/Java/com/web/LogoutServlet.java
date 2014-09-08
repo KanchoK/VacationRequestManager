@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
         }
 
         try {
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         } catch (IOException e) {
             e.printStackTrace();
         }

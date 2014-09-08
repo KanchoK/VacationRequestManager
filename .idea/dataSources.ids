@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source source="LOCAL" name="HSQLDB - HolidaysDB@localhost" uuid="59b5ab5f-675f-4338-8a9d-0aeb410e9699">
+  <data-source source="LOCAL" name="HSQLDB - VacationManagerDB@localhost" uuid="a5ee4623-7256-46f7-921f-7a47aa4fd820">
     <database-info product="HSQL Database Engine" version="2.3.2" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.2">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
@@ -1092,25 +1092,33 @@
     </table>
     <table name="EMPLOYEES" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="EMPLOYEE_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="PASSWORD" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
-      <column name="ACCESS_LEVEL" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
-      <column name="EMPLOYEENAME" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="EMAIL" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="FNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="SURNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMPLOYEENAME" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACCESSLEVEL" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MYMANAGER" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
       <column name="ACCOUNTSTATUS" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="VACATIONDAYSLEFT" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="FORGOTTENPASSWORDCODE" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LINKEXPIRYDATE" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="SYS_PK_10092" columns="EMPLOYEE_ID"/>
-      <exported-key name="EMPLOYEES_HOLIDAYS_FK" table="HOLIDAYS" schema="PUBLIC" catalog="PUBLIC" columns="EMPLOYEE_ID"/>
+      <exported-key name="EMPLOYEES_VACATIONS_FK" table="VACATIONS" schema="PUBLIC" catalog="PUBLIC" columns="EMPLOYEE_ID"/>
     </table>
-    <table name="HOLIDAYS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
-      <column name="HOLIDAY_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+    <table name="VACATIONS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="VACATION_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="BEGINDATE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="ENDDATE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VACATIONTYPE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="VACATIONSTATUS" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="REQUESTTEXT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RESPONSETEXT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
       <column name="EMPLOYEE_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
-      <column name="HOLIDAYSTATUS" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SYS_PK_10100" columns="HOLIDAY_ID"/>
-      <foreign-key name="EMPLOYEES_HOLIDAYS_FK" columns="EMPLOYEE_ID" ref-table="EMPLOYEES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="EMPLOYEE_ID" update-rule="3" delete-rule="3"/>
+      <column name="MYMANAGER" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10102" columns="VACATION_ID"/>
+      <foreign-key name="EMPLOYEES_VACATIONS_FK" columns="EMPLOYEE_ID" ref-table="EMPLOYEES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="EMPLOYEE_ID" update-rule="3" delete-rule="3"/>
     </table>
     <table name="BLOCKS" schema="SYSTEM_LOBS" catalog="PUBLIC" type="SYSTEM TABLE">
       <column name="BLOCK_ADDR" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3244138683">
-    <data-source source="LOCAL" name="HSQLDB - HolidaysDB@localhost" uuid="59b5ab5f-675f-4338-8a9d-0aeb410e9699">
+  <component name="DataSourceManagerImpl" format="xml" hash="2274901206">
+    <data-source source="LOCAL" name="HSQLDB - VacationManagerDB@localhost" uuid="a5ee4623-7256-46f7-921f-7a47aa4fd820">
       <driver-ref>hsqldb.remote</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
-      <jdbc-url>jdbc:hsqldb:hsql://localhost:9001/HolidaysDB</jdbc-url>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB</jdbc-url>
       <user-name>SA</user-name>
       <libraries />
     </data-source>

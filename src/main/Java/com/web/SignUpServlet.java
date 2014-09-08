@@ -2,8 +2,6 @@ package com.web;
 
 import org.json.JSONObject;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,8 +39,9 @@ public class SignUpServlet extends HttpServlet {
             employee.setEmployeeName(fName + " "+ surname + " " + lName);
             employee.setEmail(email);
             employee.setPassword(convertedPass);
-            employee.setAccess_level(0);
+            employee.setAccessLevel(0);
             employee.setAccountStatus(1);
+            employee.setVacationDaysLeft(25);
             CrudDao.addEmployee(employee);
 
             obj.put("message", "");

@@ -1,40 +1,35 @@
 package com.web;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Created by R500 on 17.7.2014 г..
  */
 public class CrudDao {
 
-    public static List<Vacation> getAllVacations(int jtStartIndex, int jtPageSize, String jtSorting){
+    public static List<Vacation> getApprovedVacations(){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
-        String startIndex = Integer.toString(jtStartIndex);
-        String pageSize = Integer.toString(jtPageSize);
         Statement st = null;
         PreparedStatement pst = null;
         ResultSet rsFirst = null;
         ResultSet rsSecond = null;
         try {
             st = conn.createStatement();
-            rsFirst = st.executeQuery("select holiday_id, beginDate, endDate, holidayStatus, employee_id from holidays " +
-                    "                   order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+            rsFirst = st.executeQuery("select beginDate, endDate, employee_id from vacations where vacationStatus = 2");
 
             while (rsFirst.next()){
                 Vacation vacation = new Vacation();
                 pst = conn.prepareStatement("select employeeName from employees where employee_id = ?");
                 pst.setInt(1, rsFirst.getInt("employee_id"));
                 rsSecond = pst.executeQuery();
-                if (rsSecond.next())
+                if (rsSecond.next()) {
                     vacation.setEmployeeName(rsSecond.getString("employeeName"));
-//                vacation.setEmployee_id();
-                vacation.setHolidayID(rsFirst.getInt("holiday_id"));
+                }
                 vacation.setBeginDate(rsFirst.getString("beginDate"));
                 vacation.setEndDate(rsFirst.getString("endDate"));
-                vacation.setHolidayStatus(rsFirst.getString("holidayStatus"));
                 vacations.add(vacation);
             }
         } catch (SQLException e) {
@@ -79,6 +74,285 @@ public class CrudDao {
         return vacations;
     }
 
+    public static List<Vacation> getSelectedApprovedVacations(String name){
+        Connection conn = DBConnection.getConnection();
+        List<Vacation> vacations = new ArrayList<Vacation>();
+        Statement st = null;
+        PreparedStatement pst = null;
+        ResultSet rsFirst = null;
+        ResultSet rsSecond = null;
+        try {
+            st = conn.createStatement();
+            rsFirst = st.executeQuery("select beginDate, endDate, employee_id from vacations where vacationStatus = 2");
+
+            while (rsFirst.next()){
+                Vacation vacation = new Vacation();
+                pst = conn.prepareStatement("select employeeName from employees where employee_id = ?");
+                pst.setInt(1, rsFirst.getInt("employee_id"));
+                rsSecond = pst.executeQuery();
+                rsSecond.next();
+                if (rsSecond.getString("employeeName").equals(name)) {
+                    vacation.setEmployeeName(rsSecond.getString("employeeName"));
+                    vacation.setBeginDate(rsFirst.getString("beginDate"));
+                    vacation.setEndDate(rsFirst.getString("endDate"));
+                    vacations.add(vacation);
+                } else { continue;}
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rsFirst != null)
+                    rsFirst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rsSecond != null)
+                    rsSecond.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            pst = null;
+            rsFirst = null;
+            rsSecond = null;
+        }
+        return vacations;
+    }
+
+
+    //getAllVacations is not used anywhere but it can be used if we want the admin to be able of seeing all vacations
+    public static List<Vacation> getAllVacations(int jtStartIndex, int jtPageSize, String jtSorting){
+        Connection conn = DBConnection.getConnection();
+        List<Vacation> vacations = new ArrayList<Vacation>();
+        String startIndex = Integer.toString(jtStartIndex);
+        String pageSize = Integer.toString(jtPageSize);
+        Statement st = null;
+        PreparedStatement pst = null;
+        ResultSet rsFirst = null;
+        ResultSet rsSecond = null;
+        try {
+            st = conn.createStatement();
+            rsFirst = st.executeQuery("select vacation_id, beginDate, endDate, vacationType, vacationStatus, employee_id, requestText, responseText from vacations " +
+                                      "order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+
+            while (rsFirst.next()){
+                Vacation vacation = new Vacation();
+                pst = conn.prepareStatement("select employeeName from employees where employee_id = ?");
+                pst.setInt(1, rsFirst.getInt("employee_id"));
+                rsSecond = pst.executeQuery();
+                if (rsSecond.next()) {
+                    vacation.setEmployeeName(rsSecond.getString("employeeName"));
+                }
+//                vacation.setEmployee_id();
+                vacation.setVacationID(rsFirst.getInt("vacation_id"));
+                vacation.setBeginDate(rsFirst.getString("beginDate"));
+                vacation.setEndDate(rsFirst.getString("endDate"));
+                vacation.setVacationType(rsFirst.getInt("vacationType"));
+                vacation.setRequestText(rsFirst.getString("requestText"));
+                vacation.setResponseText(rsFirst.getString("responseText"));
+                vacation.setVacationStatus(rsFirst.getInt("vacationStatus"));
+                vacations.add(vacation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rsFirst != null)
+                    rsFirst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rsSecond != null)
+                    rsSecond.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            pst = null;
+            rsFirst = null;
+            rsSecond = null;
+        }
+        return vacations;
+    }
+
+    public static List<Vacation> getVacationRequests(int employee_id, int jtStartIndex, int jtPageSize, String jtSorting){
+        Connection conn = DBConnection.getConnection();
+        List<Vacation> vacations = new ArrayList<Vacation>();
+        String startIndex = Integer.toString(jtStartIndex);
+        String pageSize = Integer.toString(jtPageSize);
+        PreparedStatement pstFirst = null;
+        PreparedStatement pstSecond = null;
+        ResultSet rsFirst = null;
+        ResultSet rsSecond = null;
+        try {
+            pstFirst = conn.prepareStatement("select * from vacations where myManager = ?" +
+                                             " order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+            pstFirst.setInt(1, employee_id);
+            rsFirst = pstFirst.executeQuery();
+
+            while (rsFirst.next()){
+                Vacation vacation = new Vacation();
+
+                pstSecond = conn.prepareStatement("select employeeName from employees where employee_id = ?");
+                pstSecond.setInt(1, rsFirst.getInt("employee_id"));
+                rsSecond = pstSecond.executeQuery();
+                if (rsSecond.next())
+                    vacation.setEmployeeName(rsSecond.getString("employeeName"));
+
+                vacation.setVacationID(rsFirst.getInt("vacation_id"));
+                vacation.setBeginDate(rsFirst.getString("beginDate"));
+                vacation.setEndDate(rsFirst.getString("endDate"));
+                vacation.setVacationType(rsFirst.getInt("vacationType"));
+                vacation.setRequestText(rsFirst.getString("requestText"));
+                vacation.setResponseText(rsFirst.getString("responseText"));
+                vacation.setVacationStatus(rsFirst.getInt("vacationStatus"));
+                vacations.add(vacation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pstFirst != null)
+                    pstFirst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pstSecond != null)
+                    pstSecond.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rsFirst != null)
+                    rsFirst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rsSecond != null)
+                    rsSecond.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pstFirst = null;
+            pstSecond = null;
+            rsFirst = null;
+            rsSecond = null;
+        }
+        return vacations;
+    }
+
+    public static List<String> getRequestNotifications(int managerID){
+        Connection conn = DBConnection.getConnection();
+        List<String> notifications = new ArrayList<String>();
+        PreparedStatement pstFirst = null;
+        PreparedStatement pstSecond = null;
+        ResultSet rsFirst = null;
+        ResultSet rsSecond = null;
+        try {
+            pstFirst = conn.prepareStatement("select employee_id from vacations where myManager = ? and vacationStatus = 1");
+            pstFirst.setInt(1, managerID);
+            rsFirst = pstFirst.executeQuery();
+
+            while (rsFirst.next()){
+                pstSecond = conn.prepareStatement("select employeeName from employees where employee_id = ?");
+                pstSecond.setInt(1, rsFirst.getInt("employee_id"));
+                rsSecond = pstSecond.executeQuery();
+                if (rsSecond.next()){
+                    notifications.add(rsSecond.getString("employeeName"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pstFirst != null)
+                    pstFirst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pstSecond != null)
+                    pstSecond.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rsFirst != null)
+                    rsFirst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rsSecond != null)
+                    rsSecond.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pstFirst = null;
+            pstSecond = null;
+            rsFirst = null;
+            rsSecond = null;
+        }
+        return notifications;
+    }
+
     public static List<Vacation> getMyVacations(int employeeID, int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -87,17 +361,20 @@ public class CrudDao {
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
         try {
-            preparedStatement = conn.prepareStatement("select holiday_id, beginDate, endDate, holidayStatus from holidays where employee_id = ? " +
-                    "                                   order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+            preparedStatement = conn.prepareStatement("select vacation_id, beginDate, endDate, vacationType, requestText, responseText, vacationStatus from vacations where employee_id = ? " +
+                                                      "order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
             preparedStatement.setInt(1, employeeID);
             rs = preparedStatement.executeQuery();
 
             while (rs.next()){
                 Vacation vacation = new Vacation();
-                vacation.setHolidayID(rs.getInt("holiday_id"));
+                vacation.setVacationID(rs.getInt("vacation_id"));
                 vacation.setBeginDate(rs.getString("beginDate"));
                 vacation.setEndDate(rs.getString("endDate"));
-                vacation.setHolidayStatus(rs.getString("holidayStatus"));
+                vacation.setVacationType(rs.getInt("vacationType"));
+                vacation.setRequestText(rs.getString("requestText"));
+                vacation.setResponseText(rs.getString("responseText"));
+                vacation.setVacationStatus(rs.getInt("vacationStatus"));
                 vacations.add(vacation);
             }
         } catch (SQLException e) {
@@ -126,23 +403,24 @@ public class CrudDao {
         return vacations;
     }
 
-    public static int getVacationCount(){
-        int count=0;
+    public static int getVacationStatus(int vacationID){
+        int vacationStatus = 0;
         Connection conn = DBConnection.getConnection();
-        Statement st = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            st = conn. createStatement();
-            rs = st.executeQuery("select COUNT(*) from holidays");
+            pst = conn.prepareStatement("select vacationStatus from vacations where vacation_id = ?");
+            pst.setInt(1, vacationID);
+            rs = pst.executeQuery();
             rs.next();
-            count = rs.getInt("C1");
+            vacationStatus = rs.getInt("vacationStatus");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
             try{
-                if (st != null)
-                    st.close();
+                if (pst != null)
+                    pst.close();
             }
             catch (SQLException e)
             {
@@ -156,11 +434,232 @@ public class CrudDao {
             }
             DBConnection.closeConnection();
             conn = null;
-            st = null;
+            pst = null;
+            rs = null;
+        }
+        return vacationStatus;
+    }
+
+    public static String getVacationBeginDate(int vacationID){
+        String beginDate = "";
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            pst = conn.prepareStatement("select beginDate from vacations where vacation_id = ?");
+            pst.setInt(1, vacationID);
+            rs = pst.executeQuery();
+            rs.next();
+            beginDate = rs.getString("beginDate");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pst = null;
+            rs = null;
+        }
+        return beginDate;
+    }
+
+    public static String getVacationEndDate(int vacationID){
+        String endDate = "";
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            pst = conn.prepareStatement("select endDate from vacations where vacation_id = ?");
+            pst.setInt(1, vacationID);
+            rs = pst.executeQuery();
+            rs.next();
+            endDate = rs.getString("endDate");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pst = null;
+            rs = null;
+        }
+        return endDate;
+    }
+
+    public static String getVacationResponseText(int vacationID){
+        String responseText = "";
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            pst = conn.prepareStatement("select responseText from vacations where vacation_id = ?");
+            pst.setInt(1, vacationID);
+            rs = pst.executeQuery();
+            rs.next();
+            responseText = rs.getString("responseText");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pst = null;
+            rs = null;
+        }
+        return responseText;
+    }
+
+    public static int getVacationDaysLeft(int employeeID){
+        int vacationDaysLeft = 0;
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            pst = conn.prepareStatement("select vacationDaysLeft from employees where employee_id = ?");
+            pst.setInt(1, employeeID);
+            rs = pst.executeQuery();
+            rs.next();
+            vacationDaysLeft = rs.getInt("vacationDaysLeft");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pst = null;
+            rs = null;
+        }
+        return vacationDaysLeft;
+    }
+
+    public static int getRequestCount(int employee_id){
+        int count=0;
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            pst = conn.prepareStatement("select COUNT(*) from vacations where myManager = ?");
+            pst.setInt(1, employee_id);
+            rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("C1");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            pst = null;
             rs = null;
         }
         return count;
     }
+
+//    public static int getVacationCount(){
+//        int count=0;
+//        Connection conn = DBConnection.getConnection();
+//        Statement st = null;
+//        ResultSet rs = null;
+//        try {
+//            st = conn. createStatement();
+//            rs = st.executeQuery("select COUNT(*) from vacations");
+//            rs.next();
+//            count = rs.getInt("C1");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            try{
+//                if (st != null)
+//                    st.close();
+//            }
+//            catch (SQLException e)
+//            {
+//                e.printStackTrace();
+//            }
+//            try {
+//                if (rs != null)
+//                    rs.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//            DBConnection.closeConnection();
+//            conn = null;
+//            st = null;
+//            rs = null;
+//        }
+//        return count;
+//    }
 
     public static int getVacationCount(int employeeID){
         int count=0;
@@ -168,7 +667,7 @@ public class CrudDao {
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            pst = conn.prepareStatement("select COUNT(*) from holidays where employee_id = ?");
+            pst = conn.prepareStatement("select COUNT(*) from vacations where employee_id = ?");
             pst.setInt(1, employeeID);
             rs = pst.executeQuery();
             rs.next();
@@ -209,7 +708,8 @@ public class CrudDao {
         ResultSet rs = null;
         try {
             st = conn.createStatement();
-            rs = st.executeQuery("select fName, surname, lName, employee_id, employeeName, email, access_level from employees order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+            rs = st.executeQuery("select fName, surname, lName, employee_id, employeeName, email, accessLevel, myManager, vacationDaysLeft from employees " +
+                                 "order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
             while (rs.next()){
                 Employee employee = new Employee();
 
@@ -220,7 +720,92 @@ public class CrudDao {
                 employee.setEmployeeName(rs.getString("employeeName"));
                 employee.setEmail(rs.getString("email"));
 //                employee.setPassword(rs.getString("password"));
-                employee.setAccess_level(rs.getInt("access_level"));
+                employee.setAccessLevel(rs.getInt("accessLevel"));
+                employee.setMyManager(rs.getInt("myManager"));
+                employee.setVacationDaysLeft(rs.getInt("vacationDaysLeft"));
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return employees;
+    }
+
+    public static List<Employee> getEmployeesName(){
+        Connection conn = DBConnection.getConnection();
+        List<Employee> employees = new ArrayList<Employee>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select employee_id, employeeName from employees ");
+            while (rs.next()){
+                Employee employee = new Employee();
+
+                employee.setEmployee_id(rs.getInt("employee_id"));
+                employee.setEmployeeName(rs.getString("employeeName"));
+
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return employees;
+    }
+
+    public static List<Employee> getManagers(){
+        Connection conn = DBConnection.getConnection();
+        List<Employee> employees = new ArrayList<Employee>();
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select employee_id, employeeName from employees where accessLevel = 1 or accessLevel = 2");
+            while (rs.next()){
+                Employee employee = new Employee();
+                employee.setEmployee_id(rs.getInt("employee_id"));
+                employee.setEmployeeName(rs.getString("employeeName"));
                 employees.add(employee);
             }
         } catch (SQLException e) {
@@ -310,9 +895,84 @@ public class CrudDao {
             {
                 e.printStackTrace();
             }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             DBConnection.closeConnection();
         }
         return isEmailTaken;
+    }
+
+    public static Map getInfoForDocument(int vacationID){
+        Map info = new HashMap();
+        int employeeID = -1;
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pstFirst = null;
+        PreparedStatement pstSecond = null;
+        PreparedStatement pstThird = null;
+        ResultSet rs = null;
+
+        try {
+            pstFirst = conn.prepareStatement("select employee_id from vacations where vacation_id = ?");
+            pstFirst.setInt(1, vacationID);
+            rs = pstFirst.executeQuery();
+            rs.next();
+            employeeID = rs.getInt("employee_id");
+
+            pstSecond = conn.prepareStatement("select employeeName, vacationDaysLeft from employees where employee_id = ?");
+            pstSecond.setInt(1, employeeID);
+            rs = pstSecond.executeQuery();
+            rs.next();
+            info.put("employeeName", rs.getString("employeeName"));
+            info.put("vacationDaysLeft", rs.getInt("vacationDaysLeft"));
+
+            pstThird = conn.prepareStatement("select beginDate, endDate, vacationType from vacations where vacation_id = ?");
+            pstThird.setInt(1, vacationID);
+            rs = pstThird.executeQuery();
+            rs.next();
+            info.put("beginDate", rs.getString("beginDate"));
+            info.put("endDate", rs.getString("endDate"));
+            info.put("vacationType", rs.getString("vacationType"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pstFirst != null)
+                    pstFirst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pstSecond != null)
+                    pstSecond.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pstThird != null)
+                    pstThird.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+        return info;
     }
 
     public static String getEmployeeName(int employeeID){
@@ -339,9 +999,50 @@ public class CrudDao {
             {
                 e.printStackTrace();
             }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             DBConnection.closeConnection();
         }
         return names;
+    }
+
+    public static int getManagerID(int employeeID){
+        int myManager = 0;
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            pst = conn.prepareStatement("select myManager from employees where employee_id = ?");
+            pst.setInt(1, employeeID);
+            rs = pst.executeQuery();
+            rs.next();
+            myManager = rs.getInt("myManager");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+        return myManager;
     }
 
     public static String getPassword(int employeeID){
@@ -366,6 +1067,12 @@ public class CrudDao {
             }
             catch (SQLException e)
             {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
             DBConnection.closeConnection();
@@ -397,6 +1104,12 @@ public class CrudDao {
             {
                 e.printStackTrace();
             }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             DBConnection.closeConnection();
         }
         return accountStatus;
@@ -408,10 +1121,14 @@ public class CrudDao {
         ResultSet rs = null;
         int key = -1;
         try {
-            pst = conn.prepareStatement("insert into Holidays (beginDate, endDate, employee_id, holidayStatus) values (?,?,?,1)", Statement.RETURN_GENERATED_KEYS);
-            pst.setString(1, vacation.getBeginDate());
+            pst = conn.prepareStatement("insert into vacations (beginDate, endDate, employee_id, vacationType, requestText, myManager ,vacationStatus)" +
+                                        " values (?,?,?,?,?,?,1)", Statement.RETURN_GENERATED_KEYS);
+            pst.setString(1,vacation.getBeginDate());
             pst.setString(2, vacation.getEndDate());
             pst.setInt(3, vacation.getEmployeeID());
+            pst.setInt(4, vacation.getVacationType());
+            pst.setString(5, vacation.getRequestText());
+            pst.setInt(6, vacation.getMyManager());
             pst.executeUpdate();
             rs = pst.getGeneratedKeys();
             if (rs.next())
@@ -445,15 +1162,19 @@ public class CrudDao {
         ResultSet rs = null;
         int key = -1;
         try {
-            pst = conn.prepareStatement("insert into Employees (fName, surname, lName, employeeName, email, password, access_level, accountStatus) values (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            pst = conn.prepareStatement("insert into Employees (fName, surname, lName, employeeName, email, password, accessLevel, accountStatus, myManager, vacationDaysLeft, forgottenPasswordCode)" +
+                                        " values (?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, employee.getfName());
             pst.setString(2, employee.getSurname());
             pst.setString(3, employee.getlName());
             pst.setString(4, employee.getEmployeeName());
             pst.setString(5, employee.getEmail());
             pst.setString(6, employee.getPassword());
-            pst.setInt(7, employee.getAccess_level());
+            pst.setInt(7, employee.getAccessLevel());
             pst.setInt(8, employee.getAccountStatus());
+            pst.setInt(9, employee.getMyManager());
+            pst.setInt(10, employee.getVacationDaysLeft());
+            pst.setString(11, "");
             pst.executeUpdate();
             rs = pst.getGeneratedKeys();
             if (rs.next())
@@ -485,10 +1206,36 @@ public class CrudDao {
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
         try {
-            pst = conn.prepareStatement("update holidays set beginDate = ?, endDate = ? where holiday_id = ?");
+            pst = conn.prepareStatement("update vacations set beginDate = ?, endDate = ?, vacationType = ?, requestText = ? where vacation_id = ?");
             pst.setString(1, vacation.getBeginDate());
             pst.setString(2, vacation.getEndDate());
-            pst.setInt(3, vacation.getHolidayID());
+            pst.setInt(3, vacation.getVacationType());
+            pst.setString(4, vacation.getRequestText());
+            pst.setInt(5, vacation.getVacationID());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void updateVacationResponseText(String responseText, int vacationID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update vacations set responseText = ? where vacation_id = ?");
+            pst.setString(1, responseText);
+            pst.setInt(2, vacationID);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -510,9 +1257,34 @@ public class CrudDao {
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
         try {
-            pst = conn.prepareStatement("update holidays set holidayStatus = ? where holiday_id = ?");
-            pst.setString(1, vacation.getHolidayStatus());
-            pst.setInt(2, vacation.getHolidayID());
+            pst = conn.prepareStatement("update vacations set responseText = ?, vacationStatus = ? where vacation_id = ?");
+            pst.setString(1, vacation.getResponseText());
+            pst.setInt(2, vacation.getVacationStatus());
+            pst.setInt(3, vacation.getVacationID());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void updateVacationManager(int employeeID, int myManager){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update vacations set myManager = ? where employee_id = ?");
+            pst.setInt(1, myManager);
+            pst.setInt(2, employeeID);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -534,14 +1306,17 @@ public class CrudDao {
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
         try {
-            pst = conn.prepareStatement("update employees set fName = ?, surname = ?, lName = ?, employeeName = ?, email = ?, access_level = ? where employee_id = ?");
+            pst = conn.prepareStatement("update employees set fName = ?, surname = ?, lName = ?, employeeName = ?, email = ?, accessLevel = ?, myManager = ?," +
+                                        " vacationDaysLeft = ? where employee_id = ?");
             pst.setString(1, employee.getfName());
             pst.setString(2, employee.getSurname());
             pst.setString(3, employee.getlName());
             pst.setString(4, employee.getEmployeeName());
             pst.setString(5, employee.getEmail());
-            pst.setInt(6, employee.getAccess_level());
-            pst.setInt(7, employee.getEmployee_id());
+            pst.setInt(6, employee.getAccessLevel());
+            pst.setInt(7, employee.getMyManager());
+            pst.setInt(8, employee.getVacationDaysLeft());
+            pst.setInt(9, employee.getEmployee_id());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -583,6 +1358,78 @@ public class CrudDao {
         }
     }
 
+    public static void updateForgottenPasswordCodeAndLinkExpiryDate(String code, String expiryDate, int employeeID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update employees set forgottenPasswordCode = ?, linkExpiryDate = ? where employee_id = ?");
+            pst.setString(1, code);
+            pst.setString(2, expiryDate);
+            pst.setInt(3, employeeID);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void updateVacationDaysLeft(int days, int employeeID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pstFirst = null;
+        PreparedStatement pstSecond = null;
+        ResultSet rs = null;
+        try {
+            pstFirst = conn.prepareStatement("select vacationDaysLeft from employees where employee_id = ?");
+            pstFirst.setInt(1, employeeID);
+            rs = pstFirst.executeQuery();
+            rs.next();
+
+            pstSecond = conn.prepareStatement("update employees set vacationDaysLeft = ? where employee_id = ?");
+            pstSecond.setInt(1, rs.getInt("vacationDaysLeft") - days);
+            pstSecond.setInt(2, employeeID);
+            pstSecond.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pstFirst != null)
+                    pstFirst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (pstSecond != null)
+                    pstSecond.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try{
+                if (rs != null)
+                    rs.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
     public static void updateEmployeeAccountStatus(int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -610,7 +1457,7 @@ public class CrudDao {
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
         try {
-            pst = conn.prepareStatement("delete from holidays where holiday_id = ?");
+            pst = conn.prepareStatement("delete from vacations where vacation_id = ?");
             pst.setInt(1, vacationID);
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -634,7 +1481,7 @@ public class CrudDao {
         PreparedStatement pstFirst = null;
         PreparedStatement pstSecond = null;
         try {
-            pstFirst = conn.prepareStatement("delete from holidays where employee_id = ?");
+            pstFirst = conn.prepareStatement("delete from vacations where employee_id = ?");
             pstFirst.setInt(1, employeeID);
             pstFirst.executeUpdate();
 

@@ -39,7 +39,6 @@ public class EmployeeTableController extends HttpServlet {
                     listData = "{\"Result\":\"OK\",\"Records\":" + listData + ",\"TotalRecordCount\":" + employeeCount + "}";
 
                     response.getWriter().print(listData);
-                    System.out.println(listData);
                 } catch (Exception ex) {
                     String error = "{\"Result\":\"ERROR\",\"Message\":" + ex.getStackTrace() + "}";
                     try {
@@ -61,8 +60,10 @@ public class EmployeeTableController extends HttpServlet {
                 employee.setEmployeeName(request.getParameter("fName") + " " + request.getParameter("surname") + " " + request.getParameter("lName"));
                 employee.setEmail(request.getParameter("email"));
                 employee.setPassword(convertedPass);
-                employee.setAccess_level(Integer.parseInt(request.getParameter("access_level")));
+                employee.setAccessLevel(Integer.parseInt(request.getParameter("accessLevel")));
                 employee.setAccountStatus(0);
+                employee.setMyManager(Integer.parseInt(request.getParameter("myManager")));
+                employee.setVacationDaysLeft(Integer.parseInt(request.getParameter("vacationDaysLeft")));
 
                 try {
                     employee.setEmployee_id(CrudDao.addEmployee(employee));
@@ -86,7 +87,7 @@ public class EmployeeTableController extends HttpServlet {
 
             else if (action.equals("update")){
                 Employee employee = new Employee();
-                String convertedPass = Utility.toSHA1(Utility.salt(request.getParameter("password")).getBytes());
+//                String convertedPass = Utility.toSHA1(Utility.salt(request.getParameter("password")).getBytes());
                 employee.setEmployee_id(Integer.parseInt(request.getParameter("employee_id")));
                 employee.setfName(request.getParameter("fName"));
                 employee.setSurname(request.getParameter("surname"));
@@ -94,9 +95,12 @@ public class EmployeeTableController extends HttpServlet {
 
                 employee.setEmployeeName(request.getParameter("fName") + " " + request.getParameter("surname") + " " + request.getParameter("lName"));
                 employee.setEmail(request.getParameter("email"));
-                employee.setPassword(convertedPass);
-                employee.setAccess_level(Integer.parseInt(request.getParameter("access_level")));
+//                employee.setPassword(convertedPass);
+                employee.setAccessLevel(Integer.parseInt(request.getParameter("accessLevel")));
+                employee.setMyManager(Integer.parseInt(request.getParameter("myManager")));
+                employee.setVacationDaysLeft(Integer.parseInt(request.getParameter("vacationDaysLeft")));
                 CrudDao.updateEmployee(employee);
+                CrudDao.updateVacationManager(employee.getEmployee_id(), employee.getMyManager());
 
                 String listData="{\"Result\":\"OK\"}";
                 try {

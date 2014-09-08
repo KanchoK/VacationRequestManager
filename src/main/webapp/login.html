@@ -1,12 +1,30 @@
 <script>
     $(document).ready(function(){
-        $('#toggle-login').click(function(){
-            $('#login').toggle();
+        $('#forgottenPassword').click(function(){
+            alertify.prompt('Enter your email and a link will be sent to you to change your password. This link will be valid for 24 hours.', '',
+            function(evt, value){
+                $.ajax({
+                    url: 'ForgottenPassword',
+                    type: 'POST',
+                    data: {
+                        email: value
+                    },
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.message == "success"){
+                            alertify.success('Email has been sent to ' + value)
+                        } else {
+                            alertify.success('Wrong email')
+                        }
+                    },
+                    error: function(e){
+                        alertify.alert(e)
+                    }
+                });
+            });
         });
     });
 </script>
-
-<!--<span href="#" class="button" id="toggle-login">Log in</span>-->
 
 <div id="login">
     <div id="triangle"></div>
@@ -17,8 +35,10 @@
         <input type="password" ng-model="password" placeholder="Password" />
         <input type="submit" value="Log in" />
     </form>
+
     <form class="form" id="signUpForm" ng-controller="SignUpController" novalidate ng-submit="toSignUp()">
         <input type="submit" value="Sign up">
     </form>
 
+    <div id="forgottenPassword" >Forgot your password?</div>
 </div>
