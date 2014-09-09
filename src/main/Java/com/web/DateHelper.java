@@ -28,8 +28,9 @@ public class DateHelper {
 
         int businessDaysCount = 0;
 
-        if (!isWorkingDay(d1) || !isWorkingDay(d2)) {
 //            Initial dates should both be working days
+        if (!isWorkingDay(d1) || !isWorkingDay(d2)) {
+//            businessDaysCount = -1 is a key which indicates that the dates are not both working days
             businessDaysCount = -1;
             return businessDaysCount;
         }

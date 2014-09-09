@@ -41,12 +41,6 @@ public class RequestManagerController extends HttpServlet{
                     vacations = CrudDao.getVacationRequests((Integer)session.getAttribute("employeeID"), startPageIndex, numRecordsPerPage, sort);
 //                    vacations = CrudDao.getAllVacations(startPageIndex, numRecordsPerPage, sort);
                     requstCount = CrudDao.getRequestCount((Integer)session.getAttribute("employeeID"));
-                    for (int i = 0; i < vacations.size(); i++){
-                        String beginDate = vacations.get(i).getBeginDate();
-                        vacations.get(i).setBeginDate(DateParser.parseDate(beginDate));
-                        String endDate = vacations.get(i).getEndDate();
-                        vacations.get(i).setEndDate(DateParser.parseDate(endDate));
-                    }
                     JsonElement element = gson.toJsonTree(vacations, new TypeToken<List<Vacation>>() {}.getType());
                     JsonArray jsonArray = element.getAsJsonArray();
                     String listData = jsonArray.toString();
@@ -66,9 +60,10 @@ public class RequestManagerController extends HttpServlet{
             else if (action.equals("update")){
                 Vacation vacation = new Vacation();
                 vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
-                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
                 boolean isVacationBegan = false;
                 try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date beginDate = sdf.parse(CrudDao.getVacationBeginDate(Integer.parseInt(request.getParameter("vacationID"))));
                     isVacationBegan = DateCompare.CompareJavaDates(new Date(), beginDate);
                 } catch (ParseException e) {
@@ -85,11 +80,12 @@ public class RequestManagerController extends HttpServlet{
                         String employeeName = String.valueOf(info.get("employeeName"));
                         vacDaysLeft = (Integer)info.get("vacationDaysLeft");
                         String vacationDaysLeft = String.valueOf(vacDaysLeft);
-                        String beginDate = String.valueOf(info.get("beginDate"));
-                        String endDate = String.valueOf(info.get("endDate"));
+                        String beginDate = DateParser.parseDateToBGFomat(String.valueOf(info.get("beginDate")));
+                        String endDate = DateParser.parseDateToBGFomat(String.valueOf(info.get("endDate")));
                         String vacationType = String.valueOf(info.get("vacationType"));
                         int businessDaysCount = 0;
                         try {
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                             Date ParsedBeginDate = sdf.parse(beginDate);
                             Date ParsedEndDate = sdf.parse(endDate);
                             businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
@@ -155,7 +151,7 @@ public class RequestManagerController extends HttpServlet{
                         }
                     }
                 } else {
-                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You cannot updated the request if its begin date has passed!\"}";
+                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You cannot update the request if its begin date has passed!\"}";
                     try {
                         response.getWriter().print(error);
                     } catch (IOException e) {

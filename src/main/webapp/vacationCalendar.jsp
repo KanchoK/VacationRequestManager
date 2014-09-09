@@ -1,31 +1,3 @@
-<script>
-    $(document).ready(function(){
-        var accessLevel = <%=session.getAttribute("access")%>
-        if (accessLevel == 1){
-            $('#logoutButton').show();
-            $('#changePassButton').show();
-            $('#myRequestsButton').show();
-            $('#vacationCalendarButton').show();
-            $('#requestManagerButton').show();
-            $('#controlPanelButton').show();
-        } else if (accessLevel == 2){
-            $('#logoutButton').show();
-            $('#changePassButton').show();
-            $('#myRequestsButton').show();
-            $('#vacationCalendarButton').show();
-            $('#requestManagerButton').show();
-            $('#controlPanelButton').hide();
-        } else {
-            $('#logoutButton').show();
-            $('#changePassButton').show();
-            $('#myRequestsButton').show();
-            $('#vacationCalendarButton').show();
-            $('#requestManagerButton').hide();
-            $('#controlPanelButton').hide();
-        }
-    });
-</script>
-
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <span id="header" ng-controller="menuController">
@@ -55,21 +27,14 @@
 </span>
 
 <script>
+    $(document).ready(function(){
+        menuAccessibility(<%=session.getAttribute("access")%>);
+    });
+</script>
+
+<script>
     var selectedName = "All";
     $(document).ready(function() {
-
-        $.ajax({
-            url: 'EmployeeListServlet',
-            type: 'POST',
-            success: function (data) {
-                for (i = 0; i < data.employeesList.length; i++) {
-                    $('#employeeSelect').append("<option value=\"" + data.employeesList[i].name + "\">" + data.employeesList[i].name + "</option>");
-                }
-            },
-            error: function (e) {
-                alert(e);
-            }
-        });
 
         // page is now ready, initialize the calendar...
 
@@ -94,6 +59,25 @@
             }
         });
 
+        $(".fc-header-left").append("<div class='fc-dropdown'>" +
+                                        "<select id='employeeSelect' onchange='selectEmployee(this.value)'>" +
+                                            "<option value='All'>Всички</option>" +
+                                        "</select>" +
+                                    "</div>");
+
+        $.ajax({
+            url: 'EmployeeListServlet',
+            type: 'POST',
+            success: function (data) {
+                for (i = 0; i < data.employeesList.length; i++) {
+                    $('.fc-header-left #employeeSelect').append("<option value='" + data.employeesList[i].name + "'>" + data.employeesList[i].name + "</option>");
+                }
+            },
+            error: function (e) {
+                alert(e);
+            }
+        });
+
     });
 
     function selectEmployee(name){
@@ -110,11 +94,5 @@
         $('#calendar').fullCalendar('addEventSource', newSource);
     }
 </script>
-
-<div class="drop-down">
-    <select id="employeeSelect" onchange="selectEmployee(this.value)">
-        <option value="All">Всички</option>
-    </select>
-</div>
 
 <div id="calendar"></div>

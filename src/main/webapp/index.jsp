@@ -25,42 +25,33 @@
     <script src="js/moment.min.js" type="text/javascript"></script>
     <script src="js/fullcalendar.js" type="text/javascript"></script>
 
-    <%--<script>--%>
-        <%--$(document).ready(function(){--%>
-            <%--var accessLevel = <%=session.getAttribute("access")%>--%>
-            <%--if (accessLevel == null){--%>
-                <%--$('#logoutButton').hide();--%>
-                <%--$('#changePassButton').hide();--%>
-                <%--$('#myRequestsButton').hide();--%>
-                <%--$('#vacationCalendarButton').hide();--%>
-                <%--$('#requestManagerButton').hide();--%>
-                <%--$('#controlPanelButton').hide();--%>
-            <%--} else {--%>
-                <%--if (accessLevel == 1){--%>
-                    <%--$('#logoutButton').show();--%>
-                    <%--$('#changePassButton').show();--%>
-                    <%--$('#myRequestsButton').show();--%>
-                    <%--$('#vacationCalendarButton').show();--%>
-                    <%--$('#requestManagerButton').show();--%>
-                    <%--$('#controlPanelButton').show();--%>
-                <%--} else if (accessLevel == 2){--%>
-                    <%--$('#logoutButton').show();--%>
-                    <%--$('#changePassButton').show();--%>
-                    <%--$('#myRequestsButton').show();--%>
-                    <%--$('#vacationCalendarButton').show();--%>
-                    <%--$('#requestManagerButton').show();--%>
-                    <%--$('#controlPanelButton').hide();--%>
-                <%--} else {--%>
-                    <%--$('#logoutButton').show();--%>
-                    <%--$('#changePassButton').show();--%>
-                    <%--$('#myRequestsButton').show();--%>
-                    <%--$('#vacationCalendarButton').show();--%>
-                    <%--$('#requestManagerButton').hide();--%>
-                    <%--$('#controlPanelButton').hide();--%>
-                <%--}--%>
-            <%--}--%>
-        <%--});--%>
-    <%--</script>--%>
+    <script>
+        function menuAccessibility(access){
+            var accessLevel = access
+            if (accessLevel == 1){
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').show();
+                $('#controlPanelButton').show();
+            } else if (accessLevel == 2){
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').show();
+                $('#controlPanelButton').hide();
+            } else {
+                $('#logoutButton').show();
+                $('#changePassButton').show();
+                $('#myRequestsButton').show();
+                $('#vacationCalendarButton').show();
+                $('#requestManagerButton').hide();
+                $('#controlPanelButton').hide();
+            }
+        }
+    </script>
 
 </head>
 <body ng-controller="mainController">

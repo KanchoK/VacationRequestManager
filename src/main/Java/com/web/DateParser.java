@@ -22,4 +22,18 @@ public class DateParser {
 
         return parsedDate;
     }
+
+    public static String parseDateToBGFomat(String date){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String parsedDate = "";
+        try {
+            Date tempDate = dateFormat.parse(date);
+            DateFormat parsedFormat = new SimpleDateFormat("dd.MM.yyyy");
+            parsedDate = parsedFormat.format(tempDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return parsedDate;
+    }
 }

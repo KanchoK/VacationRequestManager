@@ -9,29 +9,7 @@
 
     <script>
         $(document).ready(function(){
-            var accessLevel = <%=session.getAttribute("access")%>
-            if (accessLevel == 1){
-                $('#logoutButton').show();
-                $('#changePassButton').show();
-                $('#myRequestsButton').show();
-                $('#vacationCalendarButton').show();
-                $('#requestManagerButton').show();
-                $('#controlPanelButton').show();
-            } else if (accessLevel == 2){
-                $('#logoutButton').show();
-                $('#changePassButton').show();
-                $('#myRequestsButton').show();
-                $('#vacationCalendarButton').show();
-                $('#requestManagerButton').show();
-                $('#controlPanelButton').hide();
-            } else {
-                $('#logoutButton').show();
-                $('#changePassButton').show();
-                $('#myRequestsButton').show();
-                $('#vacationCalendarButton').show();
-                $('#requestManagerButton').hide();
-                $('#controlPanelButton').hide();
-            }
+            menuAccessibility(<%=session.getAttribute("access")%>);
         });
     </script>
 

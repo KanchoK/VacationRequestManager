@@ -39,12 +39,6 @@ public class MyRequestsController extends HttpServlet{
                     int vacationCount = -1;
                     vacations = CrudDao.getMyVacations((Integer) session.getAttribute("employeeID"), startPageIndex, numRecordsPerPage, sort);
                     vacationCount = CrudDao.getVacationCount((Integer) session.getAttribute("employeeID"));
-                    for (int i = 0; i < vacations.size(); i++){
-                        String beginDate = vacations.get(i).getBeginDate();
-                        vacations.get(i).setBeginDate(DateParser.parseDate(beginDate));
-                        String endDate = vacations.get(i).getEndDate();
-                        vacations.get(i).setEndDate(DateParser.parseDate(endDate));
-                    }
                     JsonElement element = gson.toJsonTree(vacations, new TypeToken<List<Vacation>>() {}.getType());
                     JsonArray jsonArray = element.getAsJsonArray();
                     String listData = jsonArray.toString();
@@ -62,14 +56,11 @@ public class MyRequestsController extends HttpServlet{
             }
 
             else if (action.equals("create")){
-                Vacation vacation = new Vacation();
-                vacation.setBeginDate(request.getParameter("beginDate"));
-                vacation.setEndDate(request.getParameter("endDate"));
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                 boolean isBeginDateValid = false;
                 try {
-                    Date beginDate = sdf.parse(vacation.getBeginDate());
+                    Date beginDate = sdf.parse(request.getParameter("beginDate"));
                     isBeginDateValid = DateCompare.CompareJavaDates(new Date(), beginDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -78,8 +69,8 @@ public class MyRequestsController extends HttpServlet{
                     vacDaysLeft = CrudDao.getVacationDaysLeft((Integer)(session.getAttribute("employeeID")));
                     int businessDaysCount = 0;
                     try {
-                        Date ParsedBeginDate = sdf.parse(vacation.getBeginDate());
-                        Date ParsedEndDate = sdf.parse(vacation.getEndDate());
+                        Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
+                        Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
                         businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
 
                     } catch (ParseException e) {
@@ -94,7 +85,10 @@ public class MyRequestsController extends HttpServlet{
                         }
                     } else {
                         vacDaysLeft -= businessDaysCount;
-                        if (DateCompare.CompareDates(vacation.getBeginDate(), vacation.getEndDate()) == true && vacDaysLeft >= 0){
+                        if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) == true && vacDaysLeft >= 0){
+                            Vacation vacation = new Vacation();
+                            vacation.setBeginDate(DateParser.parseDate(request.getParameter("beginDate")));
+                            vacation.setEndDate(DateParser.parseDate(request.getParameter("endDate")));
                             vacation.setVacationType(Integer.parseInt(request.getParameter("vacationType")));
                             vacation.setRequestText(request.getParameter("requestText"));
                             vacation.setEmployeeID((Integer)(session.getAttribute("employeeID")));
@@ -145,27 +139,23 @@ public class MyRequestsController extends HttpServlet{
             }
 
             else if (action.equals("update")){
-                Vacation vacation = new Vacation();
-                vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
-                vacation.setBeginDate(request.getParameter("beginDate"));
+
                 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                 boolean isBeginDateValid = false;
                 try {
-                    Date beginDate = sdf.parse(vacation.getBeginDate());
+                    Date beginDate = sdf.parse(request.getParameter("beginDate"));
                     isBeginDateValid = DateCompare.CompareJavaDates(new Date(), beginDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 if (isBeginDateValid == true){
-                    int vacationStatus = CrudDao.getVacationStatus(vacation.getVacationID());
+                    int vacationStatus = CrudDao.getVacationStatus(Integer.parseInt(request.getParameter("vacationID")));
                     if (vacationStatus == 1) {
-
-                        vacation.setEndDate(request.getParameter("endDate"));
                         vacDaysLeft = CrudDao.getVacationDaysLeft((Integer)(session.getAttribute("employeeID")));
                         int businessDaysCount = 0;
                         try {
-                            Date ParsedBeginDate = sdf.parse(vacation.getBeginDate());
-                            Date ParsedEndDate = sdf.parse(vacation.getEndDate());
+                            Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
+                            Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
                             businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
 
                         } catch (ParseException e) {
@@ -180,7 +170,11 @@ public class MyRequestsController extends HttpServlet{
                             }
                         } else {
                             vacDaysLeft -= businessDaysCount;
-                            if (DateCompare.CompareDates(vacation.getBeginDate(), vacation.getEndDate()) == true && vacDaysLeft >= 0){
+                            if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) == true && vacDaysLeft >= 0){
+                                Vacation vacation = new Vacation();
+                                vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
+                                vacation.setBeginDate(DateParser.parseDate(request.getParameter("beginDate")));
+                                vacation.setEndDate(DateParser.parseDate(request.getParameter("endDate")));
                                 vacation.setVacationType(Integer.parseInt(request.getParameter("vacationType")));
                                 vacation.setRequestText(request.getParameter("requestText"));
 

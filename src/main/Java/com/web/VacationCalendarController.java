@@ -27,10 +27,6 @@ public class VacationCalendarController extends HttpServlet{
 
         for(int i = 0; i < vacations.size(); i++){
             JSONObject obj = new JSONObject();
-            String beginDate = vacations.get(i).getBeginDate();
-            vacations.get(i).setBeginDate(DateParser.parseDate(beginDate));
-            String endDate = vacations.get(i).getEndDate();
-            vacations.get(i).setEndDate(DateParser.parseDate(endDate));
             obj.put("title", vacations.get(i).getEmployeeName());
             obj.put("start", vacations.get(i).getBeginDate());
             obj.put("end", vacations.get(i).getEndDate() + "T23:59:59");
