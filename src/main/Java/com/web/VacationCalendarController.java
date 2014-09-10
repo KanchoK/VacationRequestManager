@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +27,15 @@ public class VacationCalendarController extends HttpServlet{
         response.setCharacterEncoding("UTF-8");
 
         for(int i = 0; i < vacations.size(); i++){
-            JSONObject obj = new JSONObject();
-            obj.put("title", vacations.get(i).getEmployeeName());
-            obj.put("start", vacations.get(i).getBeginDate());
-            obj.put("end", vacations.get(i).getEndDate() + "T23:59:59");
-            array.put(obj);
+            ArrayList<String[]> splitVacation = DateHelper.excludeDaysOff(vacations.get(i).getBeginDate(), vacations.get(i).getEndDate());
+            for (int m = 0; m < splitVacation.size(); m++){
+                JSONObject obj = new JSONObject();
+                obj.put("title", vacations.get(i).getEmployeeName());
+                obj.put("start", splitVacation.get(m)[0]);
+                obj.put("end", splitVacation.get(m)[1] + "T23:59:59");
+                array.put(obj);
+            }
+
         }
 
         try {

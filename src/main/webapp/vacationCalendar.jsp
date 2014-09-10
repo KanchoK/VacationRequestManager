@@ -50,13 +50,16 @@
             },
             weekNumbers: true,
             weekMode: 'variable',
-            eventSources: {
-                url: 'VacationCalendarController',
-                type: 'POST',
-                data: {
-                    name: selectedName
+            eventColor: '#0082ba',
+            eventSources: [
+                {
+                    url: 'VacationCalendarController',
+                    type: 'POST',
+                    data: {
+                        name: selectedName
+                    }
                 }
-            }
+            ]
         });
 
         $(".fc-header-left").append("<div class='fc-dropdown'>" +

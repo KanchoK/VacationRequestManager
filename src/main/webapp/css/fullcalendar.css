@@ -610,6 +610,11 @@ td.fc-sun{
     background: #292929;
 }
 
+th.fc-sat,
+th.fc-sun{
+    color: #292929;
+}
+
 .fc-button-today{
     text-align: center;
     width: 130px;
