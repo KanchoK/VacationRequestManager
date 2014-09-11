@@ -40,6 +40,7 @@
                     vacationType: {
                         title: 'Vacation type',
                         width: '20%',
+                        edit: false,
                         options: { '1': 'Полагаем годишен отпуск', '2': 'Болнични' }
                     },
                     requestText: {
@@ -99,6 +100,10 @@
 
     <span class="menuSpan" id="controlPanelButton">
         <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
+    </span>
+
+    <span class="menuSpan" id="holidaysManagerButton">
+        <button type="button" class="menuButton" ng-click="holidaysManager()">Holidays Manager</button>
     </span>
 </span>
 

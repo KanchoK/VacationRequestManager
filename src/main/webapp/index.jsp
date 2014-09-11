@@ -15,7 +15,7 @@
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/alertify.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/flick/jquery-ui.css" />
+    <link rel="stylesheet" href="jquery-ui-flick-theme/jquery-ui.css" />
     <script src="js/jquery-ui.js" type="text/javascript"></script>
 
     <link href="jtable/themes/metro/blue/jtable.min.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
 
     <script>
         function menuAccessibility(access){
-            var accessLevel = access
+            var accessLevel = access;
             if (accessLevel == 1){
                 $('#logoutButton').show();
                 $('#changePassButton').show();
@@ -35,6 +35,7 @@
                 $('#vacationCalendarButton').show();
                 $('#requestManagerButton').show();
                 $('#controlPanelButton').show();
+                $('#holidaysManagerButton').show();
             } else if (accessLevel == 2){
                 $('#logoutButton').show();
                 $('#changePassButton').show();
@@ -42,6 +43,7 @@
                 $('#vacationCalendarButton').show();
                 $('#requestManagerButton').show();
                 $('#controlPanelButton').hide();
+                $('#holidaysManagerButton').hide();
             } else {
                 $('#logoutButton').show();
                 $('#changePassButton').show();
@@ -49,6 +51,7 @@
                 $('#vacationCalendarButton').show();
                 $('#requestManagerButton').hide();
                 $('#controlPanelButton').hide();
+                $('#holidaysManagerButton').hide();
             }
         }
     </script>

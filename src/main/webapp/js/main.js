@@ -28,6 +28,9 @@ app.config(function($routeProvider){
         .when('/vacationCalendar',{
             templateUrl : 'vacationCalendar.jsp'
         })
+        .when('/holidaysManager',{
+            templateUrl : 'holidaysManager.jsp'
+        })
         .when('/forgottenPassword',{
             templateUrl : 'forgottenPassword.jsp'
         })
@@ -108,6 +111,10 @@ app.controller('menuController', function($scope, $http, $location){
 
     $scope.vacationCalendar = function() {
         $location.path('/vacationCalendar')
+    };
+
+    $scope.holidaysManager = function() {
+        $location.path('/holidaysManager')
     };
 });
 

@@ -39,6 +39,10 @@
     <span class="menuSpan" id="controlPanelButton">
         <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
     </span>
+
+    <span class="menuSpan" id="holidaysManagerButton">
+        <button type="button" class="menuButton" ng-click="holidaysManager()">Holidays Manager</button>
+    </span>
 </span>
 
 <div id="changePass">

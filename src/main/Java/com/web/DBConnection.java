@@ -32,9 +32,11 @@ public class DBConnection {
         if(connection != null){
             try {
                 connection.close();
-                connection = null;
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                connection = null;
             }
         }
     }

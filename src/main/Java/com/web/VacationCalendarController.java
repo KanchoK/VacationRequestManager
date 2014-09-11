@@ -18,9 +18,9 @@ public class VacationCalendarController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         List<Vacation> vacations;
         if(request.getParameter("name").equals("All")) {
-            vacations = CrudDao.getApprovedVacations();
+            vacations = CrudDao.getApprovedVacations(Integer.parseInt(request.getParameter("vacationType")));
         } else {
-            vacations = CrudDao.getSelectedApprovedVacations(request.getParameter("name"));
+            vacations = CrudDao.getSelectedApprovedVacations(request.getParameter("name"), Integer.parseInt(request.getParameter("vacationType")));
         }
         JSONArray array = new JSONArray();
         response.setContentType("application/json");

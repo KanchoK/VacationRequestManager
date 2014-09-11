@@ -12,10 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by R500 on 11.8.2014 г..
@@ -60,16 +57,17 @@ public class RequestManagerController extends HttpServlet{
             else if (action.equals("update")){
                 Vacation vacation = new Vacation();
                 vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
+                int vacationType = CrudDao.getVacationType(Integer.parseInt(request.getParameter("vacationID")));
 
-                boolean isVacationBegan = false;
+                boolean isVacationNotBegan = false;
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date beginDate = sdf.parse(CrudDao.getVacationBeginDate(Integer.parseInt(request.getParameter("vacationID"))));
-                    isVacationBegan = DateCompare.CompareJavaDates(new Date(), beginDate);
+                    isVacationNotBegan = DateCompare.CompareJavaDates(new Date(), beginDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if (isVacationBegan == true){
+                if (isVacationNotBegan && vacationType != 2){
                     vacation.setResponseText(request.getParameter("responseText"));
                     vacation.setVacationStatus(Integer.parseInt(request.getParameter("vacationStatus")));
 
@@ -82,7 +80,7 @@ public class RequestManagerController extends HttpServlet{
                         String vacationDaysLeft = String.valueOf(vacDaysLeft);
                         String beginDate = DateParser.parseDateToBGFomat(String.valueOf(info.get("beginDate")));
                         String endDate = DateParser.parseDateToBGFomat(String.valueOf(info.get("endDate")));
-                        String vacationType = String.valueOf(info.get("vacationType"));
+                        String vacationTypeString = "Полагаем годишен отпуск";
                         int businessDaysCount = 0;
                         try {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -96,15 +94,10 @@ public class RequestManagerController extends HttpServlet{
                         vacDaysLeft -= businessDaysCount;
                         if(vacation.getVacationStatus() == 2 && vacDaysLeft >= 0){
                             CrudDao.updateVacationDaysLeft(businessDaysCount, EmployeeAttributes.getEmployeeID(vacation.getVacationID()));
-                            if (vacationType.equals("1")){
-                                vacationType = "Полагаем годишен отпуск";
-                            } else if (vacationType.equals("2")){
-                                vacationType = "Болнични";
-                            }
 
                             String allDays = String.valueOf(businessDaysCount);
 
-                            PDFGenerator.generateVacationRequestPDF(employeeName, vacationDaysLeft, beginDate, endDate, allDays, vacationType);
+                            PDFGenerator.generateVacationRequestPDF(employeeName, vacationDaysLeft, beginDate, endDate, allDays, vacationTypeString);
 
                             String recipient = "programmingTestsAndStuff@gmail.com";
                             String subject = "Молба за отпуск";
@@ -151,7 +144,12 @@ public class RequestManagerController extends HttpServlet{
                         }
                     }
                 } else {
-                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You cannot update the request if its begin date has passed!\"}";
+                    String error = "";
+                    if (vacationType == 2){
+                        error = "{\"Result\":\"ERROR\",\"Message\":\"You cannot update requests of this type!\"}";
+                    } else {
+                        error = "{\"Result\":\"ERROR\",\"Message\":\"You cannot update the request if its begin date has passed!\"}";
+                    }
                     try {
                         response.getWriter().print(error);
                     } catch (IOException e) {
@@ -162,15 +160,19 @@ public class RequestManagerController extends HttpServlet{
 
             else if (action.equals("delete")){
                 int vacationStatus = CrudDao.getVacationStatus(Integer.parseInt(request.getParameter("vacationID")));
-                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 boolean isVacationOver = false;
                 try {
                     Date endDate = sdf.parse(CrudDao.getVacationEndDate(Integer.parseInt(request.getParameter("vacationID"))));
-                    isVacationOver = DateCompare.CompareJavaDates(endDate, new Date());
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(endDate);
+                    calendar.add(Calendar.DATE, 1);
+                    Date endDatePlusOne = calendar.getTime();
+                    isVacationOver = DateCompare.CompareJavaDates(endDatePlusOne, new Date());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if (vacationStatus != 2 || isVacationOver == true) {
+                if (vacationStatus != 2 || isVacationOver) {
                     try {
                         if (request.getParameter("vacationID") != null) {
                             CrudDao.deleteVacation(Integer.parseInt(request.getParameter("vacationID")));
@@ -186,7 +188,7 @@ public class RequestManagerController extends HttpServlet{
                         }
                     }
                 } else {
-                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You can't delete requests that are approved before the end date of the vacation!\"}";
+                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You can't delete approved requests before the end date of the vacation!\"}";
                     try {
                         response.getWriter().print(error);
                     } catch (IOException e) {

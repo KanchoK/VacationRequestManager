@@ -65,16 +65,19 @@ public class MyRequestsController extends HttpServlet{
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if (isBeginDateValid == true){
+                if (isBeginDateValid){
                     vacDaysLeft = CrudDao.getVacationDaysLeft((Integer)(session.getAttribute("employeeID")));
+                    int vacationType = Integer.parseInt(request.getParameter("vacationType"));
                     int businessDaysCount = 0;
-                    try {
-                        Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
-                        Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
-                        businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
+                    if (vacationType == 1){
+                        try {
+                            Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
+                            Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
+                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
 
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                     if (businessDaysCount == -1){
                         String error = "{\"Result\":\"ERROR\",\"Message\":\"Initial dates should both be working days!\"}";
@@ -85,11 +88,16 @@ public class MyRequestsController extends HttpServlet{
                         }
                     } else {
                         vacDaysLeft -= businessDaysCount;
-                        if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) == true && vacDaysLeft >= 0){
+                        if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) && (vacDaysLeft >= 0 || vacationType == 2)){
                             Vacation vacation = new Vacation();
                             vacation.setBeginDate(DateParser.parseDate(request.getParameter("beginDate")));
                             vacation.setEndDate(DateParser.parseDate(request.getParameter("endDate")));
-                            vacation.setVacationType(Integer.parseInt(request.getParameter("vacationType")));
+                            vacation.setVacationType(vacationType);
+                            if (vacationType == 2){
+                                vacation.setVacationStatus(2);
+                            } else {
+                                vacation.setVacationStatus(1);
+                            }
                             vacation.setRequestText(request.getParameter("requestText"));
                             vacation.setEmployeeID((Integer)(session.getAttribute("employeeID")));
                             vacation.setMyManager(CrudDao.getManagerID((Integer)(session.getAttribute("employeeID"))));
@@ -148,18 +156,21 @@ public class MyRequestsController extends HttpServlet{
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if (isBeginDateValid == true){
+                if (isBeginDateValid){
                     int vacationStatus = CrudDao.getVacationStatus(Integer.parseInt(request.getParameter("vacationID")));
-                    if (vacationStatus == 1) {
+                    int vacationType = CrudDao.getVacationType(Integer.parseInt(request.getParameter("vacationID")));
+                    if (vacationStatus == 1 || vacationType == 2) {
                         vacDaysLeft = CrudDao.getVacationDaysLeft((Integer)(session.getAttribute("employeeID")));
                         int businessDaysCount = 0;
-                        try {
-                            Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
-                            Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
-                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
+                        if (vacationType == 1) {
+                            try {
+                                Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
+                                Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
+                                businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
 
-                        } catch (ParseException e) {
-                            e.printStackTrace();
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
                         if (businessDaysCount == -1){
                             String error = "{\"Result\":\"ERROR\",\"Message\":\"Initial dates should both be working days!\"}";
@@ -170,12 +181,11 @@ public class MyRequestsController extends HttpServlet{
                             }
                         } else {
                             vacDaysLeft -= businessDaysCount;
-                            if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) == true && vacDaysLeft >= 0){
+                            if (DateCompare.CompareDates(request.getParameter("beginDate"), request.getParameter("endDate")) && (vacDaysLeft >= 0 || vacationType == 2)){
                                 Vacation vacation = new Vacation();
                                 vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
                                 vacation.setBeginDate(DateParser.parseDate(request.getParameter("beginDate")));
                                 vacation.setEndDate(DateParser.parseDate(request.getParameter("endDate")));
-                                vacation.setVacationType(Integer.parseInt(request.getParameter("vacationType")));
                                 vacation.setRequestText(request.getParameter("requestText"));
 
                                 CrudDao.updateVacationDates(vacation);
@@ -236,7 +246,7 @@ public class MyRequestsController extends HttpServlet{
                         }
                     }
                 } else {
-                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You can't delete requests that are already approved by a manager!\"}";
+                    String error = "{\"Result\":\"ERROR\",\"Message\":\"You can't delete requests that are already approved!\"}";
                     try {
                         response.getWriter().print(error);
                     } catch (IOException e) {

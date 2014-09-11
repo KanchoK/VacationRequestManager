@@ -77,29 +77,33 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <span id="header" ng-controller="menuController">
-        <span class="menuSpan" id="logoutButton">
-            <button type="button" class="menuButton" ng-click="logout()">Log out</button>
-        </span>
+    <span class="menuSpan" id="logoutButton">
+        <button type="button" class="menuButton" ng-click="logout()">Log out</button>
+    </span>
 
-        <span class="menuSpan" id="changePassButton">
-            <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
-        </span>
+    <span class="menuSpan" id="changePassButton">
+        <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
+    </span>
 
-        <span class="menuSpan" id="myRequestsButton">
-            <button type="button" class="menuButton" ng-click="myRequests()">My requests</button>
-        </span>
+    <span class="menuSpan" id="myRequestsButton">
+        <button type="button" class="menuButton" ng-click="myRequests()">My requests</button>
+    </span>
 
-        <span class="menuSpan" id="vacationCalendarButton">
-            <button type="button" class="menuButton" ng-click="vacationCalendar()">Vacation calendar</button>
-        </span>
+    <span class="menuSpan" id="vacationCalendarButton">
+        <button type="button" class="menuButton" ng-click="vacationCalendar()">Vacation calendar</button>
+    </span>
 
-        <span class="menuSpan" id="requestManagerButton">
-            <button type="button" class="menuButton" ng-click="requestManager()">Request Manager</button>
-        </span>
+    <span class="menuSpan" id="requestManagerButton">
+        <button type="button" class="menuButton" ng-click="requestManager()">Request Manager</button>
+    </span>
 
-        <span class="menuSpan" id="controlPanelButton">
-            <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
-        </span>
+    <span class="menuSpan" id="controlPanelButton">
+        <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
+    </span>
+
+    <span class="menuSpan" id="holidaysManagerButton">
+        <button type="button" class="menuButton" ng-click="holidaysManager()">Holidays Manager</button>
+    </span>
 </span>
 
 <div id="PersonTableContainer"></div>

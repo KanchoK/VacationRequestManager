@@ -86,7 +86,7 @@ public class AuthenticationFilter implements Filter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (session != null && access != 1 && (uri.endsWith("controlPanel.jsp"))){
+        } else if (session != null && access != 1 && (uri.endsWith("controlPanel.jsp") || uri.endsWith("holidaysManager.jsp"))){
             this.context.log("Unauthorized access request");
             try {
                 res.sendRedirect("myRequests.jsp");

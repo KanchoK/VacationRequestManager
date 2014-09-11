@@ -24,6 +24,10 @@
     <span class="menuSpan" id="controlPanelButton">
         <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
     </span>
+
+    <span class="menuSpan" id="holidaysManagerButton">
+        <button type="button" class="menuButton" ng-click="holidaysManager()">Holidays Manager</button>
+    </span>
 </span>
 
 <script>
@@ -55,11 +59,34 @@
                 {
                     url: 'VacationCalendarController',
                     type: 'POST',
+                    color: '#0082ba',
                     data: {
-                        name: selectedName
+                        name: selectedName,
+                        vacationType: 1
+                    }
+                },
+                {
+                    url: 'VacationCalendarController',
+                    type: 'POST',
+                    color: 'green',
+                    data: {
+                        name: selectedName,
+                        vacationType: 2
                     }
                 }
-            ]
+            ],
+            dayRender: function (date, cell) {
+
+// ajax request to servlet which will check if the date is holiday or working day
+
+
+                    if("2014-09-06" == date.format("YYYY-MM-DD")){
+                        cell.css("background-color", "red");
+//                        cell.first().addClass("holiday-number-" + i);
+//                        $("td.holiday-number-" + i).children().append("<p class='holidayName'>"+ holidays[i][1] +"</p>");
+                    }
+
+            }
         });
 
         $(".fc-header-left").append("<div class='fc-dropdown'>" +
@@ -85,16 +112,29 @@
 
     function selectEmployee(name){
         selectedName = name;
-        newSource = {
+        newSourceOne = {
             url: 'VacationCalendarController',
             type: 'POST',
+            color: '#0082ba',
             data: {
-                name: name
+                name: name,
+                vacationType: 1
+            }
+        };
+        newSourceTwo = {
+            url: 'VacationCalendarController',
+            type: 'POST',
+            color: 'green',
+            data: {
+                name: name,
+                vacationType: 2
             }
         };
         $('#calendar').fullCalendar('removeEvents');
-        $('#calendar').fullCalendar('removeEventSource', newSource);
-        $('#calendar').fullCalendar('addEventSource', newSource);
+        $('#calendar').fullCalendar('removeEventSource', newSourceOne);
+        $('#calendar').fullCalendar('removeEventSource', newSourceTwo);
+        $('#calendar').fullCalendar('addEventSource', newSourceOne);
+        $('#calendar').fullCalendar('addEventSource', newSourceTwo);
     }
 </script>
 
