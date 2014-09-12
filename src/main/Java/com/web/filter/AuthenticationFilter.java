@@ -71,7 +71,7 @@ public class AuthenticationFilter implements Filter {
                 }
             }
         } else if((session == null || session.getAttribute("email") == null) &&
-                (!(uri.endsWith("VacationRequestManager/") || uri.endsWith("index.jsp") || uri.endsWith("signUp.html") || uri.endsWith(".js") || uri.endsWith(".png")
+                (!(uri.endsWith("VacationRequestManager/") || uri.endsWith("index.html") || uri.endsWith("signUp.html") || uri.endsWith(".js") || uri.endsWith(".png")
                         || uri.endsWith("login.html") || uri.endsWith(".css") || uri.endsWith("/LoginServlet") || uri.endsWith("/SignUpServlet") || uri.endsWith("/ForgottenPassword")))){
             this.context.log("Unauthorized access request");
             try {
@@ -79,17 +79,17 @@ public class AuthenticationFilter implements Filter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (session != null && (access != 1 && access != 2) && (uri.endsWith("requestManager.jsp"))){
+        } else if (session != null && (access != 1 && access != 2) && (uri.endsWith("requestManager.html"))){
             this.context.log("Unauthorized access request");
             try {
-                res.sendRedirect("myRequests.jsp");
+                res.sendRedirect("myRequests.html");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (session != null && access != 1 && (uri.endsWith("controlPanel.jsp") || uri.endsWith("holidaysManager.jsp"))){
+        } else if (session != null && access != 1 && (uri.endsWith("controlPanel.html") || uri.endsWith("holidaysManager.html"))){
             this.context.log("Unauthorized access request");
             try {
-                res.sendRedirect("myRequests.jsp");
+                res.sendRedirect("myRequests.html");
             } catch (IOException e) {
                 e.printStackTrace();
             }

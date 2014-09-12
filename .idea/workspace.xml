@@ -23,119 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StaticHolidays.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/StaticHolidays.java">
+      <file leaf-file-name="HolidaysManagerController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/HolidaysManagerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="629">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HSQLDB - VacationManagerDB@localhost" pinned="false" current="false" current-in-tab="false">
-        <entry file="dbDummy://db-console:/e54403a6/a5ee4623-7256-46f7-921f-7a47aa4fd820/">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.137932" vertical-offset="722" max-vertical-offset="1292">
-              <caret line="70" column="99" selection-start-line="70" selection-start-column="99" selection-end-line="70" selection-end-column="99" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrudDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.92" vertical-offset="1129" max-vertical-offset="26469">
-              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1190">
+              <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
               <folding>
-                <element signature="e#326#336#0" expanded="true" />
-                <marker date="1410445837800" expanded="true" signature="556:655" placeholder="select begin..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="892:948" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="2939:3038" placeholder="select begin..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="3275:3331" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="5674:5898" placeholder="select vacat..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="6049:6105" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="8613:8764" placeholder="select * fro..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="9014:9070" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="11394:11470" placeholder="select emplo..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="11652:11708" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="13589:13838" placeholder="select vacat..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="15509:15567" placeholder="select vacat..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="16620:16676" placeholder="select vacat..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="17732:17785" placeholder="select begin..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="18831:18882" placeholder="select endDa..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="19932:19988" placeholder="select respo..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="21046:21106" placeholder="select vacat..employees..." />
-                <marker date="1410445837800" expanded="true" signature="22157:22207" placeholder="select COUNT..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="24271:24323" placeholder="select COUNT..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="25567:25782" placeholder="select fName..employees..." />
-                <marker date="1410445837800" expanded="true" signature="27525:27572" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="28791:28879" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="30048:30078" placeholder="select COUNT..employees..." />
-                <marker date="1410445837800" expanded="true" signature="31030:31069" placeholder="select * fro..employees..." />
-                <marker date="1410445837800" expanded="true" signature="32178:32233" placeholder="select emplo..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="32445:32519" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="32822:32898" placeholder="select begin..vacations..." />
-                <marker date="1410445837800" expanded="true" signature="34436:34492" placeholder="select emplo..employees..." />
-                <marker date="1410445837800" expanded="true" signature="35451:35504" placeholder="select myMan..employees..." />
-                <marker date="1410445837800" expanded="true" signature="36470:36522" placeholder="select passw..employees..." />
-                <marker date="1410445837800" expanded="true" signature="37491:37548" placeholder="select accou..employees..." />
-                <marker date="1410445837800" expanded="true" signature="38517:38694" placeholder="insert into ..." />
-                <marker date="1410445837800" expanded="true" signature="40049:40281" placeholder="insert into ..." />
-                <marker date="1410445837800" expanded="true" signature="41788:41874" placeholder="update vacat..." />
-                <marker date="1410445837800" expanded="true" signature="42720:42779" placeholder="update vacat..." />
-                <marker date="1410445837800" expanded="true" signature="43466:43545" placeholder="update vacat..." />
-                <marker date="1410445837800" expanded="true" signature="44330:44386" placeholder="update vacat..." />
-                <marker date="1410445837800" expanded="true" signature="45061:45265" placeholder="update emplo..." />
-                <marker date="1410445837800" expanded="true" signature="46367:46422" placeholder="update emplo..." />
-                <marker date="1410445837800" expanded="true" signature="47157:47245" placeholder="update emplo..." />
-                <marker date="1410445837800" expanded="true" signature="48058:48118" placeholder="select vacat..employees..." />
-                <marker date="1410445837800" expanded="true" signature="48279:48342" placeholder="update emplo..." />
-                <marker date="1410445837800" expanded="true" signature="49486:49546" placeholder="update emplo..." />
-                <marker date="1410445837800" expanded="true" signature="50180:50223" placeholder="delete from ..." />
-                <marker date="1410445837800" expanded="true" signature="50918:50961" placeholder="delete from ..." />
-                <marker date="1410445837800" expanded="true" signature="51095:51138" placeholder="delete from ..." />
+                <element signature="imports" expanded="true" />
+                <element signature="e#733#742#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changePassword.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/changePassword.jsp">
+      <file leaf-file-name="LoginServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9183267" vertical-offset="219" max-vertical-offset="1071">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyRequestsController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="4267">
-              <caret line="39" column="54" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="4913">
-              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myRequests.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/myRequests.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1955">
-              <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="901">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,29 +49,113 @@
       <file leaf-file-name="DBConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="799">
-              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1326">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vacationCalendar.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/vacationCalendar.jsp">
+      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.884615" vertical-offset="803" max-vertical-offset="2482">
-              <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2358" max-vertical-offset="2907">
+              <caret line="163" column="21" selection-start-line="163" selection-start-column="21" selection-end-line="163" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VacationCalendarController.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="628" max-vertical-offset="2941">
+              <caret line="59" column="23" selection-start-line="55" selection-start-column="10" selection-end-line="59" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="context.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/context.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VacationCalendarController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.8051002" vertical-offset="0" max-vertical-offset="765">
+              <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrudDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.8" vertical-offset="0" max-vertical-offset="27302">
+              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+              <folding>
+                <element signature="e#355#365#0" expanded="true" />
+                <element signature="e#52062#52071#0" expanded="true" />
+                <marker date="1410531552705" expanded="true" signature="585:684" placeholder="select begin..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="921:977" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="2968:3067" placeholder="select begin..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="3304:3360" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="5703:5927" placeholder="select vacat..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="6078:6134" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="8642:8793" placeholder="select * fro..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="9043:9099" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="11423:11499" placeholder="select emplo..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="11681:11737" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="13618:13867" placeholder="select vacat..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="15538:15596" placeholder="select vacat..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="16649:16705" placeholder="select vacat..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="17761:17814" placeholder="select begin..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="18860:18911" placeholder="select endDa..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="19961:20017" placeholder="select respo..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="21075:21135" placeholder="select vacat..employees..." />
+                <marker date="1410531552705" expanded="true" signature="22186:22236" placeholder="select COUNT..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="24300:24352" placeholder="select COUNT..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="25596:25811" placeholder="select fName..employees..." />
+                <marker date="1410531552705" expanded="true" signature="27554:27601" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="28820:28908" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="30077:30107" placeholder="select COUNT..employees..." />
+                <marker date="1410531552705" expanded="true" signature="31059:31098" placeholder="select * fro..employees..." />
+                <marker date="1410531552705" expanded="true" signature="32207:32262" placeholder="select emplo..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="32474:32548" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="32851:32927" placeholder="select begin..vacations..." />
+                <marker date="1410531552705" expanded="true" signature="34465:34521" placeholder="select emplo..employees..." />
+                <marker date="1410531552705" expanded="true" signature="35480:35533" placeholder="select myMan..employees..." />
+                <marker date="1410531552705" expanded="true" signature="36499:36551" placeholder="select passw..employees..." />
+                <marker date="1410531552705" expanded="true" signature="37520:37577" placeholder="select accou..employees..." />
+                <marker date="1410531552705" expanded="true" signature="38546:38723" placeholder="insert into ..." />
+                <marker date="1410531552705" expanded="true" signature="40078:40310" placeholder="insert into ..." />
+                <marker date="1410531552705" expanded="true" signature="41817:41903" placeholder="update vacat..." />
+                <marker date="1410531552705" expanded="true" signature="42749:42808" placeholder="update vacat..." />
+                <marker date="1410531552705" expanded="true" signature="43495:43574" placeholder="update vacat..." />
+                <marker date="1410531552705" expanded="true" signature="44359:44415" placeholder="update vacat..." />
+                <marker date="1410531552705" expanded="true" signature="45090:45294" placeholder="update emplo..." />
+                <marker date="1410531552705" expanded="true" signature="46396:46451" placeholder="update emplo..." />
+                <marker date="1410531552705" expanded="true" signature="47186:47274" placeholder="update emplo..." />
+                <marker date="1410531552705" expanded="true" signature="48087:48147" placeholder="select vacat..employees..." />
+                <marker date="1410531552705" expanded="true" signature="48308:48371" placeholder="update emplo..." />
+                <marker date="1410531552705" expanded="true" signature="49515:49575" placeholder="update emplo..." />
+                <marker date="1410531552705" expanded="true" signature="50209:50252" placeholder="delete from ..." />
+                <marker date="1410531552705" expanded="true" signature="50947:50990" placeholder="delete from ..." />
+                <marker date="1410531552705" expanded="true" signature="51124:51167" placeholder="delete from ..." />
+                <marker date="1410531552705" expanded="true" signature="52224:52247" placeholder="select * fro..holidays..." />
+                <marker date="1410531552705" expanded="true" signature="52224:52246" placeholder="select * fro..holidays..." />
+                <marker date="1410531552705" expanded="true" signature="52224:52246" placeholder="select * fro..holidays..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,26 +168,13 @@
     </FindUsagesManager>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/index.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/vacationCalendar.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/controlPanel.html" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/EmailTest.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/MailSender.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/Holidays.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/Vacation.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/ManagerListServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jtable/themes/metro/blue/jtable.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/formDesign.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/themes/default.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/alertify.css" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/RandomGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/forgottenPassword.jsp" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/RequestNotificationController.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/PDFGenerator.java" />
@@ -206,34 +182,47 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/jquery-ui.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/ResetForgottenPassword.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/DynamicHolidays.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/ForgottenPassword.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/EmployeeTableController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/EmployeeListServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/header.css" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/DateParser.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/fullcalendar.css" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/DateHelper.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/StaticHolidays.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/controlPanel.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/requestManager.jsp" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/filter/AuthenticationFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/main.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/changePassword.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/holidaysManager.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jquery-ui-flick-theme/jquery-ui.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/myRequests.jsp" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/DateCompare.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/RequestManagerController.java" />
-        <option value="db-console:/e54403a6/a5ee4623-7256-46f7-921f-7a47aa4fd820/" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java" />
-        <option value="$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/changePassword.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/myRequests.jsp" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/SessionProvider.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/vacationCalendar.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/requestManager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/holidaysManager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/forgottenPassword.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/controlPanel.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/controlPanel.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/changePassword.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/vacationCalendar.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/requestManager.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/myRequests.html" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/NextYesrsList.java" />
+        <option value="db-console:/e54403a6/a5ee4623-7256-46f7-921f-7a47aa4fd820/" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/Holiday.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/holidaysManager.html" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/HolidaysManagerController.java" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/context.xml" />
+        <option value="$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/Java/com/web/DBConnection.java" />
       </list>
     </option>
@@ -276,6 +265,24 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
         </PATH_ELEMENT>
       </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="VacationRequestManager Maven Webapp" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jetty" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
+        </PATH_ELEMENT>
+      </PATH>
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
@@ -312,7 +319,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -396,32 +402,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VacationRequestManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VacationRequestManager" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -479,8 +459,23 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VacationRequestManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VacationRequestManager" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -496,7 +491,7 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FullCalendarTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.lastSelected" value="MavenSettings" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -769,6 +764,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -787,12 +788,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <list size="1">
@@ -849,12 +844,13 @@
       <workItem from="1410158980653" duration="25124000" />
       <workItem from="1410244436144" duration="24148000" />
       <workItem from="1410331427981" duration="13498000" />
-      <workItem from="1410417601374" duration="23294000" />
+      <workItem from="1410417601374" duration="23505000" />
+      <workItem from="1410503884764" duration="24179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="400970000" />
+    <option name="totallyTimeSpent" value="425360000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -878,19 +874,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3243243" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756758" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686085" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13258786" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3783784" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3783784" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39675677" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -930,17 +926,101 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java</url>
           <line>150</line>
           <properties />
           <option name="timeStamp" value="192" />
         </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/NextYesrsList.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/HolidaysManagerController.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="217" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="219" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java</url>
+          <line>93</line>
+          <properties />
+          <option name="timeStamp" value="221" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java</url>
+          <line>132</line>
+          <properties />
+          <option name="timeStamp" value="223" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="225" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java</url>
+          <line>359</line>
+          <properties />
+          <option name="timeStamp" value="226" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java</url>
+          <line>705</line>
+          <properties />
+          <option name="timeStamp" value="227" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="202" />
+      <option name="time" value="236" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -948,62 +1028,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/LoginCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="884">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/LogoutServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/SignUpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="969">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/Utility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/signUp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="323">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.030965392" vertical-offset="68" max-vertical-offset="1275">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/jquery-ui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.32" vertical-offset="63886" max-vertical-offset="274635">
-          <caret line="3782" column="105" selection-start-line="3782" selection-start-column="105" selection-end-line="3782" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="833">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/PDFGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1564">
@@ -1014,34 +1038,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/images/logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/forgottenPassword.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="272">
-          <caret line="5" column="91" selection-start-line="5" selection-start-column="91" selection-end-line="5" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2622" max-vertical-offset="3519">
-          <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeTableController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5245283" vertical-offset="351" max-vertical-offset="2193">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/RequestNotificationController.java">
@@ -1065,21 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/ManagerListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5175292" vertical-offset="64" max-vertical-offset="663">
-          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1034" max-vertical-offset="2601">
-          <caret line="77" column="41" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/ForgottenPassword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
@@ -1091,13 +1072,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.47574627" vertical-offset="255" max-vertical-offset="20910">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1138,43 +1112,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/fullcalendar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10046" max-vertical-offset="11033">
-          <caret line="611" column="0" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DateParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="714">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DateHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1145" max-vertical-offset="2023">
           <caret line="110" column="51" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/controlPanel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538" vertical-offset="1581" max-vertical-offset="2584">
-          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1190,22 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49902153" vertical-offset="16490" max-vertical-offset="20927">
           <caret line="985" column="28" selection-start-line="985" selection-start-column="28" selection-end-line="985" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/holidaysManager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.758964" vertical-offset="0" max-vertical-offset="2176">
-          <caret line="111" column="97" selection-start-line="111" selection-start-column="97" selection-end-line="111" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1444" max-vertical-offset="2839">
-          <caret line="66" column="62" selection-start-line="66" selection-start-column="62" selection-end-line="66" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1226,14 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/requestManager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6334662" vertical-offset="208" max-vertical-offset="1955">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/StaticHolidays.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="629">
@@ -1242,138 +1159,333 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DateCompare.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/SessionProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6812386" vertical-offset="221" max-vertical-offset="799">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="782">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/fullcalendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38838267" vertical-offset="10046" max-vertical-offset="11033">
+          <caret line="611" column="0" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/header.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3824092" vertical-offset="72" max-vertical-offset="1768">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0189099" vertical-offset="0" max-vertical-offset="918">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/e54403a6/a5ee4623-7256-46f7-921f-7a47aa4fd820/">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/forgottenPassword.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.137932" vertical-offset="722" max-vertical-offset="1292">
-          <caret line="70" column="99" selection-start-line="70" selection-start-column="99" selection-end-line="70" selection-end-column="99" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/vacationCalendar.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.884615" vertical-offset="803" max-vertical-offset="2482">
-          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="799">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/myRequests.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1955">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.84894836" vertical-offset="933" max-vertical-offset="1989">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="4913">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.29198474" vertical-offset="561" max-vertical-offset="4913">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/changePassword.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7801147" vertical-offset="0" max-vertical-offset="714">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/requestManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.576923" vertical-offset="606" max-vertical-offset="1581">
+          <caret line="61" column="92" selection-start-line="61" selection-start-column="82" selection-end-line="61" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/myRequests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.372849" vertical-offset="0" max-vertical-offset="1598">
+          <caret line="73" column="96" selection-start-line="73" selection-start-column="96" selection-end-line="73" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/ManagerListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2859745" vertical-offset="64" max-vertical-offset="663">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DateCompare.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.867031" vertical-offset="119" max-vertical-offset="799">
+          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DateParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7140255" vertical-offset="84" max-vertical-offset="714">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/e54403a6/a5ee4623-7256-46f7-921f-7a47aa4fd820/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.310345" vertical-offset="824" max-vertical-offset="1479">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/controlPanel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692" vertical-offset="153" max-vertical-offset="2159">
+          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1275">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeTableController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1594" max-vertical-offset="2193">
+          <caret line="118" column="61" selection-start-line="118" selection-start-column="61" selection-end-line="118" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/NextYesrsList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="867">
+          <caret line="28" column="62" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/Holiday.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/holidaysManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.153847" vertical-offset="667" max-vertical-offset="2737">
+          <caret line="67" column="18" selection-start-line="41" selection-start-column="16" selection-end-line="67" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeAttributes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1983" max-vertical-offset="3519">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <marker date="1409038669891" expanded="true" signature="-1:-1" placeholder="select acces..employees..." />
+            <marker date="1409038669891" expanded="true" signature="-1:-1" placeholder="select emplo..vacations..." />
+            <marker date="1409038669891" expanded="true" signature="-1:-1" placeholder="select emplo..employees..." />
+            <marker date="1409038669891" expanded="true" signature="-1:-1" placeholder="select accou..employees..." />
+            <marker date="1409038669891" expanded="true" signature="-1:-1" placeholder="select forgo..employees..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/MyRequestsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="4267">
-          <caret line="39" column="54" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="4267">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/EmployeeListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="646">
+          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/vacationCalendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769" vertical-offset="1377" max-vertical-offset="2091">
+          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/HolidaysManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1190">
+          <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#733#742#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="901">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/webContexts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/CrudDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.92" vertical-offset="1129" max-vertical-offset="26469">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+        <state vertical-scroll-proportion="-6.8" vertical-offset="0" max-vertical-offset="27302">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
           <folding>
-            <element signature="e#326#336#0" expanded="true" />
-            <marker date="1410445837800" expanded="true" signature="556:655" placeholder="select begin..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="892:948" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="2939:3038" placeholder="select begin..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="3275:3331" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="5674:5898" placeholder="select vacat..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="6049:6105" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="8613:8764" placeholder="select * fro..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="9014:9070" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="11394:11470" placeholder="select emplo..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="11652:11708" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="13589:13838" placeholder="select vacat..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="15509:15567" placeholder="select vacat..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="16620:16676" placeholder="select vacat..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="17732:17785" placeholder="select begin..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="18831:18882" placeholder="select endDa..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="19932:19988" placeholder="select respo..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="21046:21106" placeholder="select vacat..employees..." />
-            <marker date="1410445837800" expanded="true" signature="22157:22207" placeholder="select COUNT..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="24271:24323" placeholder="select COUNT..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="25567:25782" placeholder="select fName..employees..." />
-            <marker date="1410445837800" expanded="true" signature="27525:27572" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="28791:28879" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="30048:30078" placeholder="select COUNT..employees..." />
-            <marker date="1410445837800" expanded="true" signature="31030:31069" placeholder="select * fro..employees..." />
-            <marker date="1410445837800" expanded="true" signature="32178:32233" placeholder="select emplo..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="32445:32519" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="32822:32898" placeholder="select begin..vacations..." />
-            <marker date="1410445837800" expanded="true" signature="34436:34492" placeholder="select emplo..employees..." />
-            <marker date="1410445837800" expanded="true" signature="35451:35504" placeholder="select myMan..employees..." />
-            <marker date="1410445837800" expanded="true" signature="36470:36522" placeholder="select passw..employees..." />
-            <marker date="1410445837800" expanded="true" signature="37491:37548" placeholder="select accou..employees..." />
-            <marker date="1410445837800" expanded="true" signature="38517:38694" placeholder="insert into ..." />
-            <marker date="1410445837800" expanded="true" signature="40049:40281" placeholder="insert into ..." />
-            <marker date="1410445837800" expanded="true" signature="41788:41874" placeholder="update vacat..." />
-            <marker date="1410445837800" expanded="true" signature="42720:42779" placeholder="update vacat..." />
-            <marker date="1410445837800" expanded="true" signature="43466:43545" placeholder="update vacat..." />
-            <marker date="1410445837800" expanded="true" signature="44330:44386" placeholder="update vacat..." />
-            <marker date="1410445837800" expanded="true" signature="45061:45265" placeholder="update emplo..." />
-            <marker date="1410445837800" expanded="true" signature="46367:46422" placeholder="update emplo..." />
-            <marker date="1410445837800" expanded="true" signature="47157:47245" placeholder="update emplo..." />
-            <marker date="1410445837800" expanded="true" signature="48058:48118" placeholder="select vacat..employees..." />
-            <marker date="1410445837800" expanded="true" signature="48279:48342" placeholder="update emplo..." />
-            <marker date="1410445837800" expanded="true" signature="49486:49546" placeholder="update emplo..." />
-            <marker date="1410445837800" expanded="true" signature="50180:50223" placeholder="delete from ..." />
-            <marker date="1410445837800" expanded="true" signature="50918:50961" placeholder="delete from ..." />
-            <marker date="1410445837800" expanded="true" signature="51095:51138" placeholder="delete from ..." />
+            <element signature="e#355#365#0" expanded="true" />
+            <element signature="e#52062#52071#0" expanded="true" />
+            <marker date="1410531552705" expanded="true" signature="585:684" placeholder="select begin..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="921:977" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="2968:3067" placeholder="select begin..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="3304:3360" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="5703:5927" placeholder="select vacat..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="6078:6134" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="8642:8793" placeholder="select * fro..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="9043:9099" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="11423:11499" placeholder="select emplo..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="11681:11737" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="13618:13867" placeholder="select vacat..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="15538:15596" placeholder="select vacat..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="16649:16705" placeholder="select vacat..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="17761:17814" placeholder="select begin..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="18860:18911" placeholder="select endDa..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="19961:20017" placeholder="select respo..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="21075:21135" placeholder="select vacat..employees..." />
+            <marker date="1410531552705" expanded="true" signature="22186:22236" placeholder="select COUNT..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="24300:24352" placeholder="select COUNT..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="25596:25811" placeholder="select fName..employees..." />
+            <marker date="1410531552705" expanded="true" signature="27554:27601" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="28820:28908" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="30077:30107" placeholder="select COUNT..employees..." />
+            <marker date="1410531552705" expanded="true" signature="31059:31098" placeholder="select * fro..employees..." />
+            <marker date="1410531552705" expanded="true" signature="32207:32262" placeholder="select emplo..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="32474:32548" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="32851:32927" placeholder="select begin..vacations..." />
+            <marker date="1410531552705" expanded="true" signature="34465:34521" placeholder="select emplo..employees..." />
+            <marker date="1410531552705" expanded="true" signature="35480:35533" placeholder="select myMan..employees..." />
+            <marker date="1410531552705" expanded="true" signature="36499:36551" placeholder="select passw..employees..." />
+            <marker date="1410531552705" expanded="true" signature="37520:37577" placeholder="select accou..employees..." />
+            <marker date="1410531552705" expanded="true" signature="38546:38723" placeholder="insert into ..." />
+            <marker date="1410531552705" expanded="true" signature="40078:40310" placeholder="insert into ..." />
+            <marker date="1410531552705" expanded="true" signature="41817:41903" placeholder="update vacat..." />
+            <marker date="1410531552705" expanded="true" signature="42749:42808" placeholder="update vacat..." />
+            <marker date="1410531552705" expanded="true" signature="43495:43574" placeholder="update vacat..." />
+            <marker date="1410531552705" expanded="true" signature="44359:44415" placeholder="update vacat..." />
+            <marker date="1410531552705" expanded="true" signature="45090:45294" placeholder="update emplo..." />
+            <marker date="1410531552705" expanded="true" signature="46396:46451" placeholder="update emplo..." />
+            <marker date="1410531552705" expanded="true" signature="47186:47274" placeholder="update emplo..." />
+            <marker date="1410531552705" expanded="true" signature="48087:48147" placeholder="select vacat..employees..." />
+            <marker date="1410531552705" expanded="true" signature="48308:48371" placeholder="update emplo..." />
+            <marker date="1410531552705" expanded="true" signature="49515:49575" placeholder="update emplo..." />
+            <marker date="1410531552705" expanded="true" signature="50209:50252" placeholder="delete from ..." />
+            <marker date="1410531552705" expanded="true" signature="50947:50990" placeholder="delete from ..." />
+            <marker date="1410531552705" expanded="true" signature="51124:51167" placeholder="delete from ..." />
+            <marker date="1410531552705" expanded="true" signature="52224:52247" placeholder="select * fro..holidays..." />
+            <marker date="1410531552705" expanded="true" signature="52224:52246" placeholder="select * fro..holidays..." />
+            <marker date="1410531552705" expanded="true" signature="52224:52246" placeholder="select * fro..holidays..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/changePassword.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9183267" vertical-offset="219" max-vertical-offset="1071">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2358" max-vertical-offset="2907">
+          <caret line="163" column="21" selection-start-line="163" selection-start-column="21" selection-end-line="163" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="628" max-vertical-offset="2941">
+          <caret line="59" column="23" selection-start-line="55" selection-start-column="10" selection-end-line="59" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1326">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Java/com/web/VacationCalendarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8051002" vertical-offset="0" max-vertical-offset="765">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
           <folding />
         </state>
       </provider>

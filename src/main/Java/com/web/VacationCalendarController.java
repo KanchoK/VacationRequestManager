@@ -35,7 +35,6 @@ public class VacationCalendarController extends HttpServlet{
                 obj.put("end", splitVacation.get(m)[1] + "T23:59:59");
                 array.put(obj);
             }
-
         }
 
         try {

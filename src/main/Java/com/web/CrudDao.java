@@ -1,5 +1,6 @@
 package com.web;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
@@ -1549,5 +1550,54 @@ public class CrudDao {
             }
             DBConnection.closeConnection();
         }
+    }
+
+//    methods for accessing the information about holidays and working saturdays
+
+    public static List<Holiday> getAllHolidays(){
+        Connection conn = DBConnection.getConnection();
+        List<Holiday> holidays = new ArrayList<Holiday>();
+
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from holidays");
+            while (rs.next()){
+                Holiday holiday = new Holiday();
+
+                holiday.setHoliday_id(rs.getInt("holiday_id"));
+                holiday.setYear(rs.getInt("year"));
+                holiday.setMonth(rs.getInt("month"));
+                holiday.setDay(rs.getInt("day"));
+                holiday.setText(rs.getString("text"));
+
+                holidays.add(holiday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return holidays;
     }
 }

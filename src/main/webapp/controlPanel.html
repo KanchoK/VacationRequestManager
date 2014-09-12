@@ -3,6 +3,23 @@
         var cachedCityOptions = null;
 
         $(document).ready(function () {
+            $.ajax({
+                url: 'SessionProvider',
+                type: 'POST',
+                data: {
+                    action: 'getAccess'
+                },
+                success: function(data){
+                    var obj = JSON.parse(data);
+
+                    var access = obj.accessLevel;
+                    menuAccessibility(access);
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+
             $('#PersonTableContainer').jtable({
                 title: 'Control Panel',
                 paging: true,
@@ -100,47 +117,5 @@
             $('#PersonTableContainer').jtable('load');
         });
     </script>
-
-    <script>
-        $(document).ready(function(){
-            menuAccessibility(<%=session.getAttribute("access")%>);
-        });
-    </script>
-
-    <%@ page contentType="text/html; charset=UTF-8" %>
-
-<span id="header">
-
-<span ng-controller="menuController">
-    <span class="menuSpan">
-        <button type="button" class="menuButton" ng-click="logout()">Log out</button>
-    </span>
-
-    <span class="menuSpan">
-        <button type="button" class="menuButton" ng-click="changePassword()">Change password</button>
-    </span>
-
-    <span class="menuSpan">
-        <button type="button" class="menuButton" ng-click="myRequests()">My requests</button>
-    </span>
-
-    <span class="menuSpan">
-        <button type="button" class="menuButton" ng-click="vacationCalendar()">Vacation calendar</button>
-     </span>
-
-    <span class="menuSpan">
-        <button type="button" class="menuButton" ng-click="requestManager()">Request Manager</button>
-    </span>
-
-    <span class="menuSpan" id="controlPanel">
-        <button type="button" class="menuButton" ng-click="controlPanel()">Control Panel</button>
-    </span>
-
-    <span class="menuSpan" id="holidaysManagerButton">
-        <button type="button" class="menuButton" ng-click="holidaysManager()">Holidays Manager</button>
-    </span>
-</span>
-
-</span>
 
 <div id="PersonTableContainer"></div>

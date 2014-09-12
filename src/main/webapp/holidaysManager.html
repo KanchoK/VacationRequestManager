@@ -1,0 +1,155 @@
+<script type="text/javascript">
+
+    var cachedCityOptions = null;
+
+    $(document).ready(function () {
+        $.ajax({
+            url: 'SessionProvider',
+            type: 'POST',
+            data: {
+                action: 'getAccess'
+            },
+            success: function(data){
+                var obj = JSON.parse(data);
+
+                var access = obj.accessLevel;
+                menuAccessibility(access);
+            },
+            error: function(e){
+                alert(e);
+            }
+        });
+
+        $('#HolidaysTableContainer').jtable({
+            title: 'Holidays',
+//            paging: true,
+//            pageSize: 10,
+//            sorting: true,
+//            defaultSorting: 'vacationStatus ASC',
+            actions: {
+                listAction: 'HolidaysManagerController?action=list',
+                createAction: 'HolidaysManagerController?action=create',
+                updateAction: 'HolidaysManagerController?action=update',
+                deleteAction: 'HolidaysManagerController?action=delete'
+            },
+            fields: {
+                holiday_ID: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                year: {
+                    title: 'Year',
+                    width: '10%',
+                    options: function () {
+                        if (cachedCityOptions) { //Check for cache
+                            return cachedCityOptions;
+                        }
+
+                        var options = [];
+
+                        $.ajax({
+                            url: 'NextYearsList',
+                            type: 'POST',
+                            dataType: 'json',
+                            async: false,
+                            success: function (data) {
+                                if (data.Result != 'OK') {
+                                    alert(data.Message);
+                                    return;
+                                }
+                                options = data.Records;
+                            }
+                        });
+
+                        return cachedCityOptions = options; //Cache results and return options
+                    }
+                },
+                month: {
+                    title: 'Month',
+                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
+                },
+                day: {
+                    title: 'Day',
+                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12',
+                        '13': '13', '14': '14', '15': '15', '16': '16', '17': '17', '18': '18', '19': '19', '20': '20', '21': '21', '22': '22', '23': '23', '24': '24',
+                        '25': '25', '26': '26', '27': '27', '28': '28', '29': '29', '30': '30', '31': '31' }
+                },
+                text: {
+                    title: 'Text',
+                    type: 'textarea'
+                }
+            }
+        });
+        $('#HolidaysTableContainer').jtable('load');
+
+
+//        $('#PersonTableContainer').jtable({
+//            title: 'Working Saturdays',
+//            paging: true,
+//            pageSize: 10,
+//            sorting: true,
+//            defaultSorting: 'vacationStatus ASC',
+//            actions: {
+//                listAction: 'HolidaysManagerController?action=list',
+//                createAction: 'HolidaysManagerController?action=create',
+//                updateAction: 'HolidaysManagerController?action=update',
+//                deleteAction: 'HolidaysManagerController?action=delete'
+//            },
+//            fields: {
+//                holidayID: {
+//                    key: true,
+//                    create: false,
+//                    edit: false,
+//                    list: false
+//                },
+//                year: {
+//                    title: 'Year',
+//                    options: function() {
+//                        if (cachedCityOptions) { //Check for cache
+//                            return cachedCityOptions;
+//                        }
+//
+//                        var options = [];
+//
+//                        $.ajax({
+//                            url: 'NextYearsList',
+//                            type: 'POST',
+//                            dataType: 'json',
+//                            async: false,
+//                            success: function (data) {
+//                                if (data.Result != 'OK') {
+//                                    alert(data.Message);
+//                                    return;
+//                                }
+//                                options = data.Records;
+//                            }
+//                        });
+//
+//                        return cachedCityOptions = options; //Cache results and return options
+//                    }
+//                },
+//                month: {
+//                    title: 'Month',
+//                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
+//                },
+//                day: {
+//                    title: 'Day',
+//                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12',
+//                                 '13': '13', '14': '14', '15': '15', '16': '16', '17': '17', '18': '18', '19': '19', '20': '20', '21': '21', '22': '22', '23': '23', '24': '24',
+//                                 '25': '25', '26': '26', '27': '27', '28': '28', '29': '29', '30': '30', '31': '31' }
+//                },
+//                text: {
+//                    title: 'Text'
+//
+//                }
+//            }
+//        });
+//        $('#PersonTableContainer').jtable('load');
+    });
+</script>
+
+<span id="HolidaysTableContainer" style="float: left; width: 48%; margin-top: 10px;"></span>
+<span id="PersonTableContainer" style="float: right; width: 48%;"></span>
+

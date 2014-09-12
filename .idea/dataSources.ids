@@ -1107,6 +1107,14 @@
       <primary-key name="SYS_PK_10092" columns="EMPLOYEE_ID"/>
       <exported-key name="EMPLOYEES_VACATIONS_FK" table="VACATIONS" schema="PUBLIC" catalog="PUBLIC" columns="EMPLOYEE_ID"/>
     </table>
+    <table name="HOLIDAYS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="HOLIDAY_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="YEAR" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MONTH" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DAY" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TEXT" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10623" columns="HOLIDAY_ID"/>
+    </table>
     <table name="VACATIONS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="VACATION_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="BEGINDATE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
@@ -1119,6 +1127,14 @@
       <column name="MYMANAGER" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="SYS_PK_10102" columns="VACATION_ID"/>
       <foreign-key name="EMPLOYEES_VACATIONS_FK" columns="EMPLOYEE_ID" ref-table="EMPLOYEES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="EMPLOYEE_ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="WORKINGSATURDAYS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="WORKINGSATURDAY_ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="YEAR" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MONTH" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DAY" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TEXT" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_11035" columns="WORKINGSATURDAY_ID"/>
     </table>
     <table name="BLOCKS" schema="SYSTEM_LOBS" catalog="PUBLIC" type="SYSTEM TABLE">
       <column name="BLOCK_ADDR" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>

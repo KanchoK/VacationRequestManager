@@ -1,5 +1,8 @@
 package com.web;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,8 +13,8 @@ import java.sql.SQLException;
 public class DBConnection {
     private static Connection connection = null;
 
-    public static Connection getConnection(){
-        if(connection != null){
+    public static Connection getConnection() {
+        if (connection != null) {
             return connection;
         }
         else {
@@ -26,7 +29,33 @@ public class DBConnection {
 
             return  connection;
         }
+
+//        else {
+//
+//            InitialContext ctx = null;
+//            try {
+//                ctx = new InitialContext();
+//            } catch (NamingException e) {
+//                e.printStackTrace();
+//            }
+//            DataSource ds = null;
+//            try {
+//                ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DSTest");
+//            } catch (NamingException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                connection = ds.getConnection();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+////                Class.forName("org.hsqldb.jdbcDriver");
+////                connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB", "SA", "");
+//        }
+//        return  connection;
+
     }
+
 
     public static void closeConnection() {
         if(connection != null){

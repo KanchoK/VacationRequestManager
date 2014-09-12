@@ -1,0 +1,19 @@
+<resource-ref>
+    <description>My DataSource Reference</description>
+    <res-ref-name>jdbc/DSTest</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+</resource-ref>
+
+<New id="DSTest" class="org.eclipse.jetty.plus.jndi.Resource">
+<Arg></Arg>
+<Arg>jdbc/DSTest</Arg>
+<Arg>
+    <New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <Set name="driverClass">org.hsqldb.jdbcDriver</Set>
+        <Set name="jdbcUrl">jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB</Set>
+        <Set name="user">SA</Set>
+        <Set name="password"></Set>
+    </New>
+</Arg>
+</New>

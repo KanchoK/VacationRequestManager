@@ -7,32 +7,32 @@ var app = angular.module('myApp',[]);
 app.config(function($routeProvider){
     $routeProvider
         .when('/' || '/login' || '/login.html',{
-            templateUrl : 'login.html'
-//            controller : 'mainController'
+            templateUrl : 'login.html',
+            controller : 'mainController'
         })
         .when('/signUp',{
             templateUrl : 'signUp.html'
         })
         .when('/requestManager',{
-            templateUrl : 'requestManager.jsp'
+            templateUrl : 'requestManager.html'
         })
         .when('/changePassword',{
-            templateUrl : 'changePassword.jsp'
+            templateUrl : 'changePassword.html'
         })
         .when('/controlPanel',{
-            templateUrl : 'controlPanel.jsp'
+            templateUrl : 'controlPanel.html'
         })
         .when('/myRequests',{
-            templateUrl : 'myRequests.jsp'
+            templateUrl : 'myRequests.html'
         })
         .when('/vacationCalendar',{
-            templateUrl : 'vacationCalendar.jsp'
+            templateUrl : 'vacationCalendar.html'
         })
         .when('/holidaysManager',{
-            templateUrl : 'holidaysManager.jsp'
+            templateUrl : 'holidaysManager.html'
         })
         .when('/forgottenPassword',{
-            templateUrl : 'forgottenPassword.jsp'
+            templateUrl : 'forgottenPassword.html'
         })
         .otherwise({
         redirectTo: '/'
@@ -40,7 +40,7 @@ app.config(function($routeProvider){
 });
 
 app.controller('mainController',function($scope){
-
+    menuAccessibility(0);
 });
 
 app.controller('loginController', function($scope, $http, $location){

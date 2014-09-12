@@ -106,6 +106,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>HolidaysManagerController</servlet-name>
+        <servlet-class>com.web.HolidaysManagerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HolidaysManagerController</servlet-name>
+        <url-pattern>/HolidaysManagerController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ForgottenPassword</servlet-name>
         <servlet-class>com.web.ForgottenPassword</servlet-class>
     </servlet>
@@ -130,6 +139,15 @@
     <servlet-mapping>
         <servlet-name>RequestNotificationController</servlet-name>
         <url-pattern>/RequestNotificationController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionProvider</servlet-name>
+        <servlet-class>com.web.SessionProvider</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionProvider</servlet-name>
+        <url-pattern>/SessionProvider</url-pattern>
     </servlet-mapping>
 
     <filter>
