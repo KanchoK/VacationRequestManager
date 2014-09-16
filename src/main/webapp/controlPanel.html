@@ -1,6 +1,6 @@
     <script type="text/javascript">
 
-        var cachedCityOptions = null;
+        var cachedMyManagerOptions = null;
 
         $(document).ready(function () {
             $.ajax({
@@ -66,14 +66,6 @@
                         title: 'Email',
                         width: '20%'
                     },
-//                    password: {
-//                        title: 'Password',
-//                        width: '20%',
-//                        type: 'password',
-//                        list: false,
-//                        create: false,
-//                        edit: false
-//                    },
                     accessLevel: {
                         title: 'Access level',
                         width: '14%',
@@ -84,8 +76,8 @@
                         title: 'Manager',
                         width: '18%',
                         options: function() {
-                            if (cachedCityOptions) { //Check for cache
-                                return cachedCityOptions;
+                            if (cachedMyManagerOptions) { //Check for cache
+                                return cachedMyManagerOptions;
                             }
 
                             var options = [];
@@ -104,7 +96,7 @@
                                 }
                             });
 
-                            return cachedCityOptions = options; //Cache results and return options
+                            return cachedMyManagerOptions = options; //Cache results and return options
                         }
                     },
                     vacationDaysLeft: {

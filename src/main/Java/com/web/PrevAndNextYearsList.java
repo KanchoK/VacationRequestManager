@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Created by R500 on 12.9.2014 г..
  */
-public class NextYesrsList extends HttpServlet {
+public class PrevAndNextYearsList extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         JSONObject obj = new JSONObject();
@@ -22,14 +22,20 @@ public class NextYesrsList extends HttpServlet {
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        int index = 0;
 
-        obj.put(String.valueOf(index), "Ежегодно");
-        while(index < 10){
+        obj.put("0", "Ежегодно");
+        int period = 10;
+        for (int i = 0; i < period; i++){
+            obj.put(String.valueOf(calendar.get(Calendar.YEAR) - 1), calendar.get(Calendar.YEAR) - 1);
+            calendar.add(Calendar.YEAR, -1);
+        }
+
+        calendar.add(Calendar.YEAR, period);
+        for (int i = 0; i < period; i++){
             obj.put(String.valueOf(calendar.get(Calendar.YEAR)), calendar.get(Calendar.YEAR));
             calendar.add(Calendar.YEAR, 1);
-            index++;
         }
+
         try {
             String listData = "{\"Result\":\"OK\",\"Records\":" + obj + "}";
             response.getWriter().print(listData);

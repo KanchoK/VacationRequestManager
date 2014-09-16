@@ -639,5 +639,15 @@ th.fc-sun{
     height: 50px;
     font-size: 15px;
 }
+
+/*.holidayText is created in vacationCalendar.html*/
+.holidayText,
+.workingSaturdayText{
+    width: 170px;
+    margin: 0;
+    padding-left: 5px;
+    color: #fff;
+    font-size: 18px;
+}
 	
 	

@@ -1,0 +1,42 @@
+<!--<resource-ref>-->
+    <!--<description>My DataSource Reference</description>-->
+    <!--<res-ref-name>jdbc/DSTest</res-ref-name>-->
+    <!--<res-type>javax.sql.DataSource</res-type>-->
+    <!--<res-auth>Container</res-auth>-->
+<!--</resource-ref>-->
+
+
+        <!--<Configure>-->
+
+<!--<Array id="plusConfig" type="java.lang.String">-->
+    <!--<Item>org.mortbay.jetty.webapp.WebInfConfiguration</Item>-->
+    <!--<Item>org.mortbay.jetty.plus.webapp.EnvConfiguration</Item>-->
+    <!--<Item>org.mortbay.jetty.plus.webapp.Configuration</Item>-->
+    <!--<Item>org.mortbay.jetty.webapp.JettyWebXmlConfiguration</Item>-->
+    <!--<Item>org.mortbay.jetty.webapp.TagLibConfiguration</Item>-->
+<!--</Array>-->
+
+
+<!--<Configure class="org.mortbay.jetty.webapp.WebAppContext">-->
+
+
+<!--<New id="myWebAppContext" class="org.mortbay.jetty.webapp.WebAppContext">-->
+<!--<Set name="ConfigurationClasses"><Ref id="plusConfig"/></Set>-->
+<New id="DSTest" class="org.mortbay.jetty.plus.naming.Resource">
+    <Arg></Arg>
+    <Arg>jdbc/DSTest</Arg>
+    <Arg>
+        <New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+            <Set name="driverClass">org.hsqldb.jdbcDriver</Set>
+            <Set name="jdbcUrl">jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB</Set>
+            <Set name="user">SA</Set>
+            <Set name="password"></Set>
+        </New>
+    </Arg>
+</New>
+
+
+
+<!--</New>-->
+
+<!--</Configure>-->

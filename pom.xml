@@ -53,11 +53,25 @@
           <version>5.5.2</version>
       </dependency>
 
+      <dependency>
+          <groupId>c3p0</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>0.9.1.2</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>jetty</artifactId>
+          <version>7.0.0.pre5</version>
+      </dependency>
+
       <!--<dependency>-->
-          <!--<groupId>javax.sql</groupId>-->
-          <!--<artifactId>jdbc-stdext</artifactId>-->
-          <!--<version>2.0</version>-->
+          <!--<groupId>org.eclipse.jetty</groupId>-->
+          <!--<artifactId>jetty-maven-plugin</artifactId>-->
+          <!--<version>9.2.2.v20140723</version>-->
       <!--</dependency>-->
+
+
 
   </dependencies>
   <build>
@@ -86,6 +100,10 @@
                           <!--<keyPassword>jetty6</keyPassword>-->
                       <!--</connector>-->
                   <!--</connectors>-->
+
+
+                  <!--<jettyEnvXml>src/main/webapp/WEB-INF/context.xml</jettyEnvXml>-->
+                  <!--<jettyEnvXml>src/main/webapp/WEB-INF/myContext.xml</jettyEnvXml>-->
               </configuration>
               <executions>
                   <execution>

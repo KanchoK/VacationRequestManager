@@ -1,25 +1,47 @@
 <script>
     var selectedName = "All";
-    $(document).ready(function() {
-        $.ajax({
-            url: 'SessionProvider',
-            type: 'POST',
-            data: {
-                action: 'getAccess'
-            },
-            success: function(data){
-                var obj = JSON.parse(data);
+    var holidays = [];
+    var workingSaturdays = [];
 
-                var access = obj.accessLevel;
-                menuAccessibility(access);
+    function workingSaturdaysList(){
+        $.ajax({
+            url: 'WorkingSaturdaysListServlet',
+            type: 'POST',
+            success: function (data) {
+                for (i = 0; i < data.workingSaturdaysDates.length; i++) {
+                    var workingSaturday = [];
+                    workingSaturday.push(data.workingSaturdaysDates[i]);
+                    workingSaturday.push(data.workingSaturdaysNames[i]);
+                    workingSaturdays.push(workingSaturday);
+                }
             },
-            error: function(e){
+            error: function (e) {
                 alert(e);
             }
         });
+    }
 
-        // page is now ready, initialize the calendar...
+    function holidaysList(){
+        $.ajax({
+            url: 'HolidaysListServlet',
+            type: 'POST',
+            success: function (data) {
+                for (i = 0; i < data.holidaysDates.length; i++) {
+                    var holiday = [];
+                    holiday.push(data.holidaysDates[i]);
+                    holiday.push(data.holidaysNames[i]);
+                    holidays.push(holiday);
+                }
+//                set the calendar when both lists with holidays and working saturdays are filled from the servlets
+                setCalendar();
+            },
+            error: function (e) {
+                alert(e);
+            }
+        });
+    }
 
+    function setCalendar() {
         $('#calendar').fullCalendar({
 //            put your options and callbacks here
             firstDay: 1,
@@ -27,7 +49,7 @@
 //            weekends: false,
             header: {
                 left: '',
-                center : 'title',
+                center: 'title',
                 right: 'today prev,next'
             },
             weekNumbers: true,
@@ -46,7 +68,7 @@
                 {
                     url: 'VacationCalendarController',
                     type: 'POST',
-                    color: 'green',
+                    color: '#8C00A8',
                     data: {
                         name: selectedName,
                         vacationType: 2
@@ -56,22 +78,30 @@
             dayRender: function (date, cell) {
 
 // ajax request to servlet which will check if the date is holiday or working day
-
-
-                    if("2014-09-06" == date.format("YYYY-MM-DD")){
-                        cell.css("background-color", "red");
-//                        cell.first().addClass("holiday-number-" + i);
-//                        $("td.holiday-number-" + i).children().append("<p class='holidayName'>"+ holidays[i][1] +"</p>");
+                for (i = 0; i < holidays.length; i++) {
+                    if(holidays[i][0] == date.format("YYYY-MM-DD") || holidays[i][0] == "0-" + date.format("MM-DD")){
+                        cell.css("background-color", "#1CA800");
+                        cell.first().addClass("holiday-number-" + i);
+                        $("td.holiday-number-" + i).children().children().next().removeClass("fc-day-content");
+                        $("td.holiday-number-" + i).children().children().next().append("<p class='holidayText'>"+ holidays[i][1] +"</p>");
                     }
+                }
 
+                for (i = 0; i < workingSaturdays.length; i++) {
+                    if(workingSaturdays[i][0] == date.format("YYYY-MM-DD") || workingSaturdays[i][0] == "0-" + date.format("MM-DD")){
+                        cell.css("background-color", "black");
+                        cell.first().addClass("workingSaturday-number-" + i);
+                        $("td.workingSaturday-number-" + i).children().children().next().removeClass("fc-day-content");
+                        $("td.workingSaturday-number-" + i).children().children().next().append("<p class='workingSaturdayText'>"+ workingSaturdays[i][1] +"</p>");
+                    }
+                }
             }
         });
-
         $(".fc-header-left").append("<div class='fc-dropdown'>" +
-                                        "<select id='employeeSelect' onchange='selectEmployee(this.value)'>" +
-                                            "<option value='All'>Всички</option>" +
-                                        "</select>" +
-                                    "</div>");
+                "<select id='employeeSelect' onchange='selectEmployee(this.value)'>" +
+                "<option value='All'>Всички</option>" +
+                "</select>" +
+                "</div>");
 
         $.ajax({
             url: 'EmployeeListServlet',
@@ -85,6 +115,28 @@
                 alert(e);
             }
         });
+    }
+
+    $(document).ready(function() {
+        $.ajax({
+            url: 'SessionProvider',
+            type: 'POST',
+            data: {
+                action: 'getAccess'
+            },
+            success: function(data){
+                var obj = JSON.parse(data);
+
+                var access = obj.accessLevel;
+                menuAccessibility(access);
+            },
+            error: function(e){
+                alert(e);
+            }
+        });
+
+        workingSaturdaysList();
+        holidaysList();
     });
 
     function selectEmployee(name){

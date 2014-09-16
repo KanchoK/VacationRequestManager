@@ -106,12 +106,48 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>HolidaysManagerController</servlet-name>
-        <servlet-class>com.web.HolidaysManagerController</servlet-class>
+        <servlet-name>HolidaysListServlet</servlet-name>
+        <servlet-class>com.web.HolidaysListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>HolidaysManagerController</servlet-name>
-        <url-pattern>/HolidaysManagerController</url-pattern>
+        <servlet-name>HolidaysListServlet</servlet-name>
+        <url-pattern>/HolidaysListServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WorkingSaturdaysListServlet</servlet-name>
+        <servlet-class>com.web.WorkingSaturdaysListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WorkingSaturdaysListServlet</servlet-name>
+        <url-pattern>/WorkingSaturdaysListServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HolidaysTableController</servlet-name>
+        <servlet-class>com.web.HolidaysTableController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HolidaysTableController</servlet-name>
+        <url-pattern>/HolidaysTableController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WorkingSaturdaysTableController</servlet-name>
+        <servlet-class>com.web.WorkingSaturdaysTableController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WorkingSaturdaysTableController</servlet-name>
+        <url-pattern>/WorkingSaturdaysTableController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PrevAndNextYearsList</servlet-name>
+        <servlet-class>com.web.PrevAndNextYearsList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PrevAndNextYearsList</servlet-name>
+        <url-pattern>/PrevAndNextYearsList</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -162,5 +198,12 @@
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
+
+    <!--<resource-ref>-->
+        <!--<description>My DataSource Reference</description>-->
+        <!--<res-ref-name>jdbc/DSTest</res-ref-name>-->
+        <!--<res-type>javax.sql.DataSource</res-type>-->
+        <!--<res-auth>Container</res-auth>-->
+    <!--</resource-ref>-->
 
 </web-app>

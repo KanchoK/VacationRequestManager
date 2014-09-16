@@ -1,6 +1,30 @@
 <script type="text/javascript">
 
-    var cachedCityOptions = null;
+    var cachedYearOptions = null;
+
+    var YearOptions = function() {
+        if (cachedYearOptions) { //Check for cache
+            return cachedYearOptions;
+        }
+
+        var options = [];
+
+        $.ajax({
+            url: 'PrevAndNextYearsList',
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                if (data.Result != 'OK') {
+                    alert(data.Message);
+                    return;
+                }
+                options = data.Records;
+            }
+        });
+
+        return cachedYearOptions = options; //Cache results and return options
+    };
 
     $(document).ready(function () {
         $.ajax({
@@ -22,131 +46,96 @@
 
         $('#HolidaysTableContainer').jtable({
             title: 'Holidays',
-//            paging: true,
-//            pageSize: 10,
-//            sorting: true,
-//            defaultSorting: 'vacationStatus ASC',
+            paging: true,
+            pageSize: 10,
+            sorting: true,
+            defaultSorting: 'year ASC',
             actions: {
-                listAction: 'HolidaysManagerController?action=list',
-                createAction: 'HolidaysManagerController?action=create',
-                updateAction: 'HolidaysManagerController?action=update',
-                deleteAction: 'HolidaysManagerController?action=delete'
+                listAction: 'HolidaysTableController?action=list',
+                createAction: 'HolidaysTableController?action=create',
+                updateAction: 'HolidaysTableController?action=update',
+                deleteAction: 'HolidaysTableController?action=delete'
             },
             fields: {
-                holiday_ID: {
+                holiday_id: {
                     key: true,
                     create: false,
                     edit: false,
                     list: false
                 },
-                year: {
-                    title: 'Year',
-                    width: '10%',
-                    options: function () {
-                        if (cachedCityOptions) { //Check for cache
-                            return cachedCityOptions;
-                        }
-
-                        var options = [];
-
-                        $.ajax({
-                            url: 'NextYearsList',
-                            type: 'POST',
-                            dataType: 'json',
-                            async: false,
-                            success: function (data) {
-                                if (data.Result != 'OK') {
-                                    alert(data.Message);
-                                    return;
-                                }
-                                options = data.Records;
-                            }
-                        });
-
-                        return cachedCityOptions = options; //Cache results and return options
-                    }
-                },
-                month: {
-                    title: 'Month',
-                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
-                },
                 day: {
                     title: 'Day',
+                    width: '14%',
                     options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12',
                         '13': '13', '14': '14', '15': '15', '16': '16', '17': '17', '18': '18', '19': '19', '20': '20', '21': '21', '22': '22', '23': '23', '24': '24',
                         '25': '25', '26': '26', '27': '27', '28': '28', '29': '29', '30': '30', '31': '31' }
                 },
+                month: {
+                    title: 'Month',
+                    width: '14%',
+                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
+                },
+                year: {
+                    title: 'Year',
+                    width: '14%',
+                    options: YearOptions
+                },
                 text: {
                     title: 'Text',
-                    type: 'textarea'
+                    width: '58%',
+                    type: 'textarea',
+                    sorting: false
                 }
             }
         });
         $('#HolidaysTableContainer').jtable('load');
 
 
-//        $('#PersonTableContainer').jtable({
-//            title: 'Working Saturdays',
-//            paging: true,
-//            pageSize: 10,
-//            sorting: true,
-//            defaultSorting: 'vacationStatus ASC',
-//            actions: {
-//                listAction: 'HolidaysManagerController?action=list',
-//                createAction: 'HolidaysManagerController?action=create',
-//                updateAction: 'HolidaysManagerController?action=update',
-//                deleteAction: 'HolidaysManagerController?action=delete'
-//            },
-//            fields: {
-//                holidayID: {
-//                    key: true,
-//                    create: false,
-//                    edit: false,
-//                    list: false
-//                },
-//                year: {
-//                    title: 'Year',
-//                    options: function() {
-//                        if (cachedCityOptions) { //Check for cache
-//                            return cachedCityOptions;
-//                        }
-//
-//                        var options = [];
-//
-//                        $.ajax({
-//                            url: 'NextYearsList',
-//                            type: 'POST',
-//                            dataType: 'json',
-//                            async: false,
-//                            success: function (data) {
-//                                if (data.Result != 'OK') {
-//                                    alert(data.Message);
-//                                    return;
-//                                }
-//                                options = data.Records;
-//                            }
-//                        });
-//
-//                        return cachedCityOptions = options; //Cache results and return options
-//                    }
-//                },
-//                month: {
-//                    title: 'Month',
-//                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
-//                },
-//                day: {
-//                    title: 'Day',
-//                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12',
-//                                 '13': '13', '14': '14', '15': '15', '16': '16', '17': '17', '18': '18', '19': '19', '20': '20', '21': '21', '22': '22', '23': '23', '24': '24',
-//                                 '25': '25', '26': '26', '27': '27', '28': '28', '29': '29', '30': '30', '31': '31' }
-//                },
-//                text: {
-//                    title: 'Text'
-//
-//                }
-//            }
-//        });
-//        $('#PersonTableContainer').jtable('load');
+        $('#PersonTableContainer').jtable({
+            title: 'Working Saturdays',
+            paging: true,
+            pageSize: 10,
+            sorting: true,
+            defaultSorting: 'year ASC',
+            actions: {
+                listAction: 'WorkingSaturdaysTableController?action=list',
+                createAction: 'WorkingSaturdaysTableController?action=create',
+                updateAction: 'WorkingSaturdaysTableController?action=update',
+                deleteAction: 'WorkingSaturdaysTableController?action=delete'
+            },
+            fields: {
+                workingSaturday_id: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                day: {
+                    title: 'Day',
+                    width: '14%',
+                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12',
+                        '13': '13', '14': '14', '15': '15', '16': '16', '17': '17', '18': '18', '19': '19', '20': '20', '21': '21', '22': '22', '23': '23', '24': '24',
+                        '25': '25', '26': '26', '27': '27', '28': '28', '29': '29', '30': '30', '31': '31' }
+                },
+                month: {
+                    title: 'Month',
+                    width: '14%',
+                    options: { '1': '01', '2': '02', '3': '03', '4': '04', '5': '05', '6': '06', '7': '07', '8': '08', '9': '09', '10': '10', '11': '11', '12': '12'}
+                },
+                year: {
+                    title: 'Year',
+                    width: '14%',
+                    options: YearOptions
+                },
+                text: {
+                    title: 'Text',
+                    type: 'textarea',
+                    width: '58%',
+                    sorting: false
+                }
+            }
+        });
+        $('#PersonTableContainer').jtable('load');
     });
 </script>
 

@@ -62,14 +62,14 @@ public class DynamicHolidays extends Holidays {
 
     }
 
-    public static Date getEasterMonday(Date easterSunday) {
-        calendar.setTime(easterSunday);
+    public static Date getEasterMonday(Date easterMonday) {
+        calendar.setTime(easterMonday);
         calendar.add(Calendar.DAY_OF_MONTH, 1);
         return calendar.getTime();
     }
 
-    public static Date getGoodFriday(Date easterSunday) {
-        calendar.setTime(easterSunday);
+    public static Date getGoodFriday(Date easterFriday) {
+        calendar.setTime(easterFriday);
         calendar.add(Calendar.DAY_OF_MONTH, -2);
         return calendar.getTime();
     }

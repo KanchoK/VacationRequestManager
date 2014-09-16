@@ -1552,18 +1552,65 @@ public class CrudDao {
         }
     }
 
-//    methods for accessing the information about holidays and working saturdays
+//    methods for accessing the information about holidays and working saturdays tables
 
     public static List<Holiday> getAllHolidays(){
         Connection conn = DBConnection.getConnection();
         List<Holiday> holidays = new ArrayList<Holiday>();
 
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select day, year, month, text from holidays");
+            while (rs.next()){
+                Holiday holiday = new Holiday();
+
+//                holiday.setHoliday_id(rs.getInt("holiday_id"));
+                holiday.setYear(rs.getInt("year"));
+                holiday.setMonth(rs.getInt("month"));
+                holiday.setDay(rs.getInt("day"));
+                holiday.setText(rs.getString("text"));
+
+                holidays.add(holiday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return holidays;
+    }
+
+    public static List<Holiday> getAllHolidays(int jtStartIndex, int jtPageSize, String jtSorting){
+        Connection conn = DBConnection.getConnection();
+        List<Holiday> holidays = new ArrayList<Holiday>();
+        String startIndex = Integer.toString(jtStartIndex);
+        String pageSize = Integer.toString(jtPageSize);
 
         Statement st = null;
         ResultSet rs = null;
         try {
             st = conn.createStatement();
-            rs = st.executeQuery("select * from holidays");
+            rs = st.executeQuery("select * from holidays "+ "order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
             while (rs.next()){
                 Holiday holiday = new Holiday();
 
@@ -1600,4 +1647,353 @@ public class CrudDao {
         }
         return holidays;
     }
+
+    public static int getHolidaysCount(){
+        int count=0;
+        Connection conn = DBConnection.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select COUNT(*) from holidays");
+            rs.next();
+            count = rs.getInt("C1");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return count;
+    }
+
+    public static int addHoliday(Holiday holiday){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int key = -1;
+        try {
+            pst = conn.prepareStatement("insert into Holidays (day, month, year, text)" +
+                    " values (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, holiday.getDay());
+            pst.setInt(2, holiday.getMonth());
+            pst.setInt(3, holiday.getYear());
+            pst.setString(4, holiday.getText());
+            pst.executeUpdate();
+            rs = pst.getGeneratedKeys();
+            if (rs.next())
+                key = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+        return key;
+    }
+
+    public static void updateHoliday(Holiday holiday){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update holidays set day = ?, month = ?, year = ?, text = ? where holiday_id = ?");
+            pst.setInt(1, holiday.getDay());
+            pst.setInt(2, holiday.getMonth());
+            pst.setInt(3, holiday.getYear());
+            pst.setString(4, holiday.getText());
+            pst.setInt(5, holiday.getHoliday_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void deleteHoliday(int holidayID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("delete from Holidays where holiday_id = ?");
+            pst.setInt(1, holidayID);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static List<WorkingSaturday> getAllWorkingSaturdays(){
+        Connection conn = DBConnection.getConnection();
+        List<WorkingSaturday> workingSaturdays = new ArrayList<WorkingSaturday>();
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select day, month, year, text from workingSaturdays");
+            while (rs.next()){
+                WorkingSaturday workingSaturday = new WorkingSaturday();
+
+//                workingSaturday.setWorkingSaturday_id(rs.getInt("workingSaturday_id"));
+                workingSaturday.setYear(rs.getInt("year"));
+                workingSaturday.setMonth(rs.getInt("month"));
+                workingSaturday.setDay(rs.getInt("day"));
+                workingSaturday.setText(rs.getString("text"));
+
+                workingSaturdays.add(workingSaturday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return workingSaturdays;
+    }
+
+    public static List<WorkingSaturday> getAllWorkingSaturdays(int jtStartIndex, int jtPageSize, String jtSorting){
+        Connection conn = DBConnection.getConnection();
+        List<WorkingSaturday> workingSaturdays = new ArrayList<WorkingSaturday>();
+        String startIndex = Integer.toString(jtStartIndex);
+        String pageSize = Integer.toString(jtPageSize);
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from workingSaturdays "+ "order by " + jtSorting + " limit " + pageSize + " offset " + startIndex);
+            while (rs.next()){
+                WorkingSaturday workingSaturday = new WorkingSaturday();
+
+                workingSaturday.setWorkingSaturday_id(rs.getInt("workingSaturday_id"));
+                workingSaturday.setYear(rs.getInt("year"));
+                workingSaturday.setMonth(rs.getInt("month"));
+                workingSaturday.setDay(rs.getInt("day"));
+                workingSaturday.setText(rs.getString("text"));
+
+                workingSaturdays.add(workingSaturday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return workingSaturdays;
+    }
+
+    public static int getWorkingSaturdaysCount(){
+        int count=0;
+        Connection conn = DBConnection.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select COUNT(*) from workingSaturdays");
+            rs.next();
+            count = rs.getInt("C1");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return count;
+    }
+
+    public static int addWorkingSaturday(WorkingSaturday workingSaturday){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int key = -1;
+        try {
+            pst = conn.prepareStatement("insert into workingSaturdays (day, month, year, text)" +
+                    " values (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, workingSaturday.getDay());
+            pst.setInt(2, workingSaturday.getMonth());
+            pst.setInt(3, workingSaturday.getYear());
+            pst.setString(4, workingSaturday.getText());
+            pst.executeUpdate();
+            rs = pst.getGeneratedKeys();
+            if (rs.next())
+                key = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+        return key;
+    }
+
+    public static void updateWorkingSaturday(WorkingSaturday workingSaturday){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update workingSaturdays set day = ?, month = ?, year = ?, text = ? where workingSaturday_id = ?");
+            pst.setInt(1, workingSaturday.getDay());
+            pst.setInt(2, workingSaturday.getMonth());
+            pst.setInt(3, workingSaturday.getYear());
+            pst.setString(4, workingSaturday.getText());
+            pst.setInt(5, workingSaturday.getWorkingSaturday_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void deleteWorkingSaturday(int workingSaturdayID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("delete from workingSaturdays where workingSaturday_id = ?");
+            pst.setInt(1, workingSaturdayID);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+
 }
+
+
+

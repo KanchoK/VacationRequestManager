@@ -1,5 +1,6 @@
 package com.web;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -33,17 +34,15 @@ public class DBConnection {
 //        else {
 //
 //            InitialContext ctx = null;
-//            try {
-//                ctx = new InitialContext();
-//            } catch (NamingException e) {
-//                e.printStackTrace();
-//            }
 //            DataSource ds = null;
 //            try {
-//                ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DSTest");
+//                ctx = new InitialContext();
+//                Context initCtx = (Context) ctx.lookup("java:comp/env");
+//                ds = (DataSource) initCtx.lookup("jdbc/DSTest");
 //            } catch (NamingException e) {
 //                e.printStackTrace();
 //            }
+//
 //            try {
 //                connection = ds.getConnection();
 //            } catch (SQLException e) {
@@ -51,9 +50,9 @@ public class DBConnection {
 //            }
 ////                Class.forName("org.hsqldb.jdbcDriver");
 ////                connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9001/VacationManagerDB", "SA", "");
-//        }
 //        return  connection;
-
+//        }
+//
     }
 
 
