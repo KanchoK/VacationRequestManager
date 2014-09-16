@@ -1,27 +1,8 @@
 <script>
     var selectedName = "All";
-    var holidays = [];
-    var workingSaturdays = [];
 
-    function workingSaturdaysList(){
-        $.ajax({
-            url: 'WorkingSaturdaysListServlet',
-            type: 'POST',
-            success: function (data) {
-                for (i = 0; i < data.workingSaturdaysDates.length; i++) {
-                    var workingSaturday = [];
-                    workingSaturday.push(data.workingSaturdaysDates[i]);
-                    workingSaturday.push(data.workingSaturdaysNames[i]);
-                    workingSaturdays.push(workingSaturday);
-                }
-            },
-            error: function (e) {
-                alert(e);
-            }
-        });
-    }
-
-    function holidaysList(){
+    function holidaysListForCalendar() {
+        holidays = [];
         $.ajax({
             url: 'HolidaysListServlet',
             type: 'POST',
@@ -33,6 +14,7 @@
                     holidays.push(holiday);
                 }
 //                set the calendar when both lists with holidays and working saturdays are filled from the servlets
+//                otherwise dayRender will check the days of the calendar before holidays and working saturdays being set
                 setCalendar();
             },
             error: function (e) {
@@ -91,7 +73,7 @@
                     if(workingSaturdays[i][0] == date.format("YYYY-MM-DD") || workingSaturdays[i][0] == "0-" + date.format("MM-DD")){
                         cell.css("background-color", "black");
                         cell.first().addClass("workingSaturday-number-" + i);
-                        $("td.workingSaturday-number-" + i).children().children().next().removeClass("fc-day-content");
+//                        $("td.workingSaturday-number-" + i).children().children().next().removeClass("fc-day-content");
                         $("td.workingSaturday-number-" + i).children().children().next().append("<p class='workingSaturdayText'>"+ workingSaturdays[i][1] +"</p>");
                     }
                 }
@@ -117,6 +99,7 @@
         });
     }
 
+
     $(document).ready(function() {
         $.ajax({
             url: 'SessionProvider',
@@ -136,9 +119,8 @@
         });
 
         workingSaturdaysList();
-        holidaysList();
+        holidaysListForCalendar();
     });
-
     function selectEmployee(name){
         selectedName = name;
         newSourceOne = {

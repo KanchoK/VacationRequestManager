@@ -86,7 +86,9 @@ public class RequestManagerController extends HttpServlet{
                             SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                             Date ParsedBeginDate = sdf.parse(beginDate);
                             Date ParsedEndDate = sdf.parse(endDate);
-                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
+                            Days holidays = new Holidays();
+                            Days workingSaturdays = new WorkingSaturdays();
+                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate, holidays, workingSaturdays);
 
                         } catch (ParseException e) {
                             e.printStackTrace();

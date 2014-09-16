@@ -1,44 +1,29 @@
 package com.web;
 
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by R500 on 19.8.2014 г..
  */
-public abstract class Holidays {
+public class Holidays extends Days {
 
-    protected final static Calendar calendar = Calendar.getInstance();
+    private Set<Day> holidays = new HashSet<Day>();
 
-    protected static class Holiday {
-
-        private int month;
-        private int day;
-
-        protected Holiday(int month, int day) {
-            this.month = month;
-            this.day = day;
+    public Holidays() {
+        List<Holiday> holidayList = CrudDao.getHolidaysDates();
+        for (int i = 0; i < holidayList.size(); i++){
+            Holiday currentHoliday = holidayList.get(i);
+            holidays.add(new Day(currentHoliday.getYear(), currentHoliday.getMonth(), currentHoliday.getDay()));
         }
-
-        protected Holiday(Date date) {
-            calendar.setTime(date);
-            this.month = calendar.get(Calendar.MONTH) + 1;
-            this.day = calendar.get(Calendar.DAY_OF_MONTH);
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return obj instanceof Holiday && obj.hashCode() == hashCode();
-        }
-
-        @Override
-        public int hashCode() {
-            return Arrays.hashCode(new Object[]{month, day});
-        }
-
     }
 
-    public abstract boolean contains(Date date);
+    @Override
+    public boolean contains(Date date) {
+        Day holiday = new Day(date);
+        return holidays.contains(holiday);
+    }
 
 }

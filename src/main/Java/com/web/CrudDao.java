@@ -1600,6 +1600,50 @@ public class CrudDao {
         return holidays;
     }
 
+    public static List<Holiday> getHolidaysDates(){
+        Connection conn = DBConnection.getConnection();
+        List<Holiday> holidays = new ArrayList<Holiday>();
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select day, year, month from holidays");
+            while (rs.next()){
+                Holiday holiday = new Holiday();
+
+                holiday.setYear(rs.getInt("year"));
+                holiday.setMonth(rs.getInt("month"));
+                holiday.setDay(rs.getInt("day"));
+
+                holidays.add(holiday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return holidays;
+    }
+
     public static List<Holiday> getAllHolidays(int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Holiday> holidays = new ArrayList<Holiday>();
@@ -1771,6 +1815,50 @@ public class CrudDao {
             }
             DBConnection.closeConnection();
         }
+    }
+
+    public static List<WorkingSaturday> getWorkingSaturdaysDates(){
+        Connection conn = DBConnection.getConnection();
+        List<WorkingSaturday> workingSaturdays = new ArrayList<WorkingSaturday>();
+
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select day, month, year from workingSaturdays");
+            while (rs.next()){
+                WorkingSaturday workingSaturday = new WorkingSaturday();
+
+                workingSaturday.setYear(rs.getInt("year"));
+                workingSaturday.setMonth(rs.getInt("month"));
+                workingSaturday.setDay(rs.getInt("day"));
+
+                workingSaturdays.add(workingSaturday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return workingSaturdays;
     }
 
     public static List<WorkingSaturday> getAllWorkingSaturdays(){

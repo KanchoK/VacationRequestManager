@@ -3819,7 +3819,7 @@ function Datepicker() {
 		minDate: null, // The earliest selectable date, or null for no limit
 		maxDate: null, // The latest selectable date, or null for no limit
 		duration: "fast", // Duration of display/closure
-		beforeShowDay: this.noWeekends, // Function that takes a date and returns an array with
+		beforeShowDay: this.workingDays, // Function that takes a date and returns an array with
 			// [0] = true if selectable, false if not, [1] = custom CSS class name(s) or "",
 			// [2] = cell title (optional), e.g. $.datepicker.noWeekends
 		beforeShow: null, // Function that takes an input field and
@@ -4769,6 +4769,50 @@ $.extend(Datepicker.prototype, {
 		var day = date.getDay();
 		return [(day > 0 && day < 6), ""];
 	},
+
+    /* Set as beforeShowDay function to prevent selection of noWorkingDays.
+     * @param  date  Date - the date to customise
+     * @return [boolean, string] - is this date selectable?, what is its CSS class?
+     */
+    workingDays: function(date) {
+        var day = date.getDay();
+        var currentYear = date.getFullYear();
+        var currentMonth = date.getMonth() + 1;
+        if (currentMonth < 10){
+            currentMonth = "0" + currentMonth;
+        }
+        var currentDayOfMonth = date.getDate();
+        if (currentDayOfMonth < 10){
+            currentDayOfMonth = "0" + currentDayOfMonth;
+        }
+        var currentDate = currentYear + "-" + currentMonth + "-" + currentDayOfMonth;
+        var isWorkingSaturday = false;
+        var isHoliday = false;
+        var isWorkingDay;
+        for (i = 0; i < workingSaturdays.length; i++) {
+            if(workingSaturdays[i][0] == currentDate || workingSaturdays[i][0] == "0-" + currentMonth + "-" + currentDayOfMonth){
+                isWorkingSaturday = true;
+                break;
+            }
+        }
+        for (i = 0; i < holidays.length; i++) {
+            if(holidays[i][0] == currentDate || holidays[i][0] == "0-" + currentMonth + "-" + currentDayOfMonth){
+                isHoliday = true;
+                break;
+            }
+        }
+        if(isWorkingSaturday){
+            isWorkingDay = true;
+        } else {
+            if(!(day > 0 && day < 6)){
+                isWorkingDay = false;
+            } else if (isHoliday){
+                isWorkingDay = false;
+            } else isWorkingDay = true;
+        }
+
+        return [isWorkingDay, ""];
+    },
 
 	/* Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
 	 * @param  date  Date - the date to get the week for

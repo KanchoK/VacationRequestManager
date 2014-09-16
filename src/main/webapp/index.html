@@ -26,6 +26,9 @@
     <script src="js/fullcalendar.js" type="text/javascript"></script>
 
     <script>
+        var holidays = [];
+        var workingSaturdays = [];
+
         function menuAccessibility(access){
             var accessLevel = access;
             if (accessLevel == 1){
@@ -61,6 +64,45 @@
                 $('#controlPanelButton').hide();
                 $('#holidaysManagerButton').hide();
             }
+        }
+
+        function workingSaturdaysList(){
+
+            workingSaturdays = [];
+            $.ajax({
+                url: 'WorkingSaturdaysListServlet',
+                type: 'POST',
+                success: function (data) {
+                    for (i = 0; i < data.workingSaturdaysDates.length; i++) {
+                        var workingSaturday = [];
+                        workingSaturday.push(data.workingSaturdaysDates[i]);
+                        workingSaturday.push(data.workingSaturdaysNames[i]);
+                        workingSaturdays.push(workingSaturday);
+                    }
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            });
+        }
+
+        function holidaysList(){
+            holidays = [];
+            $.ajax({
+                url: 'HolidaysListServlet',
+                type: 'POST',
+                success: function (data) {
+                    for (i = 0; i < data.holidaysDates.length; i++) {
+                        var holiday = [];
+                        holiday.push(data.holidaysDates[i]);
+                        holiday.push(data.holidaysNames[i]);
+                        holidays.push(holiday);
+                    }
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            });
         }
     </script>
 

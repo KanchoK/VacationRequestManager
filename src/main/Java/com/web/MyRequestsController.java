@@ -73,7 +73,9 @@ public class MyRequestsController extends HttpServlet{
                         try {
                             Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
                             Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
-                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
+                            Days holidays = new Holidays();
+                            Days workingSaturdays = new WorkingSaturdays();
+                            businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate, holidays, workingSaturdays);
 
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -166,7 +168,9 @@ public class MyRequestsController extends HttpServlet{
                             try {
                                 Date ParsedBeginDate = sdf.parse(request.getParameter("beginDate"));
                                 Date ParsedEndDate = sdf.parse(request.getParameter("endDate"));
-                                businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate);
+                                Days holidays = new Holidays();
+                                Days workingSaturdays = new WorkingSaturdays();
+                                businessDaysCount = DateHelper.getBusinessDaysCount(ParsedBeginDate, ParsedEndDate, holidays, workingSaturdays);
 
                             } catch (ParseException e) {
                                 e.printStackTrace();

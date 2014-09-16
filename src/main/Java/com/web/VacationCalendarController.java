@@ -26,8 +26,11 @@ public class VacationCalendarController extends HttpServlet{
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
+        Days holidays = new Holidays();
+        Days workingSaturdays = new WorkingSaturdays();
+
         for(int i = 0; i < vacations.size(); i++){
-            ArrayList<String[]> splitVacation = DateHelper.excludeDaysOff(vacations.get(i).getBeginDate(), vacations.get(i).getEndDate());
+            ArrayList<String[]> splitVacation = DateHelper.excludeDaysOff(vacations.get(i).getBeginDate(), vacations.get(i).getEndDate(), holidays, workingSaturdays);
             for (int m = 0; m < splitVacation.size(); m++){
                 JSONObject obj = new JSONObject();
                 obj.put("title", vacations.get(i).getEmployeeName());
