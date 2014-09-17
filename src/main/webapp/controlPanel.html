@@ -111,6 +111,7 @@
 
         function updateVacationDaysLeft() {
             alertify.prompt().setting({onshow: function(){$(".ajs-input").attr("type", "password"); $(".ajs-input").val("");}});
+            alertify.prompt().setting('labels', {ok:'Update', cancel:'Cancel'});
             alertify.prompt('This action CANNOT be undone. It will reset all employees\' remaining vacation days. ' +
                             'It will add 25 days each employee and save up to 10 vacation days left from the last year.' +
                             ' This update is supposed to happen ONCE a year.' +

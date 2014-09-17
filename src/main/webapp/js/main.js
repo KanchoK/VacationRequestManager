@@ -170,6 +170,7 @@ app.controller('changePasswordController', function($scope, $http, $location) {
             newPassword: newPassword,
             confirmNewPassword: confirmNewPassword
         };
+        alertify.confirm().setting('labels', {ok:'Update', cancel:'Cancel'});
         alertify.confirm('Are you sure you want to change your password?').setting('onok', function () {
             $scope.status = "ok";
             $scope.changePasswordSuccess();
@@ -208,6 +209,7 @@ app.controller('forgottenPasswordController', function($scope, $http, $location)
             newPassword: newPassword,
             confirmNewPassword: confirmNewPassword
         };
+        alertify.confirm().setting('labels', {ok:'Update', cancel:'Cancel'});
         alertify.confirm('Are you sure you want to reset your password?').setting('onok', function () {
             $scope.status = "ok";
             $scope.resetPasswordSuccess();
@@ -240,12 +242,12 @@ function requestNotification($scope, $http){
     $scope.access;
     $http({
         method: 'POST',
-        url: 'RequestNotificationController',
+        url: 'SessionProvider',
         params: {
-            action: "requestAccess"
+            action: "getAccess"
         }
     }).success(function(data){
-        $scope.access = data.access;
+        $scope.access = data.accessLevel;
         if ($scope.access == 1 || $scope.access == 2){
             $scope.requestNotifications();
         }

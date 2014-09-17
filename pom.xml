@@ -102,7 +102,7 @@
                   <!--</connectors>-->
 
 
-                  <!--<jettyEnvXml>src/main/webapp/WEB-INF/context.xml</jettyEnvXml>-->
+                  <!--<jettyEnvXml>src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>-->
                   <!--<jettyEnvXml>src/main/webapp/WEB-INF/myContext.xml</jettyEnvXml>-->
               </configuration>
               <executions>

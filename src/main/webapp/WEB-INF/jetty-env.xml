@@ -1,0 +1,17 @@
+<Configure id='wac' class="org.mortbay.jetty.webapp.WebAppContext">
+
+    <Array id="plusConfig" type="java.lang.String">
+        <Item>org.mortbay.jetty.webapp.WebInfConfiguration</Item>
+        <Item>org.mortbay.jetty.webapp.WebXmlConfiguration</Item>
+        <Item>org.mortbay.jetty.webapp.MetaInfConfiguration</Item>
+        <Item>org.mortbay.jetty.webapp.FragmentConfiguration</Item>
+        <Item>org.mortbay.jetty.plus.webapp.EnvConfiguration</Item> <!-- add for JNDI -->
+        <Item>org.mortbay.jetty.plus.webapp.PlusConfiguration</Item>    <!-- add for JNDI -->
+        <Item>org.mortbay.jetty.webapp.JettyWebXmlConfiguration</Item>
+        <Item>org.mortbay.jetty.webapp.TagLibConfiguration</Item>
+    </Array>
+
+    <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/my-cool-webapp</Set>
+    <Set name="configurationClasses"><Ref id="plusConfig"/></Set>
+
+</Configure>

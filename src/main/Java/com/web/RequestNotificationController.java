@@ -19,24 +19,19 @@ public class RequestNotificationController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         JSONObject obj = new JSONObject();
 
-        if (request.getParameter("action").equals("requestAccess")){
-            HttpSession session = request.getSession();
-            obj.put("access", session.getAttribute("access"));
+        List<String> notifications = new ArrayList<String>();
+        HttpSession session = request.getSession();
+        notifications = CrudDao.getRequestNotifications((Integer)session.getAttribute("employeeID"));
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
-        } else if (request.getParameter("action").equals("requestNotifications")){
-            List<String> notifications = new ArrayList<String>();
-            HttpSession session = request.getSession();
-            notifications = CrudDao.getRequestNotifications((Integer)session.getAttribute("employeeID"));
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-
-            obj.put("endIndex", notifications.size());
-            JSONArray array = new JSONArray();
-            for(int i = 0; i < notifications.size(); i++){
-                array.put(notifications.get(i));
-            }
-            obj.put("notifications", array);
+        obj.put("endIndex", notifications.size());
+        JSONArray array = new JSONArray();
+        for(int i = 0; i < notifications.size(); i++){
+            array.put(notifications.get(i));
         }
+        obj.put("notifications", array);
+
         try {
             PrintWriter out = response.getWriter();
             out.println(obj);

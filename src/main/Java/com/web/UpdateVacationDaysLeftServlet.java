@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -25,6 +27,13 @@ public class UpdateVacationDaysLeftServlet extends HttpServlet {
             obj.put("message", "success");
         } else {
             obj.put("message", "error");
+        }
+
+        try {
+            PrintWriter out = response.getWriter();
+            out.println(obj);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
