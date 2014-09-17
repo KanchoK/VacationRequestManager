@@ -39,7 +39,7 @@ app.config(function($routeProvider){
     });
 });
 
-app.controller('mainController',function($scope){
+app.controller('mainController',function(){
     menuAccessibility(0);
 });
 

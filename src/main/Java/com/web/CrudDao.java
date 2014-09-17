@@ -791,6 +791,48 @@ public class CrudDao {
         return employees;
     }
 
+    public static List<Employee> getEmployeesVacationDaysLeft(){
+        Connection conn = DBConnection.getConnection();
+        List<Employee> employees = new ArrayList<Employee>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select employee_id, vacationDaysLeft from employees ");
+            while (rs.next()){
+                Employee employee = new Employee();
+
+                employee.setEmployee_id(rs.getInt("employee_id"));
+                employee.setVacationDaysLeft(rs.getInt("vacationDaysLeft"));
+
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return employees;
+    }
+
     public static List<Employee> getEmployeesName(){
         Connection conn = DBConnection.getConnection();
         List<Employee> employees = new ArrayList<Employee>();
@@ -1461,6 +1503,30 @@ public class CrudDao {
             try{
                 if (rs != null)
                     rs.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+        }
+    }
+
+    public static void updateVacationDaysLeftEveryYear(int days, int employeeID){
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("update employees set vacationDaysLeft = ? where employee_id = ?");
+            pst.setInt(1, days);
+            pst.setInt(2, employeeID);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (pst != null)
+                    pst.close();
             }
             catch (SQLException e)
             {

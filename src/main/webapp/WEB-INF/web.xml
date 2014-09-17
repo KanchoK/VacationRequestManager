@@ -186,6 +186,15 @@
         <url-pattern>/SessionProvider</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateVacationDaysLeftServlet</servlet-name>
+        <servlet-class>com.web.UpdateVacationDaysLeftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateVacationDaysLeftServlet</servlet-name>
+        <url-pattern>/UpdateVacationDaysLeftServlet</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>com.web.filter.AuthenticationFilter</filter-class>

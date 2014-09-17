@@ -1,7 +1,8 @@
 <script>
     $(document).ready(function(){
         $('#forgottenPassword').click(function(){
-            alertify.prompt('Enter your email and a link will be sent to you to change your password. This link will be valid for 24 hours.', '',
+            alertify.prompt().setting({onshow: function(){$(".ajs-input").attr("type", "text"); $(".ajs-input").val("");}});
+            alertify.prompt('Enter your email and a link will be sent to you from which you could change your password. This link will be valid for 24 hours.', '',
             function(evt, value){
                 $.ajax({
                     url: 'ForgottenPassword',

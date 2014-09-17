@@ -108,6 +108,38 @@
             });
             $('#PersonTableContainer').jtable('load');
         });
+
+        function updateVacationDaysLeft() {
+            alertify.prompt().setting({onshow: function(){$(".ajs-input").attr("type", "password"); $(".ajs-input").val("");}});
+            alertify.prompt('This action CANNOT be undone. It will reset all employees\' remaining vacation days. ' +
+                            'It will add 25 days each employee and save up to 10 vacation days left from the last year.' +
+                            ' This update is supposed to happen ONCE a year.' +
+                            ' Please enter your password to confirm that you want to execute this action.', '',
+                    function(evt, value){
+                        $.ajax({
+                            url: 'UpdateVacationDaysLeftServlet',
+                            type: 'POST',
+                            data: {
+                                password: value
+                            },
+                            success: function(data){
+                                var obj = JSON.parse(data);
+                                if(obj.message == "success"){
+                                    alertify.success('You have successfully updated all employees\' remaining vacation days.')
+                                } else {
+                                    alertify.success('Wrong password')
+                                }
+                            },
+                            error: function(e){
+                                alertify.alert(e)
+                            }
+                        });
+                    });
+        }
     </script>
 
 <div id="PersonTableContainer"></div>
+
+<div align="center">
+    <button class="bigButton" type="button" onclick="updateVacationDaysLeft()">Update Employees' vacation days left</button>
+</div>
