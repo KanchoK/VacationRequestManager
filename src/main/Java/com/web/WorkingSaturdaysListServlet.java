@@ -13,6 +13,9 @@ import java.util.List;
 /**
  * Created by R500 on 16.9.2014 г..
  */
+
+//WorkingSaturdaysListServlet returns JSON with the dates and text of the working saturdays from the workingSaturdays table to the FullCalendar from vacationCalendar.html
+//    the dates are parsed to the needed format for the FullCalendar
 public class WorkingSaturdaysListServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         JSONArray dates = new JSONArray();

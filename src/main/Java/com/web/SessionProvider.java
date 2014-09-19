@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 /**
  * Created by R500 on 12.9.2014 г..
  */
+
+//SessionProvider provides the browser with the needed parameters from the session
+//    the servlet is called from the javascript by ajax calls
 public class SessionProvider extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();

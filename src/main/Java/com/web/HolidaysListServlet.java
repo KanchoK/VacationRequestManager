@@ -14,6 +14,9 @@ import java.util.List;
 /**
  * Created by R500 on 15.9.2014 г..
  */
+
+//HolidaysListServlet returns JSON with the dates and names of the holidays from the holidays table to the FullCalendar from vacationCalendar.html
+//    the dates are parsed to the needed format for the FullCalendar
 public class HolidaysListServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         JSONArray dates = new JSONArray();

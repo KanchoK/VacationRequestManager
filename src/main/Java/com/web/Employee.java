@@ -3,6 +3,8 @@ package com.web;
 /**
  * Created by R500 on 21.7.2014 г..
  */
+
+//Employee class is used to pass data of the employees easily
 public class Employee {
     private int employee_id;
     private String fName;

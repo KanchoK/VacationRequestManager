@@ -14,6 +14,9 @@ import java.util.List;
 /**
  * Created by R500 on 14.8.2014 г..
  */
+
+//VacationCalendarController controls the FullCalendar from vacationCalendar.html
+//    the servlet returns JSON with list of all approved vacations after they are split and the days off are excluded from them
 public class VacationCalendarController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         List<Vacation> vacations;

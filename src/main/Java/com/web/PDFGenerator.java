@@ -18,6 +18,10 @@ import java.util.Date;
  * Created by R500 on 18.8.2014 г..
  */
 public class PDFGenerator {
+
+//    generateVacationRequestPDF is called when a vacation request is approved by a manager
+//    the method generates a pdf file with data given to it
+//    the pdf file is sent to someone via email who can print the document...
     public static void generateVacationRequestPDF(String employeeName, String vacationDaysLeft, String beginDate, String endDate, String allDays, String vacationType){
         Document document = new Document();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");

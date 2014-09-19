@@ -9,6 +9,8 @@ import java.sql.SQLException;
  * Created by R500 on 16.7.2014 г..
  */
 public class LoginCheck {
+//    LoginCheck.validate is called in LoginServlet to check if the email and password written in the login form are valid
+//    the method returns true if the data given matches with an employee from the database and returns false otherwise
     public static boolean validate(String email, String pass){
         boolean result = false;
 

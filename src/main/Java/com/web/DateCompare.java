@@ -9,6 +9,9 @@ import java.util.Date;
  * Created by R500 on 14.8.2014 г..
  */
 public class DateCompare {
+
+//    CompareDates returns true if the first date is before the second date
+//    this method takes dates in format: dd.MM.yyyy
     public static boolean CompareDates(String firstDate, String secondDate){
         boolean isDatesValid = false;
 
@@ -25,6 +28,9 @@ public class DateCompare {
 
         return isDatesValid;
     }
+
+//    CompareJavaDates returns true if the first date is before the second date
+//    this method takes dates in java format(variables type Date)
     public static boolean CompareJavaDates(Date firstDate, Date secondDate){
         boolean isDatesValid = false;
         Calendar firstCalendar = Calendar.getInstance();

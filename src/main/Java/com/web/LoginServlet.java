@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 /**
  * Created by R500 on 16.7.2014 г..
  */
+
+//LoginServlet takes the data from the login form and if LoginCheck.validate returns true the servlet sets some parameters to the session
 public class LoginServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 

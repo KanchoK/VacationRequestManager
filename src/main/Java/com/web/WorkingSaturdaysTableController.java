@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * Created by R500 on 15.9.2014 г..
  */
+
+//WorkingSaturdaysTableController controls the Working Saturdays jTable from the holidaysManager.html
 public class WorkingSaturdaysTableController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter("action") != null) {
@@ -24,6 +26,7 @@ public class WorkingSaturdaysTableController extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
+//            list all working Saturdays
             if (action.equals("list")) {
                 try {
                     String sort = request.getParameter("jtSorting");
@@ -49,6 +52,7 @@ public class WorkingSaturdaysTableController extends HttpServlet {
                 }
             }
 
+//            create new working Saturday
             else if (action.equals("create")){
                 WorkingSaturday workingSaturday = new WorkingSaturday();
 
@@ -77,6 +81,7 @@ public class WorkingSaturdaysTableController extends HttpServlet {
                 }
             }
 
+//            update the selected working Saturday
             else if (action.equals("update")){
                 WorkingSaturday workingSaturday = new WorkingSaturday();
 
@@ -96,6 +101,7 @@ public class WorkingSaturdaysTableController extends HttpServlet {
                 }
             }
 
+//            delete the selected working Saturday
             else if (action.equals("delete")){
                 try{
                     if(request.getParameter("workingSaturday_id") != null){

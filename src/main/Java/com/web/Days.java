@@ -7,6 +7,8 @@ import java.util.Date;
 /**
  * Created by R500 on 19.8.2014 г..
  */
+
+//   Days class is extended by Holidays and WorkingSaturdays
 public abstract class Days {
 
     protected final static Calendar calendar = Calendar.getInstance();

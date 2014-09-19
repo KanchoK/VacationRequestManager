@@ -13,6 +13,8 @@ import java.util.Date;
 /**
  * Created by R500 on 18.8.2014 г..
  */
+
+//ForgottenPassword sends a email with a link from which the user can reset their password in the next 24 hours
 public class ForgottenPassword extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -21,6 +23,10 @@ public class ForgottenPassword extends HttpServlet {
         JSONObject obj = new JSONObject();
         int employeeID = EmployeeAttributes.getEmployeeID(email);
         int access = EmployeeAttributes.getEmployeeAccessLevel(email);
+
+//        employeeID == -1 if EmployeeAttributes.getEmployeeID(email) returns -1
+//        access == 0 if EmployeeAttributes.getEmployeeAccessLevel(email) returns 0
+//        this will happen if the is no such email in the database
         if(employeeID != -1 && access != 0){
             String code = RandomGenerator.generateCode();
             Date date = new Date();

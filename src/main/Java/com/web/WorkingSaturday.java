@@ -3,6 +3,8 @@ package com.web;
 /**
  * Created by R500 on 15.9.2014 г..
  */
+
+//WorkingSaturday class is used to pass data of the workingSaturdays easily
 public class WorkingSaturday {
     private int workingSaturday_id;
     private int year;

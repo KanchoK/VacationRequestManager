@@ -10,6 +10,8 @@ import java.util.Map;
 /**
  * Created by R500 on 16.7.2014 г..
  */
+
+//EmployeeAttributes class is used to get the info for an employee from the database via the email they used in the login form
 public class EmployeeAttributes {
     public static int getEmployeeAccessLevel(String email){
         int accessLevel = 0;

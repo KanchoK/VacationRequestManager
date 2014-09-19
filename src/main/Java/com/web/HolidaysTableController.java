@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Created by R500 on 12.9.2014 г..
  */
+//HolidaysTableController controls the Holidays jTable from the holidaysManager.html
 public class HolidaysTableController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter("action") != null) {
@@ -24,6 +25,7 @@ public class HolidaysTableController extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
+//            list all holidays
             if (action.equals("list")) {
                 try {
                     String sort = request.getParameter("jtSorting");
@@ -49,6 +51,7 @@ public class HolidaysTableController extends HttpServlet {
                 }
             }
 
+//            create new holiday
             else if (action.equals("create")){
                 Holiday holiday = new Holiday();
 
@@ -77,6 +80,7 @@ public class HolidaysTableController extends HttpServlet {
                 }
             }
 
+//            update the selected holiday
             else if (action.equals("update")){
                 Holiday holiday = new Holiday();
 
@@ -96,6 +100,7 @@ public class HolidaysTableController extends HttpServlet {
                 }
             }
 
+//            delete the selected holiday
             else if (action.equals("delete")){
                 try{
                     if(request.getParameter("holiday_id") != null){

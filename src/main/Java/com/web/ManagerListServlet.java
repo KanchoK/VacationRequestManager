@@ -12,6 +12,8 @@ import java.util.List;
 /**
  * Created by R500 on 12.8.2014 г..
  */
+
+//ManagerListServlet sends JSON with a list of all managers for the jTable from controlPanel.html
 public class ManagerListServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {

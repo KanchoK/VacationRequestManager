@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * Created by R500 on 21.7.2014 г..
  */
+
+//EmployeeTableController controls the jTable from the controlPanel.html
 public class EmployeeTableController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter("action") != null) {
@@ -24,6 +26,7 @@ public class EmployeeTableController extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
+//            list action takes all employees' data from the database via CrudDao and fills the jTable with the info
             if (action.equals("list")) {
                 try {
                     int startPageIndex = Integer.parseInt(request.getParameter("jtStartIndex"));
@@ -49,6 +52,8 @@ public class EmployeeTableController extends HttpServlet {
                 }
             }
 
+//            create action creates new employee in the database and adds it to the jTable
+//            the new user's password is set to "initial", the vacationStatus is set to 0
             else if (action.equals("create")){
                 Employee employee = new Employee();
                 String convertedPass = Utility.toSHA1(Utility.salt("initial").getBytes());
@@ -85,6 +90,7 @@ public class EmployeeTableController extends HttpServlet {
                 }
             }
 
+//            update action updates the selected employee from the jTable and update the data in the database
             else if (action.equals("update")){
                 Employee employee = new Employee();
 //                String convertedPass = Utility.toSHA1(Utility.salt(request.getParameter("password")).getBytes());
@@ -110,6 +116,7 @@ public class EmployeeTableController extends HttpServlet {
                 }
             }
 
+//           !!!CascadeDelete!!! delete action deletes the selected record BUT first it deletes all the vacation requests of the employee that we want to delete
             else if (action.equals("delete")){
                 try{
                     if(request.getParameter("employee_id") != null){

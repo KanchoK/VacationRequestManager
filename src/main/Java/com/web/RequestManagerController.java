@@ -17,6 +17,8 @@ import java.util.*;
 /**
  * Created by R500 on 11.8.2014 г..
  */
+
+//RequestManagerController controls the jTable from requestManager.html
 public class RequestManagerController extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -29,6 +31,7 @@ public class RequestManagerController extends HttpServlet{
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
+//            list the vacation requests that are managed by the current user
             if (action.equals("list")) {
                 try {
                     int startPageIndex = Integer.parseInt(request.getParameter("jtStartIndex"));
@@ -54,6 +57,17 @@ public class RequestManagerController extends HttpServlet{
                 }
             }
 
+//            update the vacationType of the selected vacation request
+//            isVacationNotBegan is set to true only if the begin date is not passed
+
+//            if the vacation type is different than approved and it's changed to approved a PDF file is generated and an email is sent with the document attached
+//            also the businessDays of the vacation are subtracted from the vacationDaysLeft in the database
+
+//            if the vacation type is approved and it's changed the the businessDays of the vacation are added to the vacationDaysLeft in the database
+
+//            update of the vacation will NOT happen if:
+//              1) the employee which made the request doesn't have enough vacationDaysLeft
+//              2) the begin date of the request is passed
             else if (action.equals("update")){
                 Vacation vacation = new Vacation();
                 vacation.setVacationID(Integer.parseInt(request.getParameter("vacationID")));
@@ -160,6 +174,8 @@ public class RequestManagerController extends HttpServlet{
                 }
             }
 
+//            delete the selected request
+//            it can be deleted only if the vacation type is different than approved or the vacation is over(the end date is passed)
             else if (action.equals("delete")){
                 int vacationStatus = CrudDao.getVacationStatus(Integer.parseInt(request.getParameter("vacationID")));
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

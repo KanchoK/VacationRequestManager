@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 /**
  * Created by R500 on 19.8.2014 г..
  */
+
+//This servlet is called in the forgottenPassword.html and it make several checks of the received data
+//and if the data is accurate the servlet resets the password of the user in the database
 public class ResetForgottenPassword extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();

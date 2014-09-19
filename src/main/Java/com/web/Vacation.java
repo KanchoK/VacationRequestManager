@@ -3,6 +3,7 @@ package com.web;
 /**
  * Created by R500 on 17.7.2014 г..
  */
+//Vacation class is used to pass data of the vacations easily
 public class Vacation {
     private int vacationID;
     private int employeeID;

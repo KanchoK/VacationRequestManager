@@ -11,9 +11,13 @@ import java.sql.SQLException;
 /**
  * Created by R500 on 16.7.2014 г..
  */
+
+//DBConnection class create and close the connection to the database
 public class DBConnection {
     private static Connection connection = null;
 
+//    getConnection method is getting a connection from DriverManager but it has ???thread problems???
+//    possible solution is creating a connection pool and use JNDI
     public static Connection getConnection() {
         if (connection != null) {
             return connection;
@@ -55,7 +59,7 @@ public class DBConnection {
 //
     }
 
-
+// closes the connection and makes it null if the connection is not null already
     public static void closeConnection() {
         if(connection != null){
             try {

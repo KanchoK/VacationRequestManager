@@ -19,6 +19,9 @@ import java.util.Map;
 /**
  * Created by R500 on 16.7.2014 г..
  */
+
+// the filter checks if the requests to the server are accessible at different cases
+// and if they are NOT accessible the filter redirects the user to an available page
 @WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
     private ServletContext context;
@@ -38,6 +41,8 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = req.getSession(false);
         int access = session!=null&&session.getAttribute("access")!=null?(Integer)session.getAttribute("access"):0;
 
+//      check if the link for changing a forgotten password is accurate, checks the email, code and expiry date
+//      if the link is accurate it proceeds to the forgotten password page, if NOT it redirects the user to the login page
         if (req.getParameter("email") != null && req.getParameter("code") != null) {
             String email = req.getParameter("email");
             Map data = EmployeeAttributes.getForgottenPasswordCodeAndLinkExpiryDate(email);
@@ -70,7 +75,10 @@ public class AuthenticationFilter implements Filter {
                     e.printStackTrace();
                 }
             }
-        } else if((session == null || session.getAttribute("email") == null) &&
+        }
+//      this "else if" gives the accessible resources if the session is null(when no user is logged in)
+//      if an inaccessible resource is required the user is redirected to the login page
+        else if((session == null || session.getAttribute("email") == null) &&
                 (!(uri.endsWith("VacationRequestManager/") || uri.endsWith("index.html") || uri.endsWith("signUp.html") || uri.endsWith(".js") || uri.endsWith(".png")
                         || uri.endsWith("login.html") || uri.endsWith(".css") || uri.endsWith("/LoginServlet") || uri.endsWith("/SignUpServlet") || uri.endsWith("/ForgottenPassword")))){
             this.context.log("Unauthorized access request");
@@ -79,14 +87,20 @@ public class AuthenticationFilter implements Filter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (session != null && (access != 1 && access != 2) && (uri.endsWith("requestManager.html"))){
+        }
+//      this "else if" checks for the access level of the user and forbid normal users to access requestManager.html
+//      if a normal user try to access requestManager.html he is redirected to myRequests.html
+        else if (session != null && (access != 1 && access != 2) && (uri.endsWith("requestManager.html"))){
             this.context.log("Unauthorized access request");
             try {
                 res.sendRedirect("myRequests.html");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (session != null && access != 1 && (uri.endsWith("controlPanel.html") || uri.endsWith("holidaysManager.html"))){
+        }
+//      this "else if" checks for the access level of the user and forbid normal users and managers to access controlPanel.html and holidaysManager.html
+//      if a normal user or a manager try to access controlPanel.html and holidaysManager.html they are redirected to myRequests.html
+        else if (session != null && access != 1 && (uri.endsWith("controlPanel.html") || uri.endsWith("holidaysManager.html"))){
             this.context.log("Unauthorized access request");
             try {
                 res.sendRedirect("myRequests.html");

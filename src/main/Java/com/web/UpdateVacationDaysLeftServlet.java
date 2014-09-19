@@ -14,6 +14,10 @@ import java.util.List;
 /**
  * Created by R500 on 16.9.2014 г..
  */
+
+//UpdateVacationDaysLeftServlet updates the vacation days left of all employees by saving up to daysToSave days and adds daysToAdd
+//    where daysToSave and daysToAdd are set in the servlet
+//    this update is meant to happen only once a year so to execute it the admin need to use the button in the control panel bottom and he needs to provide his password to confirm the update
 public class UpdateVacationDaysLeftServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String pass = request.getParameter("password");
@@ -37,6 +41,8 @@ public class UpdateVacationDaysLeftServlet extends HttpServlet {
         }
     }
 
+//    executeUpdate actually updates the vacation days left of all employees
+//    this method is called by the servlet only if the password given by the admin is correct
     public void executeUpdate(){
         List<Employee> employees = CrudDao.getEmployeesVacationDaysLeft();
         int daysToSave = 10;

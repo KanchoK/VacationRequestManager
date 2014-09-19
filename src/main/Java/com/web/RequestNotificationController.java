@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * Created by R500 on 20.8.2014 г..
  */
+
+//RequestNotificationController returns JSON with array of notifications which is used in the pop-up message after the login of a manager or admin
 public class RequestNotificationController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         JSONObject obj = new JSONObject();

@@ -3,6 +3,8 @@ package com.web;
 /**
  * Created by R500 on 12.9.2014 г..
  */
+
+//Holiday class is used to pass data of the holidays easily
 public class Holiday {
     private int holiday_id;
     private int year;

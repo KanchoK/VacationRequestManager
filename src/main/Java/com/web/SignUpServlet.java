@@ -11,6 +11,10 @@ import java.io.PrintWriter;
 /**
  * Created by R500 on 21.7.2014 г..
  */
+
+//This servlet is called in the signUp.html and it make several checks of the received data
+//and if the data is accurate the servlet creates new employee in the database with accessLevel = 0(waiting for conformation)
+//    which means that the user won't be able to login with this account until an admin confirms it from the control panel table
 public class SignUpServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String fName = request.getParameter("fName");

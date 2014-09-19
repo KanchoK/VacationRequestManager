@@ -11,13 +11,16 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//MailSender holds the data of the email from which the emails are sent
 public class MailSender {
 
+//    Email from which the emails are send
     private String SMTP_HOST = "smtp.gmail.com";
     private String FROM_ADDRESS = "programmingTestsAndStuff@gmail.com";
     private String PASSWORD = "PasswordForTesting";
     private String FROM_NAME = "Kancho";
 
+//    sendMail method sets the email's recipient, subject, message and attachment and after that it sends the email
     public boolean sendMail(String recipient, String subject, String message, String attachment) {
         try {
             Properties props = new Properties();
@@ -62,6 +65,7 @@ public class MailSender {
         }
     }
 
+//    SocialAuth authenticate the email from which we send the emails
     class SocialAuth extends Authenticator {
 
         @Override

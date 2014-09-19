@@ -12,6 +12,9 @@ import java.util.Date;
 /**
  * Created by R500 on 12.9.2014 г..
  */
+
+//PrevAndNextYearsList returns JSON with a list of the next 10 years and previous 10 years
+//    this data is needed for the options field in the holidays and working saturdays tables
 public class PrevAndNextYearsList extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
 

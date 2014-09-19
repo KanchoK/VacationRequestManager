@@ -8,8 +8,12 @@ import java.util.Date;
 /**
  * Created by R500 on 17.7.2014 г..
  */
+// CrudDao class is used to access the data from the database
 public class CrudDao {
 
+//    getApprovedVacations method is used to get all vacations that have vacationStatus = 2(approved)
+//    and it returns List<Vacation> with the needed data for the FullCalendar in vacationCalendar.html
+//    this method is used in VacationCalendarController
     public static List<Vacation> getApprovedVacations(int vacationType){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -76,6 +80,8 @@ public class CrudDao {
         return vacations;
     }
 
+//    getSelectedApprovedVacations is used to get the approved vacations of only one user whose name is passed to the method
+//    method is used in VacationCalendarController for the FullCalendar in vacationCalendar.html
     public static List<Vacation> getSelectedApprovedVacations(String name, int vacationType){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -144,7 +150,7 @@ public class CrudDao {
     }
 
 
-    //getAllVacations is not used anywhere but it can be used if we want the admin to be able of seeing all vacations
+//    getAllVacations is not used anywhere but it can be used if we want the admin to be able of seeing all vacations in the jTable from requestManager.html
     public static List<Vacation> getAllVacations(int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -219,6 +225,9 @@ public class CrudDao {
         return vacations;
     }
 
+//    getVacationRequests is used to get only vacation requests that are manged by the current user
+//    his employee_ID is used to select only vacation requests which are from users that he manages
+//    this method is used in the RequestManagerController for the jTable from requestManager.html
     public static List<Vacation> getVacationRequests(int employee_id, int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -294,6 +303,8 @@ public class CrudDao {
         return vacations;
     }
 
+//    getRequestNotifications is used to get the vacation requests that are waiting for approval and are managed by the current user
+//    the method is used in RequestNotificationController for the pop-up message after login that says how many new requests are sent to the current user
     public static List<String> getRequestNotifications(int managerID){
         Connection conn = DBConnection.getConnection();
         List<String> notifications = new ArrayList<String>();
@@ -356,6 +367,8 @@ public class CrudDao {
         return notifications;
     }
 
+//    getMyVacations is used to get only the vacation requests of the current user
+//    the method is used in MyRequestsController fot the jTable in myRequsests.html
     public static List<Vacation> getMyVacations(int employeeID, int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Vacation> vacations = new ArrayList<Vacation>();
@@ -406,6 +419,8 @@ public class CrudDao {
         return vacations;
     }
 
+//    getVacationStatus provides the vacation status via passed vacationID
+//    the method is used in MyRequestsController and RequestManagerController
     public static int getVacationStatus(int vacationID){
         int vacationStatus = 0;
         Connection conn = DBConnection.getConnection();
@@ -443,6 +458,8 @@ public class CrudDao {
         return vacationStatus;
     }
 
+//    getVacationType provides the vacation type via passed vacationID
+//    the method is used in MyRequestsController and RequestManagerController
     public static int getVacationType(int vacationID){
         int vacationType = 0;
         Connection conn = DBConnection.getConnection();
@@ -480,6 +497,8 @@ public class CrudDao {
         return vacationType;
     }
 
+//    getVacationBeginDate provides the vacation begin date via passed vacationID
+//    the method is used in RequestManagerController
     public static String getVacationBeginDate(int vacationID){
         String beginDate = "";
         Connection conn = DBConnection.getConnection();
@@ -517,6 +536,8 @@ public class CrudDao {
         return beginDate;
     }
 
+//    getVacationEndDate provides the vacation end date via passed vacationID
+//    the method is used in RequestManagerController
     public static String getVacationEndDate(int vacationID){
         String endDate = "";
         Connection conn = DBConnection.getConnection();
@@ -554,6 +575,8 @@ public class CrudDao {
         return endDate;
     }
 
+//    getVacationResponseText provides the vacation response text via passed vacationID
+//    the method is used in RequestManagerController
     public static String getVacationResponseText(int vacationID){
         String responseText = "";
         Connection conn = DBConnection.getConnection();
@@ -591,6 +614,8 @@ public class CrudDao {
         return responseText;
     }
 
+//    getVacationDaysLeft provides employee's vacation days left via passed employeeID
+//    the method is used in MyRequestsController
     public static int getVacationDaysLeft(int employeeID){
         int vacationDaysLeft = 0;
         Connection conn = DBConnection.getConnection();
@@ -628,6 +653,8 @@ public class CrudDao {
         return vacationDaysLeft;
     }
 
+//    getRequestCount counts the vacations which are managed by the current user
+//    the method is used in RequestManagerController for jTable paging
     public static int getRequestCount(int employee_id){
         int count=0;
         Connection conn = DBConnection.getConnection();
@@ -665,42 +692,46 @@ public class CrudDao {
         return count;
     }
 
-//    public static int getVacationCount(){
-//        int count=0;
-//        Connection conn = DBConnection.getConnection();
-//        Statement st = null;
-//        ResultSet rs = null;
-//        try {
-//            st = conn. createStatement();
-//            rs = st.executeQuery("select COUNT(*) from vacations");
-//            rs.next();
-//            count = rs.getInt("C1");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        finally {
-//            try{
-//                if (st != null)
-//                    st.close();
-//            }
-//            catch (SQLException e)
-//            {
-//                e.printStackTrace();
-//            }
-//            try {
-//                if (rs != null)
-//                    rs.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//            DBConnection.closeConnection();
-//            conn = null;
-//            st = null;
-//            rs = null;
-//        }
-//        return count;
-//    }
+//    getVacationCount is not used anywhere but it can be used if we want the admin to be able of seeing all vacations in the jTable from requestManager.html
+//    then we will need to use this method to get the count of all vacations for the jTable paging
+    public static int getVacationCount(){
+        int count=0;
+        Connection conn = DBConnection.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn. createStatement();
+            rs = st.executeQuery("select COUNT(*) from vacations");
+            rs.next();
+            count = rs.getInt("C1");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (st != null)
+                    st.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.closeConnection();
+            conn = null;
+            st = null;
+            rs = null;
+        }
+        return count;
+    }
 
+//    getVacationCount counts the vacations of the current user
+//    the method is used in MyRequestsController for jTable paging
     public static int getVacationCount(int employeeID){
         int count=0;
         Connection conn = DBConnection.getConnection();
@@ -738,6 +769,8 @@ public class CrudDao {
         return count;
     }
 
+//    getAllEmployees gets all employees for jTable from Control panel
+//    the method is used in EmployeeTableController
     public static List<Employee> getAllEmployees(int jtStartIndex, int jtPageSize, String jtSorting){
         Connection conn = DBConnection.getConnection();
         List<Employee> employees = new ArrayList<Employee>();
@@ -791,6 +824,8 @@ public class CrudDao {
         return employees;
     }
 
+//    getEmployeesVacationDaysLeft gets all employees' vacation days left
+//    the method is used in UpdateVacationDaysLeftServlet
     public static List<Employee> getEmployeesVacationDaysLeft(){
         Connection conn = DBConnection.getConnection();
         List<Employee> employees = new ArrayList<Employee>();
@@ -833,6 +868,8 @@ public class CrudDao {
         return employees;
     }
 
+//    getEmployeesName gets all employees' names
+//    the method is used in EmployeeListServlet
     public static List<Employee> getEmployeesName(){
         Connection conn = DBConnection.getConnection();
         List<Employee> employees = new ArrayList<Employee>();
@@ -875,6 +912,8 @@ public class CrudDao {
         return employees;
     }
 
+//    getManagers gets all employees which are managers
+//    the method is used in ManagerListServlet
     public static List<Employee> getManagers(){
         Connection conn = DBConnection.getConnection();
         List<Employee> employees = new ArrayList<Employee>();
@@ -916,6 +955,8 @@ public class CrudDao {
         return employees;
     }
 
+//    getEmployeeCount counts all employees
+//    the method is used in EmployeeTableController for jTable paging
     public static int getEmployeeCount(){
         int count=0;
         Connection conn = DBConnection.getConnection();
@@ -952,6 +993,8 @@ public class CrudDao {
         return count;
     }
 
+//    isEmailTaken checks if the given email exists in the database
+//    the method is used in SignUpServlet
     public static boolean isEmailTaken(String email){
         boolean isEmailTaken = false;
         Connection conn = DBConnection.getConnection();
@@ -988,6 +1031,8 @@ public class CrudDao {
         return isEmailTaken;
     }
 
+//    getInfoForDocument gets the needed information for the PDF document which is generated and sent via email
+//    this method is used in RequestManagerController
     public static Map getInfoForDocument(int vacationID){
         Map info = new HashMap();
         int employeeID = -1;
@@ -1057,6 +1102,8 @@ public class CrudDao {
         return info;
     }
 
+//    getEmployeeName provides employee's name via given employeeID
+//    the method is used in MyRequestsController
     public static String getEmployeeName(int employeeID){
         String names = "";
         Connection conn = DBConnection.getConnection();
@@ -1092,6 +1139,8 @@ public class CrudDao {
         return names;
     }
 
+//    getManagerID provides the ID of the manager of the current user
+//    the method is used in MyRequestsController
     public static int getManagerID(int employeeID){
         int myManager = 0;
         Connection conn = DBConnection.getConnection();
@@ -1127,6 +1176,8 @@ public class CrudDao {
         return myManager;
     }
 
+//    getPassword provides the password via given employeeID
+//   the method is used in ChangePasswordServlet and UpdateVacationDaysLeftServlet
     public static String getPassword(int employeeID){
         String password = "";
         Connection conn = DBConnection.getConnection();
@@ -1162,6 +1213,8 @@ public class CrudDao {
         return password;
     }
 
+//    getAccountStatus provides account status via given employeeID
+//    but the method is never used
     public static int getAccountStatus(int employeeID){
         int accountStatus = 0;
         Connection conn = DBConnection.getConnection();
@@ -1197,6 +1250,8 @@ public class CrudDao {
         return accountStatus;
     }
 
+//    addVacation creates new record in vacations table
+//    this method is used in MyRequestsController
     public static int addVacation(Vacation vacation){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1239,6 +1294,8 @@ public class CrudDao {
         return key;
     }
 
+//    addEmployee creates new record in employees table
+//    this method is used in EmployeeTableController and SignUpServlet
     public static int addEmployee(Employee employee){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1285,6 +1342,8 @@ public class CrudDao {
         return key;
     }
 
+//    updateVacationDates updates the record's begin date, end date and the request text in vacations table
+//    this method is used in MyRequestsController
     public static void updateVacationDates(Vacation vacation){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1311,6 +1370,8 @@ public class CrudDao {
         }
     }
 
+//    updateVacationResponseText updates the record's response text in vacations table
+//    this method is used in RequestManagerController
     public static void updateVacationResponseText(String responseText, int vacationID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1335,6 +1396,8 @@ public class CrudDao {
         }
     }
 
+//    updateVacationStatus updates the record's response text and vacation status in vacations table
+//    this method is used in RequestManagerController
     public static void updateVacationStatus(Vacation vacation){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1360,6 +1423,8 @@ public class CrudDao {
         }
     }
 
+//    updateVacationManager updates the manager of the vacation
+//    this method is used in EmployeeTableController
     public static void updateVacationManager(int employeeID, int myManager){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1384,6 +1449,8 @@ public class CrudDao {
         }
     }
 
+//    updateEmployee updates a record in employees table
+//    this method is used in EmployeeTableController
     public static void updateEmployee(Employee employee){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1416,6 +1483,8 @@ public class CrudDao {
         }
     }
 
+//    updateEmployeePassword updates employee's password
+//    this method is used in ChangePasswordServlet and ResetForgottenPassword
     public static void updateEmployeePassword(String newPass, int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1440,6 +1509,8 @@ public class CrudDao {
         }
     }
 
+//    updateForgottenPasswordCodeAndLinkExpiryDate sets a code and the link expiry date of an employee
+//    this method is used in ForgottenPassword and ResetForgottenPassword
     public static void updateForgottenPasswordCodeAndLinkExpiryDate(String code, String expiryDate, int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1465,6 +1536,8 @@ public class CrudDao {
         }
     }
 
+//    updateVacationDaysLeft updates vacation days left of an employee by subtracting the given days from the vacation days left in the database
+//    the method is used in RequestManagerController
     public static void updateVacationDaysLeft(int days, int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pstFirst = null;
@@ -1512,6 +1585,8 @@ public class CrudDao {
         }
     }
 
+//    updateVacationDaysLeft updates vacation days left of an employee
+//    the method is used in UpdateVacationDaysLeftServlet
     public static void updateVacationDaysLeftEveryYear(int days, int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1536,6 +1611,8 @@ public class CrudDao {
         }
     }
 
+//    updateEmployeeAccountStatus updates employee's account status
+//    the method is used in ChangePasswordServlet and ResetForgottenPassword
     public static void updateEmployeeAccountStatus(int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1559,6 +1636,8 @@ public class CrudDao {
         }
     }
 
+//    deleteVacation deletes record in vacations table
+//    the method is used in MyRequestsController and RequestManagerController
     public static void deleteVacation(int vacationID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pst = null;
@@ -1582,6 +1661,9 @@ public class CrudDao {
         }
     }
 
+//    cascadeDeleteEmployee first deletes all the vacations of the employee that we want to delete
+//    after that it deletes the employee record in employees table
+//    the method is used in EmployeeTableController
     public static void cascadeDeleteEmployee(int employeeID){
         Connection conn = DBConnection.getConnection();
         PreparedStatement pstFirst = null;
@@ -1619,7 +1701,7 @@ public class CrudDao {
     }
 
 //    methods for accessing the information about holidays and working saturdays tables
-
+//    these methods are used in HolidaysListServlet, HolidaysTableController, Holidays, WorkingSaturdaysListServlet, WorkingSaturdaysController and WorkingSaturdays
     public static List<Holiday> getAllHolidays(){
         Connection conn = DBConnection.getConnection();
         List<Holiday> holidays = new ArrayList<Holiday>();

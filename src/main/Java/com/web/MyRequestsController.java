@@ -19,6 +19,8 @@ import java.util.List;
 /**
  * Created by R500 on 17.7.2014 г..
  */
+
+//MyRequestsController controls the jTable from myRequests.html
 public class MyRequestsController extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -31,6 +33,7 @@ public class MyRequestsController extends HttpServlet{
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
+//            list the current user's vacation requests to the table
             if (action.equals("list")) {
                 try {
                     int startPageIndex = Integer.parseInt(request.getParameter("jtStartIndex"));
@@ -55,6 +58,10 @@ public class MyRequestsController extends HttpServlet{
                 }
             }
 
+//            create new vacation request from the current user
+//            isBeginDateValid is set to true only if the beginDate of the vacation request isn't passed
+//            the record also won't be created if the end date is before the begin date
+//            and also if the employee doesn't have enough vacation days left for this vacation request
             else if (action.equals("create")){
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -148,6 +155,11 @@ public class MyRequestsController extends HttpServlet{
 
             }
 
+//            update the selected vacation request of the current user
+//            isBeginDateValid is set to true only if the beginDate of the vacation request isn't passed
+//            if the request is already approved the update won't happen
+//            the record also won't be updated if the end date is before the begin date
+//            and also if the employee doesn't have enough vacation days left for this vacation request
             else if (action.equals("update")){
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -232,6 +244,8 @@ public class MyRequestsController extends HttpServlet{
                 }
             }
 
+//            delete the selected record
+//            if the vacation status is approved the record cannot be deleted
             else if (action.equals("delete")){
                 int vacationStatus = CrudDao.getVacationStatus(Integer.parseInt(request.getParameter("vacationID")));
                 if (vacationStatus != 2) {

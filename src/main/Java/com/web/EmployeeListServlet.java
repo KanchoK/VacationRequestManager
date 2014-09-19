@@ -14,6 +14,8 @@ import java.util.List;
 /**
  * Created by R500 on 8.9.2014 г..
  */
+
+//EmployeeListServlet is returning JSON with a list of all employees to vacationCalendar.html for the drop-down menu
 public class EmployeeListServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
 

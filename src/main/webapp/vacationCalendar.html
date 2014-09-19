@@ -59,7 +59,6 @@
             ],
             dayRender: function (date, cell) {
 
-// ajax request to servlet which will check if the date is holiday or working day
                 for (i = 0; i < holidays.length; i++) {
                     if(holidays[i][0] == date.format("YYYY-MM-DD") || holidays[i][0] == "0-" + date.format("MM-DD")){
                         cell.css("background-color", "#1CA800");
@@ -135,7 +134,7 @@
         newSourceTwo = {
             url: 'VacationCalendarController',
             type: 'POST',
-            color: 'green',
+            color: '#8C00A8',
             data: {
                 name: name,
                 vacationType: 2

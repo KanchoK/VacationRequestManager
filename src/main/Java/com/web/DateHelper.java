@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * Created by R500 on 19.8.2014 г..
  */
+
 public class DateHelper {
 
     private final static Calendar calendar = Calendar.getInstance();
@@ -16,6 +17,7 @@ public class DateHelper {
 //    private static Days holidays = new Holidays();
 //    private static Days workingSaturdays = new WorkingSaturdays();
 
+//    getBusinessDaysCount counts the working days between d1 and d2 by excluding the holidays and working saturdays
     public static int getBusinessDaysCount(Date d1, Date d2, Days holidays, Days workingSaturdays) {
 
         int businessDaysCount = 0;
@@ -27,6 +29,7 @@ public class DateHelper {
             return businessDaysCount;
         }
 
+//        check if the begin date and the end date are the same day
         if (d1.equals(d2)) {
             businessDaysCount = 1;
             return businessDaysCount;
@@ -52,6 +55,9 @@ public class DateHelper {
         return businessDaysCount;
     }
 
+//    excludeDaysOff returns data for the FullCalendar from vacationCalendar.html
+//    the method is used to split the vacation and remove the days off from the view in the calendar
+//    for example if the vacation is from Friday to Monday on the calender it will show only Friday and Monday and it will exclude Saturday and Sunday
     public static ArrayList<String[]> excludeDaysOff(String beginDate, String endDate, Days holidays, Days workingSaturdays) {
         ArrayList<String[]> data = new ArrayList<String[]>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -102,6 +108,8 @@ public class DateHelper {
         return data;
     }
 
+//    isWorkingDay returns true if the given date is a working day
+//    and returns false if the date is a holiday or part of the weekend excluding the working Saturdays
     public static boolean isWorkingDay(Date date, Days holidays, Days workingSaturdays) {
         calendar.setTime(date);
         if (workingSaturdays.contains(date)){

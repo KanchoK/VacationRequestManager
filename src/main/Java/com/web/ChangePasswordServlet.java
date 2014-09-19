@@ -14,6 +14,9 @@ import java.io.PrintWriter;
 /**
  * Created by R500 on 22.7.2014 г..
  */
+//This servlet is called in the changePassword.html and it make several checks of the received data
+//and if the data is accurate the servlet updates the password of the user in the database
+//It also updates the accountStatus in the database if it's equal to 0 and send a respond message to the browser
 public class ChangePasswordServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         String oldPass = request.getParameter("oldPassword");
